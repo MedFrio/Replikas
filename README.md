@@ -51,4 +51,4 @@ Il a pour but de permettre aux membres de la communauté cinématographique de s
 
 ## .env
 
-Dans le cadre de la publication de mon projet, je souhaite préciser que le fichier .env ne sera pas fourni. Ce fichier contient des informations sensibles telles que des clés d'API, des mots de passe ou d'autres données confidentielles.
+Dans le cadre de la publication du projet, je souhaite préciser que le fichier .env ne sera pas fourni. Ce fichier contient des informations sensibles telles que des clés d'API, des mots de passe ou d'autres données confidentielles.
