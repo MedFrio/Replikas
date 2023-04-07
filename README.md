@@ -48,3 +48,7 @@ Il a pour but de permettre aux membres de la communauté cinématographique de s
 - [**Matis Basso**](https://gricad-gitlab.univ-grenoble-alpes.fr/bassom)
 - [**Mohammed Ben Aicha**](https://gricad-gitlab.univ-grenoble-alpes.fr/benaichm)
 - [**Mohammed Friouichen**](https://gricad-gitlab.univ-grenoble-alpes.fr/friouicm)
+
+## .env
+
+Dans le cadre de la publication de mon projet, je souhaite préciser que le fichier .env ne sera pas fourni. Ce fichier contient des informations sensibles telles que des clés d'API, des mots de passe ou d'autres données confidentielles.
