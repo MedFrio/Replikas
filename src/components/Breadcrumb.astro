@@ -1,0 +1,143 @@
+---
+---
+
+<div id="breadcrumb"></div>
+<style is:inline>
+	@import url(https://fonts.googleapis.com/css?family=Merriweather+Sans);
+	#breadcrumb {
+		margin-top: 1%;
+		overflow: hidden;
+	}
+	#breadcrumb > * {
+		color: var(--theme-text);
+		text-decoration: none;
+		transition: 0.5s ease;
+	}
+	#breadcrumb > *:hover,
+	#breadcrumb > *:hover:after {
+		transition: 0.5s ease;
+		color: var(--theme-button-text);
+		background-color: var(--theme-button);
+	}
+	#breadcrumb a {
+		text-decoration: none;
+		outline: none;
+		display: block;
+		float: left;
+		font-size: 18px;
+		font-weight: bold;
+		line-height: 36px;
+		/*need more margin on the left of links to accomodate the numbers*/
+		padding: 0 10px 0 35px;
+		background: var(--theme-secondary);
+		position: relative;
+	}
+	/*since the first link does not have a triangle before it we can reduce the left padding to make it look consistent with other links*/
+	#breadcrumb a:first-child {
+		padding-left: 46px;
+	}
+	#breadcrumb a:first-child:before {
+		left: 14px;
+	}
+	#breadcrumb a:last-child {
+		border-radius: 0 5px 5px 0; /*this was to prevent glitches on hover*/
+		padding-right: 20px;
+	}
+
+	/*adding the arrows for the breadcrumbs using rotated pseudo elements*/
+	#breadcrumb a:after {
+		content: '';
+		position: absolute;
+		top: 0;
+		right: -18px; /*half of square's length*/
+		/*same dimension as the line-height of .breadcrumb a */
+		width: 36px;
+		height: 36px;
+
+		transform: scale(0.707) rotate(45deg);
+		/*we need to prevent the arrows from getting buried under the next link*/
+		z-index: 1;
+		/*background same as links but the gradient will be rotated to compensate with the transform applied*/
+		background: var(--theme-secondary);
+		/*stylish arrow design using box shadow*/
+		box-shadow: 2px -2px 0 2px var(--theme-text);
+		/*
+		5px - for rounded arrows and 
+		50px - to prevent hover glitches on the border created using shadows*/
+		border-radius: 0 5px 0 50px;
+
+		transition: 0.5s ease;
+	}
+	/*we dont need an arrow after the last link*/
+	#breadcrumb a:last-child:after {
+		content: none;
+	}
+</style>
+
+<script>
+	// dictionary Pour changer l'affichage
+	const pathnameDictionary = {
+		'/': "Page d'accueil",
+		'/settings': 'Paramètres',
+		'/dashboard/settings': 'Paramètres',
+		'/dashboard': 'Tableau de bord',
+		'/login': 'Connexion',
+		'/register': 'Inscription',
+		'/login/': 'Connexion',
+		'/register/': 'Inscription',
+		'/settings/recover-password': 'Réinitialiser le mot de passe',
+		'/settings/recover-password/': 'Réinitialiser le mot de passe',
+		'/settings/modify-name/': 'Modifier le nom',
+		'/settings/modify-name': 'Modifier le nom',
+		'/settings/modify-email': "Modifier l'email",
+		'/settings/modify-email/': "Modifier l'email",
+		'/settings/modify-password/': 'Modifier le mot de passe',
+		'/settings/modify-password': 'Modifier le mot de passe',
+		'/dashboard/settings/modify-name-company/': 'Modifier le nom',
+		'/dashboard/settings/modify-password/': 'Modifier le mot de passe',
+		'/dashboard/create': 'Créer une enchère',
+		'/search': 'Recherche',
+		'/aboutus': 'À propos de nous',
+		'/contact': 'Contact',
+		'/privacy-policy': 'Politique de confidentialité',
+		'/basket': 'Panier',
+		'/basket/': 'Panier',
+		'/report': 'Signaler un problème',
+		'/report/': 'Signaler un problème',
+		'/action/report': 'Signaler un problème',
+		'/action/report/': 'Signaler un problème',
+		'/pay/cancel': 'Paiement annulé',
+		'/pay/success': 'Paiement réussi',
+		'/pay/cancel/': 'Paiement annulé',
+		'/pay/success/': 'Paiement réussi',
+		'/dashboard/': 'Tableau de bord',
+	};
+	const breadcrumb = document.getElementById('breadcrumb');
+	const currentPathname = window.location.pathname;
+
+	let history = JSON.parse(sessionStorage.getItem('history') || '[]');
+	const index = history.indexOf(currentPathname);
+
+	if (index > -1) {
+		history.splice(index + 1, history.length);
+	}
+
+	if (history[history.length - 1] === currentPathname) {
+		history.pop();
+	}
+
+	history.push(currentPathname);
+	sessionStorage.setItem('history', JSON.stringify(history));
+
+	if (history.length > 0) {
+		let links = '';
+		for (let i = 0; i < history.length; i++) {
+			let displayName = pathnameDictionary[history[i]] || history[i];
+			if (history[i].match(/\/auction\/(\d+)/)) {
+				displayName = `Article ${RegExp.$1}`;
+			}
+			links += `<a href=${history[i]}>${displayName}</a>`;
+		}
+		breadcrumb.innerHTML = links;
+	}
+</script>

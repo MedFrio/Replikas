@@ -1,0 +1,151 @@
+---
+import Article from '../model/Article';
+import Bids from '../model/Bids';
+import { dateDiff } from '../model/Utilitaire';
+
+export interface Props {
+	article: Article;
+}
+
+const { article } = Astro.props;
+
+const id = article.getId();
+const titre = article.getName();
+const image = await article.getPoster();
+const finVente = article.getFinVente();
+const ends = dateDiff(finVente, new Date());
+const prix = await Bids.getEnchereMax(article);
+const description = article.getDescription();
+---
+
+<article>
+	<div class="gradient">
+		<div class="groscontainer">
+			<div class="img_container"><img src={image} alt={titre} /></div>
+		</div>
+		<aside>
+			<div id="infos">
+				<h1>{titre}</h1>
+				<p id="time">
+					Se termine dans {ends.day}j, {ends.hour}h et {ends.min}min
+				</p>
+				<p>Valeur actuelle : {prix} €</p>
+				<p id="desc">Description : {description}</p>
+			</div>
+
+			<a id="button" id="enchere" href={'/auction/' + id}>Enchérir</a>
+		</aside>
+	</div>
+</article>
+<style>
+	article {
+		flex: 1;
+		flex-direction: column;
+		display: flex;
+		margin: 0 30px;
+		justify-content: center;
+		padding: 1% 1%;
+		background: linear-gradient(
+			to right,
+			var(--theme-button) 45%,
+			rgba(0, 0, 0, 1) 55%
+		);
+	}
+
+	#infos h1 {
+		font-size: 2.25rem;
+	}
+
+	img {
+		border-radius: 5px;
+		outline-offset: -10px;
+		max-width: 100%;
+		max-height: 100%;
+		display: block;
+		margin: auto;
+	}
+
+	.img_container {
+		outline: 20px solid rgba(0, 0, 0, 0.5);
+		outline-offset: -20px;
+		padding: 0;
+		max-width: 100%;
+		max-height: 100%;
+		display: block;
+	}
+
+	.groscontainer {
+		display: flex;
+		width: 40%;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		padding: 10px;
+	}
+
+	.gradient {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		height: 100%;
+		background: linear-gradient(
+			to left,
+			var(--theme-primary) 40%,
+			rgba(0, 0, 0, 1) 60%
+		);
+	}
+
+	aside {
+		display: flex;
+		justify-content: space-between;
+		width: 45%;
+		flex-direction: column;
+		align-items: center;
+		padding: 0 15px;
+	}
+
+	aside p {
+		margin: 0.5rem;
+	}
+
+	#desc {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		max-height: 160px;
+	}
+
+	aside h1 {
+		font-size: 2em;
+		margin: 1rem auto;
+	}
+
+	p {
+		font-size: 1.25em;
+	}
+
+	#time {
+		color: var(--theme-button);
+	}
+
+	#button {
+		display: flex;
+		text-decoration: none;
+		font-size: 2.25rem;
+		padding: 0.5rem 1rem;
+		margin: 2rem;
+		border-radius: 0.5rem;
+		background-color: var(--theme-button);
+		color: var(--theme-button-text);
+	}
+
+	#button:hover {
+		filter: brightness(1.2);
+	}
+
+	#infos {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+</style>

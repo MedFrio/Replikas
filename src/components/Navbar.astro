@@ -1,0 +1,235 @@
+---
+import Logo from '../components/Logo.astro';
+import SearchBar from '../components/SearchBar.astro';
+import Account from '../model/users/Account';
+import Buyer from '../model/users/Buyer';
+import Company from '../model/users/Company';
+
+export interface Props {
+	page_name?: string;
+	search_bar?: boolean;
+}
+
+const { page_name, search_bar } = Astro.props;
+// Recuperer les infos de l'utilisateur
+let account: Account | Buyer | Company;
+const cookies = Astro.request.headers.get('cookie');
+if (cookies) {
+	const token = (cookies.endsWith(';') ? cookies : cookies + ';').match(
+		/token=([^;]*);/
+	); // Recuperer le token de session
+	try {
+		account = await Account.getBySession(token[1]); // Recuperer l'utilisateur
+		if (account.isCompany()) account = await Company.getFromAccount(account);
+		else account = await Buyer.getFromAccount(account);
+	} catch (SessionTokenInvalideError) {
+		account = null; // Si le token est invalide, on ne recupere pas l'utilisateur
+	}
+}
+---
+
+<header>
+	<div id="right">
+		<div id="logo">
+			<a href="/" aria-label="Retour au menu principal"><Logo /></a>
+		</div>
+		<h2>{page_name}</h2>
+
+		<nav>
+			<slot />
+		</nav>
+		<div id="navi">
+			{
+				account && account.isCompany() ? (
+					<ul class="pages">
+						<li>
+							<a class="pageLink" href="/dashboard">
+								Mes articles
+							</a>
+						</li>
+						<li>
+							<a class="pageLink" href="/dashboard/create">
+								Ajout d'article
+							</a>
+						</li>
+					</ul>
+				) : account ? (
+					<ul class="pages">
+						<li>
+							<a class="pageLink" href="/basket">
+								Mes Articles
+							</a>
+						</li>
+					</ul>
+				) : (
+					<div />
+				)
+			}
+
+			{search_bar && <SearchBar />}
+			{
+				account ? ( // Si l'utilisateur est connecte
+					<a
+						class="button hbox"
+						href={account.isCompany() ? '/dashboard/settings' : '/settings'}
+						style="align-items: center;"
+					>
+						<div class="user_icon_container">
+							<img src="/img/icons/user.svg" alt="User" />
+						</div>
+						<p class="name">{account.toString()}</p>
+					</a>
+				) : (
+					// Si l'utilisateur n'est pas connecte
+					<div class="deconnect">
+						<div class="button">
+							<a id="signup" href="/register">
+								{' '}
+								Creer un compte
+							</a>
+						</div>
+						<div class="button">
+							<a id="login" href="/login">
+								{' '}
+								Connectez-vous
+							</a>
+						</div>
+					</div>
+				)
+			}
+		</div>
+	</div>
+</header>
+
+<style>
+	body {
+		margin: 0px;
+		padding: 0px;
+	}
+
+	header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		background-color: var(--theme-secondary);
+
+		max-width: 100%;
+		padding: 8px 1rem;
+
+		flex-grow: 0;
+		flex-shrink: 0;
+
+		border-bottom: 1px solid #222;
+	}
+
+	#navi {
+		display: flex;
+		align-items: center;
+	}
+
+	/*-----------Logo-------------*/
+	#logo {
+		scale: 0.9;
+		width: 16rem;
+	}
+
+	/*------------Navigation---------------*/
+	#right {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		width: 100%;
+	}
+
+	/*------------Pages--------------*/
+	.pages {
+		margin-right: 2rem;
+		transition: 0.5s ease;
+	}
+
+	.pageLink {
+		color: var(--theme-text);
+		text-decoration: none;
+
+		padding: 0.5rem 1rem;
+		margin: 0 3rem;
+		font-size: 1.7rem;
+
+		text-align: center;
+
+		transition: 0.5s ease;
+
+		cursor: pointer;
+	}
+
+	.pageLink:hover {
+		transition: 0.5s ease;
+		color: var(--theme-button);
+	}
+	ul {
+		list-style-type: none;
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+	}
+
+	ul li {
+		display: flex;
+		justify-content: center;
+	}
+
+	ul li:hover {
+		transition: 0.5s ease;
+		scale: 1.2;
+	}
+
+	/*-----------User account buton && disconnected buttons-------------*/
+	.deconnect {
+		display: flex;
+	}
+
+	.button {
+		display: flex;
+		text-align: center;
+		font-size: 1.5rem;
+		padding: 0.5rem 1rem;
+		margin: 0.5rem;
+		border-radius: 0.5rem;
+		background-color: var(--theme-button);
+		color: var(--theme-button-text);
+		text-decoration: none;
+	}
+
+	.button a {
+		color: var(--theme-button-text);
+		text-decoration: none;
+	}
+
+	.button:hover {
+		transition: 0.5s ease;
+		filter: brightness(1.2);
+	}
+
+	.user_icon_container {
+		position: absolute;
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+		background-color: whitesmoke;
+		display: block;
+		margin-right: 1rem;
+		overflow: hidden;
+	}
+
+	.user_icon_container img {
+		width: 40px;
+		height: 40px;
+		transform: translateY(8px);
+	}
+
+	.name {
+		margin-left: 50px;
+		margin-block: 5px;
+	}
+</style>

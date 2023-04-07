@@ -1,0 +1,298 @@
+---
+import Article from '../model/Article';
+import Bids from '../model/Bids';
+import Buyer from '../model/users/Buyer';
+import { getBuyerBySession } from '../model/Utilitaire';
+
+export interface Props {
+	article: Article;
+	canDelete?: boolean;
+	possessedPage?: boolean;
+	link?: string;
+}
+
+const link = Astro.props.link;
+const article = Astro.props.article || Article.getFallback(null);
+const canDelete = Astro.props.canDelete;
+const possessedPage = Astro.props.possessedPage;
+
+const id = article.getId();
+const titre = article.getName();
+const image = await article.getPoster();
+let prix = article.getPrixBase();
+const dateDebut = article.getDebutVente();
+const dateFin = article.getFinVente();
+
+const buyer: Buyer = await getBuyerBySession(Astro.request.headers).catch(
+	() => null
+);
+const liked = buyer && (await article.isLikedBy(buyer));
+
+const date = dateDebut > new Date() ? dateDebut : dateFin;
+const enCours = dateDebut < new Date() && dateFin > new Date();
+
+if (enCours) {
+	prix = await Bids.getEnchereMax(article);
+}
+---
+
+<li>
+	<a href={link || '/auction/' + id}>
+		{
+			buyer ? (
+				possessedPage ? (
+					<div class="dropdown-area">
+						<div class="dropdown-container">
+							<div class="icons" id="icon">
+								<img src="/img/icons/3dots.png" alt="" />
+							</div>
+							<form
+								class="dropdown-content"
+								method="get"
+								action="/action/report"
+							>
+								<input type="submit" value="Signaler" />
+								<input type="hidden" name="art_id" value={article.getId()} />
+							</form>
+						</div>
+					</div>
+				) : (
+					<>
+						<script is:inline src="/src/like.js" />
+						<div class="like-area">
+							<div class="like-container">
+								<img
+									src="/img/icons/heart.svg"
+									onclick="likeArticle(this, event)"
+									onload="updateColor(this)"
+									data-id={id}
+									data-liked={'' + liked}
+									class="filter-whitesmoke"
+									alt="like-icon"
+								/>
+							</div>
+						</div>
+					</>
+				)
+			) : (
+				canDelete && (
+					<div class="dropdown-area">
+						<div class="dropdown-container">
+							<div class="icons" id="icon">
+								<img src="/img/icons/3dots.png" alt="" />
+							</div>
+							<form class="dropdown-content" method="post">
+								<input
+									type="submit"
+									value="Supprimer"
+									formaction="/action/deleteArticle"
+								/>
+								<input type="hidden" name="art_id" value={article.getId()} />
+							</form>
+						</div>
+					</div>
+				)
+			)
+		}
+		<img src={image} alt={titre} class="poster" />
+
+		<h3>{titre}</h3>
+		<p>
+			{
+				enCours
+					? 'Finit le ' + date.toLocaleDateString('fr-FR')
+					: dateFin > new Date()
+					? 'Débute le ' + date.toLocaleDateString('fr-FR')
+					: 'Terminée'
+			}
+		</p>
+		<p>{prix} €</p>
+	</a>
+</li>
+
+<style>
+	li {
+		width: 300px;
+		margin: 20px;
+
+		display: flex;
+		flex-direction: column;
+
+		background-color: var(--theme-primary);
+
+		border-radius: 10px;
+		overflow: hidden;
+
+		transition: 0.5s;
+	}
+
+	li:hover {
+		transition: 0.5s;
+		box-shadow: 0 0 5px var(--theme-text);
+	}
+
+	li a {
+		text-decoration: none;
+		color: inherit;
+	}
+
+	.like-area {
+		position: absolute;
+		width: 300px;
+		height: fit-content;
+		display: flex;
+		justify-content: flex-end;
+	}
+
+	.like-container {
+		width: 30px;
+		height: 30px;
+		z-index: 1;
+		padding: 5px;
+		cursor: pointer;
+
+		border-top-right-radius: 5px;
+
+		background-color: rgba(34, 34, 34, 0.5);
+	}
+
+	.like-area img {
+		width: 30px;
+		height: 30px;
+		cursor: pointer;
+	}
+
+	.poster {
+		width: 100%;
+		height: 250px;
+		object-fit: cover;
+	}
+
+	h3,
+	p {
+		margin: 0;
+		padding: 5px;
+	}
+
+	/*---------------3 dots menu-----------------*/
+
+	.dropdown-area {
+		position: absolute;
+		width: 300px;
+		height: fit-content;
+		display: flex;
+		justify-content: flex-end;
+	}
+
+	.dropdown-container {
+		width: 25px;
+		height: 40px;
+		padding: 5px;
+		cursor: pointer;
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		border-radius: 5px;
+
+		background-color: rgba(34, 34, 34, 0.5);
+	}
+
+	.icons {
+		margin: 0;
+		padding: 0;
+		width: 25px;
+		height: 40px;
+		z-index: 3;
+		cursor: pointer;
+
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+		border-top-right-radius: 5px;
+
+		transition: 0.4s ease;
+	}
+
+	.icons img {
+		width: 25px;
+		height: 40px;
+		filter: invert(1);
+	}
+
+	.icons:hover {
+		scale: 1.1;
+		transition: 0.4s ease;
+	}
+
+	/*-------------Menu---------------*/
+
+	.dropdown-content {
+		display: none;
+		position: absolute;
+
+		z-index: 1;
+
+		left: 15%;
+		right: 15%;
+
+		box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+		overflow: auto;
+
+		background-color: var(--theme-secondary);
+	}
+
+	.dropdown-content input {
+		color: var(--theme-text);
+		background-color: var(--theme-secondary);
+
+		border: none;
+
+		width: 100%;
+
+		padding: 12px 16px;
+		text-decoration: none;
+		display: block;
+
+		cursor: pointer;
+
+		transition: 0.4s ease;
+	}
+
+	.dropdown-content input:hover {
+		background-color: var(--theme-button);
+		transition: 0.4s ease;
+	}
+
+	.show {
+		display: block;
+	}
+</style>
+<script>
+	const icons = document.getElementsByClassName('icons');
+	for (let icon of icons) {
+		icon.addEventListener('click', (event) => {
+			event.preventDefault();
+			event.stopPropagation();
+
+			const form = icon.nextElementSibling;
+			form.classList.toggle('show');
+		});
+	}
+
+	// Close the dropdown if the user clicks outside of it
+	window.onclick = function (event) {
+		if (!event.target.matches('.icons')) {
+			let dropdowns = document.getElementsByClassName('dropdown-content');
+			let i;
+			for (let i = 0; i < dropdowns.length; i++) {
+				let openDropdown = dropdowns[i];
+				if (openDropdown.classList.contains('show')) {
+					openDropdown.classList.remove('show');
+				}
+			}
+		}
+	};
+</script>

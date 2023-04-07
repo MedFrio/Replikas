@@ -1,0 +1,47 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Article from '../../model/Article';
+import Company from '../../model/users/Company';
+import { getCompanyBySession } from '../../model/Utilitaire';
+
+const formData = await Astro.request.formData();
+if (formData.has('art_id')) {
+	const art_id = parseInt(formData.get('art_id').toString());
+
+	const company: Company = await getCompanyBySession(
+		Astro.request.headers
+	).catch(() => null);
+	if (company === null) {
+		return new Response('Unauthorized', { status: 401 });
+	}
+
+	const article: Article = await Article.get(art_id).catch(() => null);
+	if (article === null) {
+		return new Response('Article not found', { status: 404 });
+	}
+
+	if (article.getSellingCompanyId() !== company.getId()) {
+		return new Response('Unauthorized', { status: 401 });
+	}
+	// TODO: Verifier si l'article est bien à venir pour pouvoir le supprimer
+
+	article.delete();
+} else {
+	return Astro.redirect('/');
+}
+---
+
+<Layout title="Supression article">
+	<script>
+		import Swal from 'sweetalert2';
+
+		Swal.fire({
+			title: 'Article supprimé',
+			icon: 'success',
+			confirmButtonText: 'Ok',
+			heightAuto: false,
+		}).then(() => {
+			window.location.href = '/dashboard?pageName=A+venir';
+		});
+	</script>
+</Layout>

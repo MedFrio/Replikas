@@ -1,0 +1,179 @@
+---
+import TextField from './TextField.astro';
+
+export interface Props {
+	placeholder?: string;
+	name?: string;
+	length?: string;
+	id?: string;
+}
+
+const { placeholder, name, length, id } = Astro.props;
+---
+
+<div class="autocomplete">
+	<TextField
+		type="text"
+		placeholder={placeholder}
+		length={length}
+		name={name}
+		id={id}
+	/>
+</div>
+
+<style is:inline>
+	/*------------Film autocomplete-----------*/
+
+	.autocomplete {
+		position: relative;
+		width: 300px;
+	}
+
+	.autocomplete-items {
+		position: absolute;
+		border: 1px solid var(--theme-input);
+		border-bottom: none;
+		border-top: none;
+		z-index: 99;
+		/*position the autocomplete items to be the same width as the container:*/
+		top: 100%;
+		left: 0;
+		right: 0;
+	}
+
+	.autocomplete-items div {
+		padding: 10px;
+		cursor: pointer;
+		background-color: var(--theme-input);
+		border-bottom: 1px solid calc(var(--theme-input) - 0.1);
+		color: #222;
+	}
+
+	/*when hovering an item:*/
+	.autocomplete-items div:hover {
+		background-color: var(--theme-input);
+	}
+
+	/*when navigating through the items using the arrow keys:*/
+	.autocomplete-active {
+		background-color: DodgerBlue !important;
+		color: inherit;
+	}
+</style>
+
+<script is:inline define:vars={{ id }}>
+	/*----------------AutoComplete movie input------------------*/
+
+	autocomplete(document.getElementById(id));
+
+	function autocomplete(inp) {
+		/*the autocomplete function takes two arguments,
+        the text field element and an array of possible autocompleted values:*/
+		var currentFocus;
+		/*execute a function when someone writes in the text field:*/
+		inp.addEventListener('input', async function (e) {
+			var a,
+				suggestion,
+				i,
+				val = this.value;
+			/*close any already open lists of autocompleted values*/
+			closeAllLists();
+			if (!val) {
+				return false;
+			}
+			currentFocus = -1;
+
+			a = document.createElement('DIV');
+			a.setAttribute('id', this.id + 'autocomplete-list');
+			a.setAttribute('class', 'autocomplete-items');
+
+			this.parentNode.appendChild(a);
+
+			/*Get the movie list*/
+			let movies = await autocompleteMatch(val);
+
+			for (i = 0; i < movies.length; i++) {
+				suggestion = document.createElement('DIV');
+				suggestion.innerHTML += movies[i].title;
+				const hiddenInput = document.createElement('input');
+				hiddenInput.setAttribute('type', 'hidden');
+				hiddenInput.setAttribute('value', movies[i].title);
+				hiddenInput.setAttribute('data-movieid', movies[i].id);
+				suggestion.appendChild(hiddenInput);
+				suggestion.addEventListener('click', function (e) {
+					inp.value = this.getElementsByTagName('input')[0].value;
+
+					inp.dataset.movieid =
+						this.getElementsByTagName('input')[0].getAttribute('data-movieid');
+					closeAllLists();
+				});
+				a.appendChild(suggestion);
+			}
+		});
+		/*execute a function presses a key on the keyboard:*/
+		inp.addEventListener('keydown', function (e) {
+			var x = document.getElementById(this.id + 'autocomplete-list');
+			if (x) x = x.getElementsByTagName('div');
+			if (e.keyCode == 40) {
+				/*If the arrow DOWN key is pressed,
+        increase the currentFocus variable:*/
+				currentFocus++;
+				/*and and make the current item more visible:*/
+				addActive(x);
+			} else if (e.keyCode == 38) {
+				//up
+				/*If the arrow UP key is pressed,
+        decrease the currentFocus variable:*/
+				currentFocus--;
+				/*and and make the current item more visible:*/
+				addActive(x);
+			} else if (e.keyCode == 13) {
+				/*If the ENTER key is pressed, prevent the form from being submitted,*/
+				e.preventDefault();
+				if (currentFocus > -1) {
+					/*and simulate a click on the "active" item:*/
+					if (x) x[currentFocus].click();
+				}
+			}
+		});
+		function addActive(x) {
+			/*a function to classify an item as "active":*/
+			if (!x) return false;
+			/*start by removing the "active" class on all items:*/
+			removeActive(x);
+			if (currentFocus >= x.length) currentFocus = 0;
+			if (currentFocus < 0) currentFocus = x.length - 1;
+			/*add class "autocomplete-active":*/
+			x[currentFocus].classList.add('autocomplete-active');
+		}
+		function removeActive(x) {
+			/*a function to remove the "active" class from all autocomplete items:*/
+			for (var i = 0; i < x.length; i++) {
+				x[i].classList.remove('autocomplete-active');
+			}
+		}
+		function closeAllLists(elmnt) {
+			/*close all autocomplete lists in the document,
+    except the one passed as an argument:*/
+			var x = document.getElementsByClassName('autocomplete-items');
+			for (var i = 0; i < x.length; i++) {
+				if (elmnt != x[i] && elmnt != inp) {
+					x[i].parentNode.removeChild(x[i]);
+				}
+			}
+		}
+		/*execute a function when someone clicks in the document:*/
+		document.addEventListener('click', function (e) {
+			closeAllLists(e.target);
+		});
+	}
+
+	async function autocompleteMatch(input) {
+		if (input == '') {
+			return [];
+		}
+		const response = await fetch(`/api/search?search=${input}`);
+		const data = await response.json();
+		return data;
+	}
+</script>

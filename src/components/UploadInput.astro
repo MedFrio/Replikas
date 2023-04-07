@@ -1,0 +1,236 @@
+---
+export interface Props {
+	name?: string;
+}
+
+const { name } = Astro.props;
+---
+
+<div class="card">
+	<div class="drag-area">
+		<span class="visible">
+			Faites glisser les photos ici ou
+			<span class="select" role="button">Parcourir</span>
+		</span>
+		<span class="on-drop">Drop images here</span>
+		<input
+			name={name}
+			type="file"
+			class="file"
+			accept="image/jpeg, image/png, image/jpg"
+			multiple
+		/>
+	</div>
+
+	<!-- IMAGE PREVIEW CONTAINER -->
+	<div class="container"></div>
+</div>
+<style is:inline>
+	/*--------------Drag & drop image-----------------*/
+
+	.card {
+		width: 400px;
+		height: auto;
+		padding: 15px;
+		box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+		border-radius: 5px;
+		overflow: hidden;
+		background: #fafbff;
+	}
+
+	.card .drag-area {
+		width: 100%;
+		height: 160px;
+		border-radius: 5px;
+		border: 2px dashed #d5d5e1;
+		color: #222;
+		font-size: 0.9rem;
+		font-weight: 500;
+		position: relative;
+		background: #dfe3f259;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		user-select: none;
+		-webkit-user-select: none;
+		margin-top: 10px;
+	}
+
+	.card .drag-area .visible {
+		font-size: 18px;
+	}
+	.card .select {
+		color: #4b61ac;
+		font-weight: bold;
+		margin-left: 5px;
+		cursor: pointer;
+		transition: 0.4s;
+	}
+
+	.card .select:hover {
+		opacity: 0.6;
+	}
+
+	.card .container {
+		width: 100%;
+		height: auto;
+		display: flex;
+		justify-content: flex-start;
+		align-items: flex-start;
+		flex-wrap: wrap;
+		max-height: 200px;
+		overflow-y: auto;
+		margin-top: 10px;
+	}
+
+	/* dragover class will used in drag and drop system */
+	.card .drag-area.dragover {
+		background: rgba(0, 0, 0, 0.4);
+	}
+
+	.card .drag-area.dragover .on-drop {
+		display: inline;
+		font-size: 28px;
+	}
+
+	.card input,
+	.card .drag-area .on-drop,
+	.card .drag-area.dragover .visible {
+		display: none;
+	}
+
+	/*--------------Drag&drop-----------------*/
+	.card .container .image {
+		margin-right: 15px;
+		margin-bottom: 8px;
+
+		width: fit-content;
+		height: 100px;
+
+		position: relative;
+	}
+
+	.card .container .image img {
+		max-width: 10rem;
+
+		height: 100%;
+		border-radius: 5px;
+	}
+
+	.card .container .image div {
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba(0, 0, 0, 0.4);
+		border-radius: 5px;
+		display: flex;
+		justify-content: flex-end;
+		align-items: baseline;
+	}
+
+	.card .container .image div span {
+		font-size: 20px;
+		color: #fff;
+		margin-right: 10px;
+		cursor: pointer;
+		transition: 0.4s;
+	}
+</style>
+
+<script is:inline>
+	/* Script pour la gestion du Drag & Drop d'images */
+
+	/* Variables */
+	let files = [];
+	let dragArea = document.querySelector('.drag-area');
+	let input = document.querySelector('.drag-area input');
+	let select = document.querySelector('.drag-area .select');
+	let container = document.querySelector('.container');
+
+	/* CLICK LISTENER */
+	select.addEventListener('click', () => input.click());
+
+	/* INPUT CHANGE EVENT */
+	input.addEventListener('change', () => {
+		let file = input.files;
+
+		// if user select more than 1 image or no image
+		if (file.length != 1) return;
+
+		files.push(file[0]);
+		updateFileList();
+		showImages();
+	});
+
+	/* SHOW IMAGES */
+	function showImages() {
+		let images = files.reduce(function (prev, file, index) {
+			return (prev += `<div class="image">
+    		<img src="${URL.createObjectURL(file)}" alt="image" />
+    		<div><span onclick="delImage(${index})">&times;</span></div>
+    	</div>`);
+		}, '');
+		container.innerHTML = images;
+	}
+
+	/* DELETE IMAGE */
+	function delImage(index) {
+		if (index < 0 || index >= files.length) return;
+		files.splice(index, 1);
+		updateFileList();
+		showImages();
+	}
+
+	/* INPUT CHANGE EVENT */
+	input.addEventListener('change', () => {
+		let file = input.files;
+
+		// if user select no image
+		if (file.length == 0) return;
+
+		for (let i = 0; i < file.length; i++) {
+			if (file[i].type.split('/')[0] != 'image') continue;
+			if (!files.some((e) => e.name == file[i].name)) files.push(file[i]);
+		}
+		updateFileList();
+		showImages();
+	});
+
+	/* DRAG & DROP */
+	dragArea.addEventListener('dragover', (e) => {
+		e.preventDefault();
+		dragArea.classList.add('dragover');
+	});
+
+	/* DRAG LEAVE */
+	dragArea.addEventListener('dragleave', (e) => {
+		e.preventDefault();
+		dragArea.classList.remove('dragover');
+	});
+
+	/* DROP EVENT */
+	dragArea.addEventListener('drop', (e) => {
+		e.preventDefault();
+		dragArea.classList.remove('dragover');
+
+		let file = e.dataTransfer.files;
+		for (let i = 0; i < file.length; i++) {
+			/** Check selected file is image */
+			if (file[i].type.split('/')[0] != 'image') continue;
+
+			if (!files.some((e) => e.name == file[i].name)) files.push(file[i]);
+		}
+		updateFileList();
+		showImages();
+	});
+
+	function updateFileList() {
+		let list = new DataTransfer();
+		for (let file of files) {
+			list.items.add(file);
+		}
+		input.files = list.files;
+	}
+</script>

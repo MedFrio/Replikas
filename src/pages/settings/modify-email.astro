@@ -1,0 +1,141 @@
+---
+import Button from '../../components/Button.astro';
+import TextField from '../../components/TextField.astro';
+import Layout from '../../layouts/Layout.astro';
+import Account, { EmailDejaUtiliseError } from '../../model/users/Account';
+import { getAccountBySession } from '../../model/Utilitaire';
+
+//Get Account
+const account: Account = await getAccountBySession(Astro.request.headers).catch(
+	(err) => null
+);
+// Vérification de la connexion
+if (!account) {
+	return Astro.redirect('/login');
+}
+
+if (Astro.request.method == 'POST') {
+	const formData = await Astro.request.formData();
+	const email = formData.get('email').toString() || '';
+	const email_confirm = formData.get('email_confirm').toString() || '';
+
+	// Vérification du mail
+	if (
+		!/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-]+)(\.[a-zA-Z]{2,5}){1,2}$/.test(
+			email
+		) &&
+		!/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-]+)(\.[a-zA-Z0-9_\-]+)(\.[a-zA-Z]{2,5}){1,2}$/.test(
+			email
+		)
+	)
+		return Astro.redirect('?error=invalid_email');
+
+	if (email != email_confirm) {
+		return Astro.redirect('?error=not_same_mail');
+	} else {
+		try {
+			await account.setEmail(email);
+			Astro.props.success = 'Votre adresse mail a bien été modifiée';
+		} catch (e) {
+			if (e instanceof EmailDejaUtiliseError) {
+				return Astro.redirect('?error=mail_already_used');
+			} else {
+				Astro.props.error = 'Une erreur est survenue';
+			}
+		}
+		return Astro.redirect('?success=mail_changed');
+	}
+}
+let error_msg = '';
+let success_msg = '';
+if (Astro.url.searchParams.has('error')) {
+	switch (Astro.url.searchParams.get('error')) {
+		case 'invalid_email':
+			error_msg = "L'adresse mail n'est pas valide";
+			break;
+		case 'not_same_mail':
+			error_msg = 'Les adresses mail ne sont pas identiques';
+			break;
+		case 'mail_already_used':
+			error_msg = 'Cette adresse mail est déjà utilisée';
+			break;
+		default:
+			error_msg = 'Une erreur est survenue';
+			break;
+	}
+}
+if (Astro.url.searchParams.has('success')) {
+	switch (Astro.url.searchParams.get('success')) {
+		case 'mail_changed':
+			success_msg = 'Votre adresse mail a bien été modifiée';
+			break;
+	}
+}
+---
+
+<Layout title="Modifier votre adresse mail" no_searchbar>
+	<main>
+		<h1>Modifier votre adresse mail</h1>
+		{error_msg && <p class="error_msg">{error_msg}</p>}
+		{success_msg && <p class="success_msg">{success_msg}</p>}
+		<form method="post" class="formlist">
+			<table>
+				<th>Nouvelle adresse mail :</th>
+				<td>
+					<TextField
+						text=""
+						placeholder="Entrez votre nouvelle adresse mail"
+						type="email"
+						length="15rem"
+						name="email"
+					/>
+				</td>
+				<tr>
+					<th>Confirmer la nouvelle adresse mail :</th>
+					<td>
+						<TextField
+							text=""
+							placeholder="Confirmer votre nouvelle adresse mail"
+							type="email"
+							length="15rem"
+							name="email_confirm"
+						/>
+					</td>
+				</tr>
+			</table>
+			<div id="btn">
+				<Button text="Modifier l'adresse mail" />
+			</div>
+		</form>
+	</main>
+</Layout>
+
+<style>
+	.error_msg {
+		color: red;
+		text-align: center;
+	}
+	.success_msg {
+		color: green;
+		text-align: center;
+	}
+	#btn {
+		/* centre le bouton */
+		text-align: center;
+	}
+	main {
+		background-color: var(--theme-secondary);
+		margin: 3rem 5rem;
+		padding: 2rem;
+
+		border-radius: 2rem;
+
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+	h1 {
+		margin-top: 0rem;
+	}
+</style>

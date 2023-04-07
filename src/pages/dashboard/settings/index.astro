@@ -1,0 +1,139 @@
+---
+import Notif from '../../../components/Notif.astro';
+import UserSetting from '../../../components/UserSetting.astro';
+import Layout from '../../../layouts/Layout.astro';
+import Notification from '../../../model/Notification';
+import {
+	AccountTypeMismatch,
+	SessionTokenInvalideError,
+} from '../../../model/users/Account';
+import Company from '../../../model/users/Company';
+import { getCompanyBySession } from '../../../model/Utilitaire';
+
+let company: Company;
+try {
+	company = await getCompanyBySession(Astro.request.headers);
+} catch (e) {
+	if (e instanceof AccountTypeMismatch) return Astro.redirect('/settings');
+	else if (!(e instanceof SessionTokenInvalideError)) console.error(e);
+	return Astro.redirect('/login');
+}
+
+const mail = company.getEmail();
+const name = company.getNom();
+const notifications = await Notification.getUserNotifications(company.getId());
+---
+
+<Layout title="Paramètres" no_searchbar>
+	<div class="main-wrapper">
+		<aside class="sideBar">
+			<h2>Paramètres utilisateur</h2>
+			<ul>
+				<li><a href="#monCompte">Mon compte</a></li>
+				<li><a href="#accessibilite">Accessibilité</a></li>
+			</ul>
+			<form action="/action/disconnect">
+				<input id="deconnection" type="submit" value="Se déconnecter" />
+			</form>
+		</aside>
+		<article class="parameters">
+			<h2 id="monCompte">Mon compte</h2>
+			<UserSetting
+				parametre="Nom"
+				value={name}
+				lien="/dashboard/settings/modify-name-company/"
+			/>
+			<UserSetting
+				parametre="Adresse mail"
+				value={mail}
+				lien="/settings/modify-email"
+			/>
+			<UserSetting parametre="Mot de passe" lien="/settings/recover-password" />
+			<h2 id="accessibilite">Accessibilité</h2>
+			<UserSetting parametre="Taille de la police" value="x1" />
+		</article>
+		<aside class="notifications">
+			<h2>Notifications</h2>
+			{notifications.map((notif) => <Notif notif={notif} />)}
+		</aside>
+	</div>
+</Layout>
+
+<style>
+	* {
+		color: inherit;
+		text-decoration: none;
+		list-style: none;
+		padding: 0;
+	}
+
+	.main-wrapper {
+		display: grid;
+		grid-template-areas: 'sidebar main notifications';
+		grid-template-columns: minmax(0, 20rem) minmax(0, 2.5fr) minmax(0, 30rem);
+		gap: 20px;
+	}
+
+	.main-wrapper > * {
+		background-color: var(--theme-secondary);
+
+		margin: 10px;
+
+		text-align: center;
+	}
+
+	/*-------------------Side bar---------------------*/
+
+	.sideBar {
+		position: sticky;
+		top: 0;
+
+		grid-area: sidebar;
+		overflow: auto;
+
+		max-height: 100vh;
+	}
+
+	.sideBar li {
+		padding: 5px 0;
+		margin: 10px 0;
+	}
+
+	#deconnection {
+		background-color: transparent;
+		border: none;
+
+		color: var(--theme-button);
+		font-size: 22px;
+		font-weight: bold;
+	}
+	#deconnection:hover {
+		filter: brightness(1.2);
+		cursor: pointer;
+	}
+
+	/*-------------------Parametres---------------------*/
+
+	.parameters {
+		grid-area: main;
+
+		padding: 0 20% 50px 20%;
+	}
+	ul li:hover {
+		color: red;
+		transition: 0.5s ease;
+		scale: 1.2;
+	}
+
+	/*-------------------Notifications---------------------*/
+
+	.notifications {
+		position: sticky;
+		top: 0;
+
+		grid-area: notifications;
+		overflow: auto;
+
+		max-height: 100vh;
+	}
+</style>

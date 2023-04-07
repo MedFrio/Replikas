@@ -1,0 +1,266 @@
+---
+import Notif from '../../components/Notif.astro';
+import UserSetting from '../../components/UserSetting.astro';
+import Layout from '../../layouts/Layout.astro';
+import Notification from '../../model/Notification';
+import {
+	AccountTypeMismatch,
+	SessionTokenInvalideError,
+} from '../../model/users/Account';
+import Buyer from '../../model/users/Buyer';
+import { getBuyerBySession } from '../../model/Utilitaire';
+
+let buyer: Buyer;
+try {
+	buyer = await getBuyerBySession(Astro.request.headers);
+} catch (e) {
+	if (e instanceof AccountTypeMismatch)
+		return Astro.redirect('/dashboard/settings');
+	else if (!(e instanceof SessionTokenInvalideError)) console.error(e);
+	return Astro.redirect('/login');
+}
+
+const mail = buyer.getEmail();
+const lastName = buyer.getNom();
+const firstName = buyer.getPrenom();
+const notifications = await Notification.getUserNotifications(buyer.getId());
+let dyslexie = false;
+---
+
+<Layout title="Paramètres" no_searchbar>
+	<div class="main-wrapper">
+		<aside class="sideBar">
+			<div id="user-param">
+				<h2>Paramètres utilisateur</h2>
+				<ul>
+					<li><a href="#monCompte">Mon compte</a></li>
+					<li>
+						<a href="#accessibilite">Accessibilité</a>
+					</li>
+				</ul>
+				<form action="/action/disconnect">
+					<input id="deconnection" type="submit" value="Se déconnecter" />
+				</form>
+			</div>
+		</aside>
+		<section class="parameters">
+			<h2 id="monCompte">Mon compte</h2>
+			<UserSetting
+				parametre="Nom"
+				value={lastName}
+				lien="/settings/modify-name"
+			/>
+			<UserSetting
+				parametre="Prénom"
+				value={firstName}
+				lien="/settings/modify-name"
+			/>
+			<UserSetting
+				parametre="Adresse mail"
+				value={mail}
+				lien="/settings/modify-email"
+			/>
+			<UserSetting parametre="Mot de passe" lien="/settings/modify-password" />
+			<h2 id="accessibilite">Accessibilité</h2>
+			<UserSetting parametre="Taille de la police" value="x1" />
+			<div id="dyslexie">
+				<p>Dyslexie</p>
+				<label class="switch">
+					{(<input id="enCours" type="checkbox" />)}
+					<span class="slider round"></span>
+				</label>
+			</div>
+		</section>
+		<aside class="notifications">
+			<h2>Notifications</h2>
+			{notifications.map((notif) => <Notif notif={notif} />)}
+		</aside>
+	</div>
+</Layout>
+
+<style>
+	* {
+		color: inherit;
+		text-decoration: none;
+		list-style: none;
+		padding: 0;
+	}
+
+	.main-wrapper {
+		display: grid;
+		grid-template-areas: 'sidebar main notifications';
+		grid-template-columns: minmax(0, 20rem) minmax(0, 2.5fr) minmax(0, 30rem);
+		gap: 20px;
+	}
+
+	.main-wrapper > * {
+		background-color: var(--theme-secondary);
+
+		margin: 10px;
+
+		text-align: center;
+	}
+
+	h2 {
+		font-size: 1.75rem;
+	}
+
+	/*-------------------Side bar---------------------*/
+
+	.sideBar {
+		position: sticky;
+		top: 0;
+
+		grid-area: sidebar;
+		overflow: auto;
+
+		max-height: 100vh;
+	}
+
+	.sideBar li {
+		padding: 5px 0;
+		margin: 10px 0;
+	}
+
+	#deconnection {
+		background-color: transparent;
+		border: none;
+		margin-top: 20px;
+
+		color: var(--theme-button);
+		font-size: 1.6rem;
+		font-weight: bold;
+	}
+	#deconnection:hover {
+		filter: brightness(1.2);
+		cursor: pointer;
+	}
+
+	/*-------------------Parametres---------------------*/
+
+	.parameters {
+		grid-area: main;
+		padding: 0 20% 50px 20%;
+	}
+
+	ul li {
+		font-size: 1.25rem;
+	}
+
+	ul li:hover {
+		color: red;
+		transition: 0.5s ease;
+		scale: 1.2;
+	}
+
+	#user-param {
+		overflow: hidden;
+	}
+
+	/*-------------------Notifications---------------------*/
+
+	.notifications {
+		position: sticky;
+		top: 0;
+
+		grid-area: notifications;
+		overflow: auto;
+
+		max-height: 100vh;
+	}
+
+	/*-------------------Switch---------------------*/
+
+	.switch {
+		position: relative;
+		display: inline-block;
+		width: 60px;
+		height: 34px;
+		scale: 0.8;
+	}
+
+	/* Hide default HTML checkbox */
+	.switch input {
+		opacity: 0;
+		width: 0;
+		height: 0;
+	}
+
+	/* The slider */
+	.slider {
+		position: absolute;
+		cursor: pointer;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-color: #ccc;
+		-webkit-transition: 0.4s;
+		transition: 0.4s;
+	}
+
+	.slider:before {
+		position: absolute;
+		content: '';
+		height: 26px;
+		width: 26px;
+		left: 4px;
+		bottom: 4px;
+		background-color: white;
+		-webkit-transition: 0.4s;
+		transition: 0.4s;
+	}
+
+	input:checked + .slider {
+		background-color: var(--theme-button);
+	}
+
+	input:focus + .slider {
+		box-shadow: 0 0 1px var(--theme-button);
+	}
+
+	input:checked + .slider:before {
+		-webkit-transform: translateX(26px);
+		-ms-transform: translateX(26px);
+		transform: translateX(26px);
+	}
+
+	/* Rounded sliders */
+	.slider.round {
+		border-radius: 34px;
+	}
+
+	.slider.round:before {
+		border-radius: 50%;
+	}
+
+	#dyslexie {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		font-size: 1.2rem;
+	}
+</style>
+<script>
+	const body = document.querySelector('body') as HTMLBodyElement;
+	const enCours = document.getElementById('enCours') as HTMLInputElement;
+	const span = document.querySelector('.slider') as HTMLSpanElement;
+
+	enCours.addEventListener('click', () => {
+		if (enCours.checked) {
+			localStorage.setItem('dyslexie', 'true');
+			document.body.style.fontFamily = 'dyslexia, system-ui, sans-serif';
+		} else {
+			localStorage.setItem('dyslexie', 'false');
+			document.body.style.fontFamily = 'Larsseit, system-ui, sans-serif';
+		}
+	});
+
+	if (localStorage.getItem('dyslexie') === 'true') {
+		enCours.checked = true;
+		document.body.style.fontFamily = 'dyslexia, system-ui, sans-serif';
+	} else {
+		enCours.checked = false;
+		document.body.style.fontFamily = 'Larsseit, system-ui, sans-serif';
+	}
+</script>

@@ -1,0 +1,13 @@
+DROP TABLE notification;
+DROP TABLE aquired;
+DROP TABLE interests;
+DROP TABLE bid;
+DROP TABLE article_image;
+DROP TABLE article;
+DROP TABLE movie;
+DROP TABLE company;
+DROP TABLE password_recovery;
+DROP TABLE session;
+DROP TABLE buyer;
+DROP TABLE account;
+DROP TABLE test;

@@ -1,0 +1,501 @@
+---
+import TextField from '../../components/TextField.astro';
+import Layout from '../../layouts/Layout.astro';
+import Article, { ArticleInexistantError } from '../../model/Article';
+import Bids, { Bid } from '../../model/Bids';
+import Company from '../../model/users/Company';
+import { dateDiff, getBuyerBySession } from '../../model/Utilitaire';
+
+const id = parseInt(Astro.params.id); // L'id de l'article est dans le chemin de l'URL
+
+let article: Article;
+let company: Company;
+try {
+	article = await Article.get(id);
+	company = await Company.getById(article.getSellingCompanyId());
+} catch (e) {
+	if (e instanceof ArticleInexistantError)
+		return new Response('Article introuvable', { status: 404 }); // FIXME : pas tres bastien scapin like
+	console.log(e);
+	return new Response(`Erreur interne : ${e}`, { status: 500 }); // FIXME : pas tres bastien scapin like
+}
+
+if (Astro.request.method === 'POST') {
+	const buyer = await getBuyerBySession(Astro.request.headers).catch(
+		() => null
+	);
+	if (!buyer) return new Response('Vous devez être connecté', { status: 403 });
+
+	if (article.getFinVente() < new Date())
+		return new Response('Enchère terminée', { status: 400 });
+
+	if (article.getDebutVente() > new Date())
+		return new Response('Enchère pas encore commencée', { status: 400 });
+
+	const formData = await Astro.request.formData();
+	const bid = formData.get('bid') as any as number;
+	if (isNaN(bid)) return new Response('Offre invalide', { status: 400 });
+	if (
+		bid <
+		(await Bids.getEnchereMax(article)) + article.getEncherissementMin()
+	)
+		return new Response('Offre trop faible', { status: 400 });
+
+	try {
+		await Bids.placerEnchere(article, bid, buyer);
+	} catch (e) {
+		return new Response(`Erreur interne : ${e}`, { status: 500 }); // FIXME : pas tres bastien scapin like
+	}
+
+	return new Response('Offre placée', { status: 200 });
+}
+
+const SUGGESTION_MULTIPLIERS = [1, 3, 5];
+
+const debutVente = article.getDebutVente();
+const finVente = article.getFinVente();
+
+const enCours = debutVente < new Date() && finVente > new Date();
+let encheres: Bid[] = [];
+if (enCours) encheres = await Bids.getEncheres(article);
+
+const starts = dateDiff(debutVente, new Date());
+const ends = dateDiff(finVente, new Date());
+
+const nom = article.getName();
+const prix = await Bids.getEnchereMax(article);
+const encherissement_min = article.getEncherissementMin();
+const images = article.getImages().length
+	? article.getImages()
+	: [await article.getPoster()];
+const description = article.getDescription();
+---
+
+<Layout title="Enchère" no_searchbar>
+	<section>
+		<div
+			id="data"
+			data-id={id}
+			data-debutvente={debutVente}
+			data-finvente={finVente}
+			data-multipliers={SUGGESTION_MULTIPLIERS}
+		>
+		</div>
+		<h1 id="timeDiff">
+			{
+				enCours
+					? `Se termine dans ${ends.day}j ${ends.hour}h ${ends.min}min ${ends.sec}s`
+					: `Débute dans ${starts.day}j ${starts.hour}h ${starts.min}min ${starts.sec}s`
+			}
+		</h1>
+
+		<div class="main-wrapper">
+			<aside class="sideBar">
+				<div class="images">
+					{images.map((image) => <img src={image} alt={nom} />)}
+				</div>
+			</aside>
+			<article>
+				<div class="informations" style={{ 'flex-grow': enCours ? 0.6 : 1 }}>
+					<h1 class="center">{nom}</h1>
+					{
+						enCours && (
+							<div class="hbox" style="align-items: center;">
+								<h3 class="left-margin">
+									{enCours ? 'Enchère actuelle :' : 'Prix de départ : '}
+								</h3>
+								<h3 id="current-price" class="left-margin">
+									{prix} €
+								</h3>
+							</div>
+						)
+					}
+					<h2 class="left-margin" style="margin-block: 2rem;">Description :</h2>
+					<p>
+						{description}
+					</p>
+					<div class="company-info hbox" style="align-items: center;">
+						<h2>Vendu par :</h2>
+						<p class="left-margin">{company.getNom()}</p>
+					</div>
+				</div>
+				<div id="bid" style={{ display: enCours ? 'block' : 'none' }}>
+					<div>
+						<h2 class="left-margin">Placer une offre :</h2>
+						<form>
+							<div>
+								{
+									SUGGESTION_MULTIPLIERS.map((multiplier) => (
+										<button
+											class="button suggestion-value"
+											type="submit"
+											name="bid"
+											value={prix + encherissement_min * multiplier}
+										>
+											{prix + encherissement_min * multiplier + ' €'}
+										</button>
+									))
+								}
+							</div>
+							<div>
+								<TextField
+									id="manual-bid"
+									type="number"
+									name="bid"
+									minNumber={prix + encherissement_min}
+									placeholder={prix + encherissement_min + ' ou plus'}
+								/>
+							</div>
+							<div>
+								<input
+									id="placerOffre"
+									class="button"
+									type="submit"
+									value="Placer l'offre"
+								/>
+							</div>
+						</form>
+						<h2 class="margin-left">Encheres actuelles :</h2>
+						<div id="bids-history">
+							{
+								encheres.map((bid) => (
+									<div class="bid_entry">
+										{' '}
+										{`${bid.buyer.toString()} : ${bid.amount} €`}{' '}
+									</div>
+								))
+							}
+						</div>
+					</div>
+				</div>
+			</article>
+		</div>
+	</section>
+</Layout>
+
+<style>
+	section {
+		margin: auto;
+		width: 95%;
+
+		border-radius: 20px;
+	}
+
+	.main-wrapper {
+		display: grid;
+		grid-template-areas: 'sidebar main';
+		grid-template-columns: minmax(0, 35%) minmax(0, 65%);
+		gap: 20px;
+	}
+
+	.main-wrapper > * {
+		margin: 10px;
+	}
+
+	/*---------Side Bar------------*/
+	.sideBar {
+		position: sticky;
+		top: 3rem;
+
+		grid-area: 'sidebar';
+		background-color: transparent;
+	}
+
+	.sideBar > * {
+		background-color: var(--theme-secondary);
+		border-radius: 2rem;
+	}
+
+	.images {
+		max-height: 80vh;
+
+		overflow-y: auto;
+		-ms-overflow-style: none;
+		scrollbar-width: none;
+		width: 100%;
+	}
+
+	.images::-webkit-scrollbar {
+		display: none;
+	}
+
+	.images > img {
+		width: 100%;
+	}
+
+	.company-info {
+		padding: 1rem;
+		max-width: 100%;
+		margin-top: 3rem;
+	}
+
+	/*----------Informations------------*/
+	article {
+		grid-area: 'main';
+		display: flex;
+		background-color: var(--theme-secondary);
+		border-radius: 2rem;
+	}
+
+	.informations {
+		padding: 2rem;
+		flex-grow: 0.6;
+		flex-basis: 0;
+	}
+
+	/*------------Formulaire d'enchérissement---------------*/
+	#bid {
+		padding: 2rem;
+		flex-grow: 0.4;
+		flex-basis: 0;
+		border-left: 2px solid var(--theme-text);
+	}
+
+	#bids-history {
+		height: 50vh;
+		border-radius: 0px 0px 15px 15px;
+		overflow-y: auto;
+		-ms-overflow-style: none;
+		scrollbar-width: none;
+	}
+
+	.bid-entry {
+		color: var(--theme-text);
+		border-left: 2px solid var(--theme-text);
+		padding-left: 1rem;
+		margin: 0.5rem 0;
+		font-size: 1.5rem;
+	}
+
+	form {
+		margin: 2rem;
+		width: fit-content;
+
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+
+	form div {
+		display: flex;
+		justify-content: center;
+		width: 100%;
+	}
+
+	form div * {
+		margin: 0 1.5rem;
+	}
+
+	form > * {
+		margin: 10px 0;
+	}
+
+	#placerOffre {
+		font-size: 1.5rem;
+	}
+
+	.button {
+		color: var(--theme-button-text);
+		background-color: var(--theme-button);
+
+		border: none;
+		border-radius: 5px;
+
+		padding: 0.5rem 1rem;
+		cursor: pointer;
+
+		font-size: 1rem;
+	}
+
+	.button:hover {
+		transition: 0.3s ease;
+		filter: brightness(1.2);
+	}
+
+	/*-----------Texts----------*/
+	.center {
+		text-align: center;
+	}
+
+	.left-margin {
+		margin-left: 1rem;
+	}
+
+	h1 {
+		margin: 0.5rem 0 1rem 0;
+		font-size: 2.5rem;
+	}
+
+	h2 {
+		font-size: 2rem;
+	}
+
+	h3 {
+		font-size: 1.3rem;
+	}
+
+	p {
+		font-size: 1.2rem;
+		margin-left: 1.5rem;
+	}
+</style>
+
+<script>
+	import Swal from 'sweetalert2';
+
+	const data = document.getElementById('data').dataset;
+	const id = parseInt(data.id);
+	const debutvente = new Date(data.debutvente);
+	const finvente = new Date(data.finvente);
+	const multipliers = JSON.parse(`[${data.multipliers}]`);
+
+	const currentPrice = document.getElementById('current-price');
+	const timeDiff = document.getElementById('timeDiff');
+	const suggestionValues = document.querySelectorAll(
+		'.suggestion-value'
+	) as NodeListOf<HTMLButtonElement>;
+	const manualBidInput = document.getElementById(
+		'manual-bid'
+	) as HTMLInputElement;
+	const form = document.querySelector('form');
+	const bid_container = document.getElementById('bid');
+	const bids_history = document.getElementById('bids-history');
+
+	/**
+	 * Duplicate of the one in the server
+	 */
+	function dateDiff(date1, date2) {
+		var diff = {
+			sec: 0,
+			min: 0,
+			hour: 0,
+			day: 0,
+		};
+		var diff_temps = date1.getTime() - date2.getTime();
+		diff_temps = Math.floor(diff_temps / 1000);
+		diff.sec = diff_temps % 60;
+		diff_temps = Math.floor((diff_temps - diff.sec) / 60);
+		diff.min = diff_temps % 60;
+		diff_temps = Math.floor((diff_temps - diff.min) / 60);
+		diff.hour = diff_temps % 24;
+		diff_temps = Math.floor((diff_temps - diff.hour) / 24);
+		diff.day = diff_temps;
+		return diff;
+	}
+
+	// FIXME Ne prend pas en compte si la machine n'est pas a la bonne heure
+	async function updatePriceAndBids() {
+		await fetch(`/api/article/${id}/info`)
+			.then((res) => res.json())
+			.then(
+				(data: {
+					current_bid: number;
+					min_bid: number;
+					bids_history: { amount: number; buyer: string }[];
+				}) => {
+					currentPrice.innerText = data.current_bid + ' €';
+					suggestionValues.forEach((suggestion, i) => {
+						suggestion.value = `${
+							data.current_bid + data.min_bid * multipliers[i]
+						}`;
+						suggestion.innerText = suggestion.value + ' €';
+					});
+					manualBidInput.min = `${data.current_bid + data.min_bid}`;
+					manualBidInput.placeholder = manualBidInput.min + ' ou plus';
+					// Update bids history
+					bids_history.innerHTML = '';
+					data.bids_history.forEach((bid) => {
+						const bidDiv = document.createElement('div');
+						bidDiv.innerText = `${bid.buyer} : ${bid.amount} €`;
+						bidDiv.classList.add('bid_entry');
+						bidDiv.style.color = 'var(--theme-text)';
+						bidDiv.style.borderLeft = '2px solid var(--theme-text)';
+						bidDiv.style.paddingLeft = '1rem';
+						bidDiv.style.margin = '0.5rem 0';
+						bidDiv.style.fontSize = '1.5rem';
+						bids_history.appendChild(bidDiv);
+					});
+				}
+			);
+	}
+
+	function updateDates() {
+		const now = new Date();
+		const starts = dateDiff(new Date(debutvente), now);
+		const ends = dateDiff(new Date(finvente), now);
+		if (
+			starts.sec >= 0 &&
+			starts.min >= 0 &&
+			starts.hour >= 0 &&
+			starts.day >= 0
+		) {
+			timeDiff.innerText = `Débute dans ${starts.day}j ${starts.hour}h ${starts.min}min ${starts.sec}s`;
+			bid_container.style.display = 'none';
+			return false;
+		} else if (
+			ends.sec >= 0 &&
+			ends.min >= 0 &&
+			ends.hour >= 0 &&
+			ends.day >= 0
+		) {
+			timeDiff.innerText = `Se termine dans ${ends.day}j ${ends.hour}h ${ends.min}min ${ends.sec}s`;
+			bid_container.style.display = 'block';
+			return true;
+		} else {
+			timeDiff.innerText = 'Terminée';
+			bid_container.style.display = 'none';
+			return false;
+		}
+	}
+
+	function update() {
+		if (updateDates()) {
+			updatePriceAndBids();
+		}
+	}
+
+	setInterval(update, 1000);
+
+	suggestionValues.forEach((suggestion) => {
+		suggestion.addEventListener('click', (e) => {
+			e.preventDefault();
+			manualBidInput.value = suggestion.value;
+		});
+	});
+
+	form.addEventListener('submit', async (e) => {
+		e.preventDefault();
+		const formData = new FormData(form);
+		const response = await fetch('', {
+			method: 'POST',
+			body: formData,
+		});
+		if (response.status === 200) {
+			Swal.fire({
+				title: 'Offre placée',
+				icon: 'success',
+			});
+		} else if (response.status === 403) {
+			Swal.fire({
+				title: 'Vous devez être connecté',
+				icon: 'error',
+				footer: `<a href="/login?redirect=/auction/${id}" style="margin-inline: 6px; text-decoration: none; color: var(--theme-link);">
+							 Connectez 
+						</a> vous ou 
+						<a href="/register?redirect=/auction/${id}" style="margin-inline: 6px; text-decoration: none; color: var(--theme-link);">
+							 inscrivez 
+						</a> vous pour pouvoir enchérir`,
+			});
+		} else if (response.status === 400) {
+			Swal.fire({
+				title: await response.text(),
+				icon: 'error',
+			});
+		} else {
+			Swal.fire({
+				title: 'Erreur inconnue',
+				icon: 'error',
+			});
+		}
+	});
+</script>

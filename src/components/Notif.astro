@@ -1,0 +1,50 @@
+---
+import Notification from '../model/Notification';
+
+export interface Props {
+	notif: Notification;
+}
+
+const { notif } = Astro.props;
+const date = notif.getDate();
+---
+
+<div>
+	<h3>
+		{
+			'Le ' +
+				date.getFullYear() +
+				'-' +
+				(date.getMonth() + 1) +
+				'-' +
+				date.getDate() +
+				' à ' +
+				date.getHours() +
+				':' +
+				date.getMinutes()
+		}
+	</h3>
+	<p>{notif.getText()}</p>
+</div>
+
+<style>
+	div {
+		background-color: var(--theme-input);
+		color: var(--theme-input-text);
+
+		width: 80%;
+		margin: 2rem auto;
+		padding: 0.3rem 1rem;
+
+		border: 1px solid;
+		border-radius: 1rem;
+
+		text-align: center;
+	}
+
+	h3,
+	p {
+		margin: 0.5rem 0;
+		color: #222;
+	}
+</style>
