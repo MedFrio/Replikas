@@ -47,7 +47,7 @@ Il a pour but de permettre aux membres de la communauté cinématographique de s
 - [**Gaspard Culis**](https://github.com/GaspardCulis)
 - [**Matis Basso**](https://gricad-gitlab.univ-grenoble-alpes.fr/bassom)
 - [**Mohammed Ben Aicha**](https://gricad-gitlab.univ-grenoble-alpes.fr/benaichm)
-- [**Mohammed Friouichen**](https://gricad-gitlab.univ-grenoble-alpes.fr/friouicm)
+- [**Mohammed Friouichen**](https://github.com/MedFrio)
 
 ## .env
 
