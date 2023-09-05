@@ -7,29 +7,6 @@ Notre site est basé sur le framework [Astro](https://astro.build) et [TypeScrip
 
 Il a pour but de permettre aux membres de la communauté cinématographique de se procurer des accessoires utilisés lors de tournages pour enrichir leurs collections personnelles.
 
-## Showcase
-
-### Page d'accueil
-
-![Page d'accueil](/docs/screenshots/home.png)
-
-### Page d'un article
-
-![Page d'un article](/docs/screenshots/article.png)
-
-### Page de connexion et création de compte
-
-![Page de connexion](/docs/screenshots/login.png)
-![Page de création de compte](/docs/screenshots/register.png)
-
-### Page de profil
-
-![Page de profil](/docs/screenshots/profile.png)
-
-### Page de recherche
-
-![Page de recherche](/docs/screenshots/search.png)
-
 ## Commandes
 
 | Command           | Action                                       |
