@@ -1,0 +1,33 @@
+---
+import ComingSoon from '../../components/dashboard/ComingSoon.astro';
+import Finished from '../../components/dashboard/Finished.astro';
+import Ongoing from '../../components/dashboard/Ongoing.astro';
+import Layout from '../../layouts/Layout.astro';
+import Company from '../../model/users/Company';
+import { getCompanyBySession } from '../../model/Utilitaire';
+
+const company: Company = await getCompanyBySession(Astro.request.headers).catch(
+	(err) => null
+);
+
+if (!company) {
+	return Astro.redirect('/login');
+}
+
+let page;
+if (!Astro.url.searchParams.get('pageName')) {
+	page = 'En cours';
+} else {
+	page = Astro.url.searchParams.get('pageName');
+}
+---
+
+<Layout title="Paramètres" no_searchbar>
+	{
+		{
+			'En cours': <Ongoing company={company} />,
+			'A venir': <ComingSoon company={company} />,
+			Terminées: <Finished company={company} />,
+		}[page]
+	}
+</Layout>

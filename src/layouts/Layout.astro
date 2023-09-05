@@ -1,0 +1,301 @@
+---
+import Breadcrumb from '../components/Breadcrumb.astro';
+import Footer from '../components/Footer.astro';
+import Logo from '../components/Logo.astro';
+import Navbar from '../components/Navbar.astro';
+
+export interface Props {
+	title: string;
+	no_searchbar?: boolean;
+}
+
+const { title, no_searchbar } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="preload" href="/fonts/Larsseit.otf" as="font" />
+		<link rel="preload" href="/fonts/Larsseit-Bold.otf" as="font" />
+		<link rel="preload" href="/fonts/OpenDyslexic-Bold.otf" as="font" />
+		<meta name="generator" content={Astro.generator} />
+		<meta
+			name="keywords"
+			content="enchere, replikas, film, vente aux enchères, accessoire de film, série"
+		/>
+		<meta name="page-topic" content="Enchères" />
+		<meta name="page-type" content="Enchères" />
+		<meta name="audience" content="Tous publics" />
+		<meta name="robots" content="index, follow" />
+		<meta
+			name="description"
+			content="Le site de ventes aux enchères des cinéphiles"
+		/>
+
+		<meta property="og:title" content="Replikas" />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://replikas.gasdev.fr" />
+		<meta
+			property="og:description"
+			content="Le site de ventes aux enchères des cinéphiles"
+		/>
+		<meta property="og:image" content="/favicon.svg" />
+		<meta property="og:site_name" content="Replikas" />
+		<meta property="og:locale" content="fr_FR" />
+		<title>{title}</title>
+	</head>
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-C10NH54T5W"
+	></script>
+	<script is:inline>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+
+		gtag('config', 'G-C10NH54T5W');
+	</script>
+	<body>
+		<main>
+			{no_searchbar ? <Navbar /> : <Navbar search_bar />}
+
+			<Breadcrumb />
+			<section>
+				<slot />
+				<div id="cookie-banner">
+					<div class="bannertext">
+						<div><Logo /></div>
+						<p>
+							En utilisant notre site web, vous acceptez l'utilisation de
+							cookies essentiels pour assurer la bonne performance et la
+							sécurité du site. Ces cookies ne collectent aucune information
+							personnelle et sont uniquement utilisés pour améliorer
+							l'expérience utilisateur notamment certains paramètres
+							d'accessibilité. Veuillez vous réferer à notre
+							<a href="/privacy-policy"> politique de confidentialité</a> pour plus
+							d'informations.
+						</p>
+						<div class="bannerbutton">
+							<p>J'accepte les cookies</p>
+						</div>
+					</div>
+				</div>
+			</section>
+			<Footer />
+		</main>
+		<style is:global>
+			/*:root {
+			--theme-primary: white;
+			--theme-secondary: #f5f5f5;
+			--theme-button: #7d53de;
+			--theme-button-text: whitesmoke;
+			--theme-text: black;
+			--theme-link: #7d53de;
+			--theme-input: whitesmoke;
+			--theme-search-bar: white;
+		}
+		*/
+			:root {
+				--theme-primary: #222;
+				--theme-secondary: #000;
+				--theme-button: #d60808;
+				--theme-button-text: whitesmoke;
+				--theme-text: whitesmoke;
+				--theme-link: #d60808;
+				--theme-input: whitesmoke;
+				--theme-input-text: black;
+				--theme-search-bar: whitesmoke;
+			}
+
+			/* THEMES
+		// "Rustic Charm" 
+		:root {
+			--theme-primary: #7b5e57;
+			--theme-secondary: #4c3e3a;
+			--theme-button: #b28f86;
+			--theme-text: white;
+			--theme-link: #9b8478;
+		}
+
+		// Modern white
+		:root {
+			--theme-primary: white;
+			--theme-secondary: #F5F5F5;
+			--theme-button: #7D53DE;
+			--theme-text: black;
+			--theme-link: aliceblue;
+		}
+		
+		*/
+
+			.hbox {
+				display: flex;
+				flex-direction: row;
+			}
+
+			.filter-whitesmoke {
+				filter: invert(96%) sepia(88%) saturate(13%) hue-rotate(315deg)
+					brightness(112%) contrast(92%);
+			}
+
+			.filter-crimson {
+				filter: invert(12%) sepia(98%) saturate(5633%) hue-rotate(343deg)
+					brightness(91%) contrast(89%);
+			}
+		</style>
+		<style>
+			@font-face {
+				font-family: dyslexia;
+				src: url('/fonts/OpenDyslexic-Regular.ttf');
+			}
+
+			html,
+			body {
+				box-sizing: border-box;
+				height: 100%;
+				padding: 0;
+				margin: 0;
+			}
+
+			body {
+				background-color: var(--theme-primary);
+				color: var(--theme-text);
+				font-family: Larsseit, system-ui, sans-serif;
+			}
+			main {
+				box-sizing: border-box;
+				min-height: 100%;
+				display: flex;
+				flex-direction: column;
+			}
+			section {
+				flex-grow: 1;
+				padding: 2rem 0;
+			}
+
+			/* Les cookies */
+
+			#cookie-banner {
+				position: fixed;
+				bottom: 0;
+				width: 100%;
+				background-color: var(--theme-secondary);
+				color: var(--theme-text);
+				padding: 1rem;
+				margin: auto;
+				display: none;
+				flex-direction: column;
+				justify-content: space-between;
+				align-items: center;
+				z-index: 100;
+			}
+
+			.bannertext div {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				margin-bottom: 1rem;
+			}
+
+			.bannertext p {
+				padding-inline: 4rem;
+			}
+
+			.bannertext p a {
+				color: var(--theme-link);
+				text-decoration: none;
+			}
+
+			.bannertext p a:hover {
+				text-decoration: underline;
+			}
+
+			#cookie-banner p {
+				margin: 0;
+				font-size: 1.5rem;
+				text-align: center;
+			}
+
+			.bannerbutton {
+				margin: 2rem;
+			}
+
+			.bannerbutton p {
+				color: var(--theme-button);
+				text-decoration: none;
+			}
+
+			.bannerbutton p:hover {
+				text-decoration: underline;
+			}
+
+			.bannerbutton {
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+			}
+
+			.bannerbutton p {
+				cursor: pointer;
+				margin: 10px 0;
+				padding: 0.5rem 1rem;
+				border-radius: 0.5rem;
+				background-color: var(--theme-button);
+				color: var(--theme-button-text);
+				font-size: 2rem;
+				text-decoration: none;
+			}
+		</style>
+
+		<script>
+			const cookieButton = document.querySelector('.bannerbutton p');
+			const cookieBanner = document.getElementById(
+				'cookie-banner'
+			) as HTMLDivElement;
+
+			cookieButton.addEventListener('click', () => {
+				acceptCookies();
+			});
+
+			function setCookie() {
+				localStorage.setItem('acceptCookies', 'true');
+			}
+
+			function getCookie(name: string) {
+				return localStorage.getItem(name);
+			}
+
+			function acceptCookies() {
+				setCookie();
+				cookieBanner.style.display = 'none';
+			}
+
+			function checkCookies() {
+				var acceptCookies = getCookie('acceptCookies');
+				if (acceptCookies != 'true') {
+					cookieBanner.style.display = 'flex';
+				} else {
+					cookieBanner.style.display = 'none';
+				}
+			}
+
+			function checkDyslexie() {
+				var dyslexie = getCookie('dyslexie');
+				if (dyslexie == 'true') {
+					document.body.style.fontFamily = 'dyslexia, system-ui, sans-serif';
+				} else {
+					document.body.style.fontFamily = 'Larsseit, system-ui, sans-serif';
+				}
+			}
+
+			window.onload = function () {
+				checkCookies();
+				checkDyslexie();
+			};
+		</script>
+	</body>
+</html>

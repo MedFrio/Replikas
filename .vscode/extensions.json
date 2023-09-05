@@ -1,0 +1,9 @@
+{
+	"recommendations": [
+		"astro-build.astro-vscode",
+		"esbenp.prettier-vscode",
+		"PKief.material-icon-theme",
+		"Gruntfuggly.todo-tree"
+	],
+	"unwantedRecommendations": []
+}

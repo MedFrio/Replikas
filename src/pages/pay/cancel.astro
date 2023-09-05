@@ -1,0 +1,20 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Paiment annulé" />
+<script>
+	import Swal from 'sweetalert2';
+
+	Swal.fire({
+		title: 'Paiment',
+		text: 'Le paiment à été annulé',
+		icon: 'error',
+		confirmButtonText: 'Ok',
+		confirmButtonColor: '#ff0000',
+	}).then((result) => {
+		if (result.isConfirmed) {
+			window.location.href = '/basket?pageName=À+payer';
+		}
+	});
+</script>

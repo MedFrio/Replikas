@@ -1,0 +1,5373 @@
+commit d2e297fe864c91d88e6a3b974a136b62c5ee0160
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-19T21:57:19+01:00
+
+    Clean package.json dependencies
+
+0	172	package-lock.json
+0	2	package.json
+
+commit 4dd2aae356ca1ef51fc1cd67f064e2b8d35b7dd3
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-19T21:54:51+01:00
+
+    JSDoc et clean up du code
+
+3	1	src/components/Filter.astro
+31	45	src/model/Article.ts
+1	0	src/model/Database.ts
+13	0	src/model/Notification.ts
+4	0	src/model/users/Account.ts
+13	0	src/model/users/Buyer.ts
+17	0	src/model/users/Company.ts
+
+commit 97dfe07aa94787b63af451605a0ce7ea9cd70c2a
+Merge: 630ae66 5ec6f8f
+Author: benaichm <mohammed.ben-aicha@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-19T21:44:39+01:00
+
+    Merge branch 'master' of ssh://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit 630ae664d48c52cdddd3e6537aa78b10eccc48c4
+Merge: a71e42c c20597d
+Author: benaichm <mohammed.ben-aicha@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-19T21:40:30+01:00
+
+    Merge branch 'master' of ssh://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit 5ec6f8f6508b248192abee0e7ea48825fdc202b9
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-19T21:40:19+01:00
+
+    Page report fonctionnelle
+
+2	2	src/components/Article.astro
+47	39	src/pages/report.astro
+
+commit a71e42cfde41004a41aae076d2c35a405a3cd830
+Author: benaichm <mohammed.ben-aicha@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-19T21:40:19+01:00
+
+    Arrangement navbar avec window resize
+
+82	66	src/components/Navbar.astro
+
+commit c20597de7d81348aeff7ae3558de6ea528b63bff
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-19T21:12:38+01:00
+
+    Ajouté vérifications page report
+
+11	6	src/pages/report.astro
+
+commit 68606ec712beac847ea8bdb2a619481d384b10a3
+Merge: c2ef53e cb7f3b5
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-19T21:08:59+01:00
+
+    Merge branch 'master' of ssh://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit c2ef53ea22b0118ad240c1e4ed12a553e9624078
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-19T21:08:09+01:00
+
+    Mail normalement OK, GetSellingCompanyID need review
+
+58	15	src/pages/report.astro
+
+commit cb7f3b55f48078704747ff89200d9f4bce033c47
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-19T20:49:38+01:00
+
+    Fix searchBar
+
+3	3	src/components/SearchBar.astro
+
+commit 5a25bf5c1d15afe999fa944a6f8658e72edce32e
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-19T20:29:22+01:00
+
+    Envoie de mail report (en cours), redirect recover-pass OK
+
+10	1	src/pages/report.astro
+2	0	src/pages/settings/recover-password.astro
+
+commit d3a33508d4c49cb77014a88721144e46d10d655b
+Merge: 253241f 33fb1de
+Author: benaichm <mohammed.ben-aicha@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-19T20:06:28+01:00
+
+    Merge branch 'master' of ssh://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit 253241fb710ab8669ece998219c01eef5fd7a11f
+Author: benaichm <mohammed.ben-aicha@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-19T20:04:35+01:00
+
+    Ajouts annexes + rectification bugs
+
+30	14	src/components/Article.astro
+15	4	src/components/CarrouselComponent.astro
+4	3	src/components/Navbar.astro
+1	1	src/components/basketPages/PossessedPage.astro
+10	0	src/layouts/Layout.astro
+5	6	src/pages/settings/index.astro
+
+commit 33fb1def28f0381cb84c076f7f88c780eb8e1f11
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-19T19:08:20+01:00
+
+    Fix seach filter
+
+2	3	src/components/Filter.astro
+1	1	src/components/SearchBar.astro
+1	1	src/model/Article.ts
+2	2	src/pages/search.astro
+
+commit 7103cb80251a302623374c470901c21e533671d0
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-19T18:54:02+01:00
+
+    Fix <h> order
+
+4	4	src/pages/auction/[id].astro
+
+commit 4b0c632c16fc2ba889c32bd6b59428206ac0316c
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-19T18:49:51+01:00
+
+    Fix name aligment
+
+6	7	src/pages/auction/[id].astro
+
+commit 3fddb806e0e53342e385c619e2c4e3e971ecb5f0
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-19T18:49:32+01:00
+
+    Correctifs données valides pour signalement (Company,Date d'achat)
+
+28	4	src/pages/report.astro
+
+commit f7868980efc980e45f6de021029a6adac7f9faaa
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-19T17:56:11+01:00
+
+    Correctifs afficher infos importantes pour l'utilisateur
+
+13	0	src/pages/settings/modify-password.astro
+
+commit bdee3e39ece283f43db84f522f9e28f65755ab5c
+Merge: 1f15825 a4f6498
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-19T17:48:28+01:00
+
+    Merge branch 'master' of ssh://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit a4f64981d6054adbc86b251e85a86b50736ac97b
+Merge: 98ec5ed e0edb97
+Author: benaichm <mohammed.ben-aicha@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-19T17:35:54+01:00
+
+    Merge branch 'master' of ssh://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit 98ec5ed5048cad6f151f3ced3ff5235e700056e2
+Author: benaichm <mohammed.ben-aicha@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-19T17:35:07+01:00
+
+    Option accessibilité dyslexie
+
+-	-	public/fonts/OpenDyslexic-Regular.otf
+-	-	public/fonts/OpenDyslexic-Regular.ttf
+8	2	src/layouts/Layout.astro
+15	7	src/pages/settings/index.astro
+
+commit e0edb972e2eb0c7c0c9f54c20b6d4c9bd5f41bba
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-19T17:32:36+01:00
+
+    Add label to inputs
+
+3	3	src/pages/register.astro
+
+commit 8824f311092d8d94a2821f9beccb573319915700
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-19T17:20:56+01:00
+
+    Fix privacy policy text color
+
+1	0	src/layouts/Layout.astro
+
+commit 67034942860f135cc4199b19ff5a39e339fc85ad
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-19T16:58:47+01:00
+
+    Changed config to use https when in production mode
+
+4	1	astro.config.mjs
+
+commit d9b51a89f47084ef3eef2b0523151ec69687f120
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-19T16:37:06+01:00
+
+    Amélioré cookie banner
+
+1	1	src/components/Breadcrumb.astro
+1	1	src/components/Footer.astro
+19	1	src/layouts/Layout.astro
+0	0	src/pages/{privacy_policy.astro => privacy-policy.astro}
+
+commit 46c83ed428444d4f3062f0dc40dddfbc5640611d
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-19T16:27:45+01:00
+
+    Paiment fully fonctionnel
+
+2	0	src/model/Config.ts
+6	0	src/model/users/Buyer.ts
+92	0	src/pages/api/stripe/webhook.ts
+4	12	src/pages/pay/index.astro
+
+commit 373e9c5fdbf46cd88532beac09f842da651e6549
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-19T15:01:12+01:00
+
+    Fix footer
+
+1	1	src/layouts/Layout.astro
+
+commit 191c4a0ccb09434320626da118e9d27f13423242
+Merge: 160ebff 6be6d55
+Author: benaichm <mohammed.ben-aicha@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-19T15:39:38+01:00
+
+    Merge branch 'master' of ssh://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit 160ebff0043da517ad453563ebd0ebb71d7f9937
+Author: benaichm <mohammed.ben-aicha@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-19T15:39:27+01:00
+
+    Ajout police dislexyc Accessibilié
+
+-	-	public/fonts/OpenDyslexic-Bold.otf
+-	-	public/fonts/OpenDyslexic-Regular.otf
+3	1	src/layouts/Layout.astro
+88	2	src/pages/settings/index.astro
+
+commit 6be6d5521fcc0d11f70c5d25ce2d94b9a66ad1b3
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-19T14:54:12+01:00
+
+    Fix error message position
+
+11	7	src/pages/register.astro
+
+commit d8dcc7934942f9e85539614392c20fbc6695df1f
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-19T14:48:12+01:00
+
+    Vraiment fix dates
+
+0	2	src/pages/dashboard/create.astro
+
+commit 6fdef37dfad426c46fa3e82f4edd1aa7099870ee
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-19T14:44:40+01:00
+
+    Fix ligon form input width
+
+1	1	src/pages/login.astro
+
+commit 705d8ad504b53020ebc6bae20c4a92f546c385cc
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-19T14:42:55+01:00
+
+    Debug stripe log
+
+13	0	src/pages/pay/index.astro
+
+commit 24ceb8108dc775c35edfcf9f16ee791ebbd71e47
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-19T14:42:36+01:00
+
+    Fix date
+
+0	2	src/pages/dashboard/create.astro
+
+commit 82b3c8fda5e71478b98886a86a2eaf741465b073
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-19T14:31:30+01:00
+
+    Update sql drop cascade
+
+1	1	sql/create.sql
+
+commit b040373eac449e44ee8372b4ef421f55ec0b416f
+Author: benaichm <mohammed.ben-aicha@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-19T14:36:15+01:00
+
+    Cookies fonctionnel (manques liens)
+
+1	1	src/layouts/Layout.astro
+
+commit d97f8a3eced41887ff3922fe318d3efab2855de4
+Merge: 21e8b52 57d3bf2
+Author: benaichm <mohammed.ben-aicha@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-19T14:32:28+01:00
+
+    Merge branch 'master' of ssh://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit 21e8b521e8a0f192aba4457da91e4928a168cdff
+Author: benaichm <mohammed.ben-aicha@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-19T14:31:13+01:00
+
+    Cookies fonctionnel (manque liens et info annexes)
+
+40	5	src/layouts/Layout.astro
+
+commit 1f158251c48888493363360b8bd28f6cdb94557f
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-19T12:42:38+01:00
+
+    Correctifs modify name (conditions de verifications)
+
+73	14	src/pages/settings/modify-name.astro
+
+commit 57d3bf21d3b90d7c3b1e3c1ecc177aa623cc7e6b
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-19T12:12:33+01:00
+
+    Cache section enchere quand non commencée
+
+24	4	src/pages/auction/[id].astro
+
+commit ffaf8ac546d1330659fe5d202d59f2559fdff2be
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-19T11:53:49+01:00
+
+    Deprecated getBySearch
+
+1	0	src/model/Article.ts
+
+commit 0e9a2f4d00457148ec85edb36051ba3e6055ce14
+Merge: 4d8cfa5 f593846
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-19T11:55:46+01:00
+
+    Merge branch 'master' of ssh://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit 4d8cfa54ff6cccd3504a61d7049c1cbf70a79d39
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-19T11:55:08+01:00
+
+    Correctifs modify-password, Token valide 1h OK
+
+7	5	src/pages/settings/modify-password.astro
+
+commit f593846abe397f6ebf6d17626dab3d957ddacfe9
+Author: benaichm <mohammed.ben-aicha@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-19T11:47:16+01:00
+
+    commit
+
+4	4	src/model/Article.ts
+
+commit 3208c64192c96781e677f759da72d854877e4841
+Merge: eb1b3eb 9b2aef4
+Author: benaichm <mohammed.ben-aicha@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-19T11:47:11+01:00
+
+    Merge branch 'master' of ssh://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit eb1b3eb8e6dbd16e4df4e688d351e9fdb033928e
+Author: benaichm <mohammed.ben-aicha@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-19T11:44:33+01:00
+
+    Bannière cookie (sans javascript)
+
+127	53	src/layouts/Layout.astro
+
+commit 9b2aef4da2a31ca62e6d96f0ba2ba417c2384b42
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-19T11:38:58+01:00
+
+    Fix password recovery
+
+2	2	src/model/users/Account.ts
+
+commit 2aa1864e16559ebe070c0218dcfc15204ee4d0a7
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-19T11:12:57+01:00
+
+    Fix password recovery
+
+6	0	src/model/Config.ts
+28	3	src/model/users/Account.ts
+1	1	src/pages/settings/index.astro
+5	8	src/pages/settings/modify-email.astro
+12	8	src/pages/settings/modify-password.astro
+7	19	src/pages/settings/recover-password.astro
+
+commit 0a64bdf50a8c1046d9be263184e5eacf170dee4f
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-19T09:04:21+01:00
+
+    Cleaned up imports
+
+5	1	.vscode/settings.json
+0	2	src/components/Filter.astro
+0	2	src/components/Footer.astro
+1	1	src/components/Navbar.astro
+1	1	src/layouts/Layout.astro
+4	4	src/model/Article.ts
+2	2	src/model/Database.ts
+0	2	src/model/Notification.ts
+7	9	src/model/Utilitaire.ts
+1	1	src/model/users/Account.ts
+1	4	src/model/users/Buyer.ts
+1	4	src/model/users/Company.ts
+1	2	src/pages/aboutus.astro
+0	1	src/pages/action/disconnect.astro
+1	1	src/pages/basket.astro
+2	2	src/pages/contact.astro
+2	2	src/pages/dashboard/create.astro
+4	7	src/pages/dashboard/settings/index.astro
+1	1	src/pages/dashboard/settings/modify-name-company.astro
+2	2	src/pages/index.astro
+1	1	src/pages/login.astro
+2	2	src/pages/pay/index.astro
+3	3	src/pages/register.astro
+3	3	src/pages/search.astro
+5	5	src/pages/settings/index.astro
+1	2	src/pages/settings/modify-email.astro
+1	2	src/pages/settings/modify-name.astro
+3	18	src/pages/settings/modify-password.astro
+2	3	src/pages/settings/recover-password.astro
+1	1	tests-playwright/create.spec.ts
+1	1	tests-playwright/example.spec.ts
+1	1	tests-playwright/register.spec.ts
+3	3	tests/article.test.ts
+0	1	tests/buyer.test.ts
+
+commit 97ce695125772ee6310de3ef83cc8970e2c3c958
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-19T08:58:16+01:00
+
+    Géré permissions d'access a certaines pages, clean up code
+
+32	4	src/pages/action/deleteArticle.astro
+3	2	src/pages/dashboard/settings/modify-name-company.astro
+5	5	src/pages/settings/modify-password.astro
+
+commit f73b4c0c0b3e3cbf2a5912298850b8c778c27c50
+Merge: 0927d7e b886f5f
+Author: benaichm <mohammed.ben-aicha@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-19T03:48:05+01:00
+
+    Merge branch 'master' of ssh://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit 0927d7e6e9375d59805f467e873e01b842cc81d5
+Author: benaichm <mohammed.ben-aicha@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-19T03:47:53+01:00
+
+    fix final du carrousel
+
+0	5	src/components/CarrouselComponent.astro
+9	1	src/pages/login.astro
+
+commit b886f5f70215802f35700b4cdea135f19ffbc70f
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-18T23:42:10+01:00
+
+    Err msg & Success msg css
+
+8	0	src/pages/settings/modify-password.astro
+
+commit d28c1ec2048dfa3bf81dff505ce470c98772abb2
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-18T23:40:15+01:00
+
+    Correctifs messages d'erreurs ou succés pour modify-password
+
+30	0	src/pages/settings/modify-password.astro
+
+commit d82dea93a2e4ea1d171d5c7d5bd2625f25e1e61a
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-18T23:38:33+01:00
+
+    Modify password for Companies -> Company.ts
+
+20	1	src/pages/settings/modify-password.astro
+
+commit b885dce2540b3c78dc74a1f2026835f60f4ba864
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-18T23:37:10+01:00
+
+    méthode setPassword maintenant possible pour company (super)-Account
+
+10	0	src/model/users/Company.ts
+
+commit bb0dc3e56344062d90bebbbd7b3d3712e0130808
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-18T23:24:35+01:00
+
+    Correctif err and success msg pour modify-email
+
+36	1	src/pages/settings/modify-email.astro
+
+commit b187b50eb00acd88f3a6305aee97688d552078bb
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-18T23:06:27+01:00
+
+    Correctifs BreadCrumb Dictionary /dashboard/
+
+1	0	src/components/Breadcrumb.astro
+
+commit 219324be9557dafba8fd4ac672899d55410a0ef2
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-18T22:58:46+01:00
+
+    Correctifs messages d'erreurs et succés + redirections
+
+44	9	src/pages/dashboard/settings/modify-name-company.astro
+
+commit d2102bbe90e0944a0b8c3e8dcce33c700caed3e7
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-18T22:43:00+01:00
+
+    Correctifs error messages
+
+1	1	src/pages/dashboard/settings/modify-name-company.astro
+11	1	src/pages/settings/recover-password.astro
+
+commit 3324a91a0dd93f3c0946bceaf126c6cba66849a3
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-18T22:31:19+01:00
+
+    Empecher l'utilisateur de modifer son nom en nombre
+
+38	1	src/pages/settings/modify-name.astro
+
+commit 7e07134f415109b0c26e77ff9d51b7547fdce65c
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-18T21:56:05+01:00
+
+    Correctifs title adapté pour toutes les pages
+
+1	1	src/pages/aboutus.astro
+1	1	src/pages/auction/[id].astro
+1	1	src/pages/basket.astro
+190	166	src/pages/cgu.astro
+1	1	src/pages/dashboard/index.astro
+1	1	src/pages/dashboard/settings/index.astro
+1	1	src/pages/login.astro
+1	1	src/pages/pay/cancel.astro
+1	1	src/pages/pay/success.astro
+376	224	src/pages/privacy_policy.astro
+1	1	src/pages/register.astro
+1	1	src/pages/search.astro
+1	2	src/pages/settings/index.astro
+
+commit cebd750564df3172e193ef092d109330125af94f
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-18T17:32:01+01:00
+
+    Correctifs link to recover-password ->settings/
+
+1	1	src/pages/login.astro
+
+commit d1b514572d91b5d6dccc552f3769a5391d987b30
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-18T17:17:31+01:00
+
+    Rien de spécial...
+
+-	-	public/img/aboutus/Gaspard.jpg
+-	-	public/img/aboutus/gaspard.png
+9	11	src/pages/aboutus.astro
+0	1	src/pages/index.astro
+
+commit 595d656ea5fb97f142639c5364f935f009ea987f
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-18T16:41:01+01:00
+
+    changement d'une requête sql dans mostbids
+
+1	1	src/model/Article.ts
+
+commit fe549a57896916954a200eb1b9cb9ff6563a8c7c
+Merge: c1e95dd 4fa3ab5
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-18T16:35:01+01:00
+
+    Merge branch 'master' of gricad-gitlab.univ-grenoble-alpes.fr:iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit 4fa3ab56fc7558a62ab11613353b29e10e0f79fd
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-18T16:32:41+01:00
+
+    Done todo
+
+2	1	src/model/users/Account.ts
+
+commit c5db2407f884c5cd382b4db3a340d1f8bb27b63c
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-18T16:23:39+01:00
+
+    Juste ajouté commentaire lol
+
+1	0	src/pages/auction/[id].astro
+
+commit 15ce25d11f4b485de98538f96de5e49ef38edda3
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-18T16:19:17+01:00
+
+    Enlevé lorem ipsum
+
+0	14	src/pages/auction/[id].astro
+
+commit c1e95ddfc14898546f4744c0da90c61b5b96ce58
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-18T16:34:13+01:00
+
+    Ajout d'un texte pour entrer le mdp et modif sur le style du caroussel
+
+6	4	src/components/CarrouselComponent.astro
+2	1	src/model/Article.ts
+11	0	src/pages/register.astro
+
+commit 134378433cbe2801f93e565e8126e374372f598d
+Merge: 97cd54c 8b2cd0d
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-18T16:26:25+01:00
+
+    Merge branch 'master' of ssh://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit 97cd54c136d5d5ea1b75db876fc7a071d8ba0eb3
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-18T16:25:44+01:00
+
+    Correctifs Breadcrumb (pay, basket, ...)
+
+9	1	src/components/Breadcrumb.astro
+
+commit 8b2cd0d8f22302224be7a1630a17b40fb23ceb5a
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-18T16:13:16+01:00
+
+    Fix [non mentionné] qui détruit mon modele
+
+1	3	src/model/Notification.ts
+0	49	src/model/users/Account.ts
+18	0	src/model/users/Buyer.ts
+7	6	src/pages/settings/modify-name.astro
+
+commit 8538a8c8b459f77552a5a93d8669145712c0ac6b
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-18T16:03:56+01:00
+
+    Encore enlevé délais
+
+11	13	src/pages/pay/cancel.astro
+
+commit ca697bddfc7c203a8ffffde18ec1735223dfb7e3
+Merge: 16961e0 d10d918
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-18T16:03:19+01:00
+
+    Merge branch 'master' of ssh://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit 16961e086be76639e991bfea8bcb68eadb5bc04f
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-18T16:02:48+01:00
+
+    Correctifs Breadcrumb
+
+9	4	src/components/Breadcrumb.astro
+
+commit d10d918aadaf027b82b35eea5cc749d87784ef0e
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-18T16:02:35+01:00
+
+    Enlevé delai popup swal
+
+11	13	src/pages/pay/success.astro
+
+commit 397a1fe7b851483aface48446807107db8a1cf43
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-18T15:58:09+01:00
+
+    Ajouté pages succes paiment et erreur
+
+22	0	src/pages/pay/cancel.astro
+8	8	src/pages/pay/index.astro
+22	0	src/pages/pay/success.astro
+
+commit 40e4d5bea8e2919b6d2b7786449162e3ed1649bd
+Merge: 7c22a98 b02b428
+Author: benaichm <mohammed.ben-aicha@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-18T15:53:47+01:00
+
+    Merge branch 'master' of ssh://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit 7c22a98fd6c1833dca8e57b0daa2bd7154079231
+Author: benaichm <mohammed.ben-aicha@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-18T15:52:58+01:00
+
+    Carrousel fonctionnel (ça rime)
+
+26	2	src/components/CarrouselComponent.astro
+29	19	src/layouts/LayoutCarrousel.astro
+
+commit b02b428c53c29880657ae7c1c2cfe6d5ba8532e3
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-18T15:50:45+01:00
+
+    Add of Dictionary and condition for display of auction
+
+27	7	src/components/Breadcrumb.astro
+
+commit 71723a977909a66b05d0c7f202c7824fe65fef2a
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-18T15:24:57+01:00
+
+    Corriger BreadCrumb, with differents paths
+
+16	55	src/components/Breadcrumb.astro
+
+commit 127300acab63af79a86e821c3d476141a3532f05
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-18T15:23:42+01:00
+
+    Fix code nul de cédric
+
+1	0	src/components/dashboard/ComingSoon.astro
+104	0	src/components/dashboard/Finished.astro
+1	0	src/components/dashboard/Ongoing.astro
+12	0	src/model/users/Company.ts
+2	0	src/pages/dashboard/index.astro
+
+commit ca3377b1fa726277fee1dab7981e491060007d85
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-18T15:06:41+01:00
+
+    Fix affichage dates article
+
+3	1	src/components/Article.astro
+
+commit 26ad289767397be6bf34b463370b5df51fcf7652
+Merge: 0a171b8 dd0aa61
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-18T16:13:26+01:00
+
+    Merge branch 'master' of gricad-gitlab.univ-grenoble-alpes.fr:iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit 0a171b8c2e806ca7d3570b528e9eab43202507a2
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-18T16:12:41+01:00
+
+    Système de filtre fonctionnel
+
+44	26	src/components/Filter.astro
+1	0	src/components/Notif.astro
+1	1	src/components/SearchBar.astro
+52	31	src/model/Article.ts
+80	8	src/pages/search.astro
+
+commit dd0aa61879ea7b461cf91926a168c014094e6879
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-18T14:56:31+01:00
+
+    Fix pay page
+
+42	14	src/pages/pay/index.astro
+
+commit db21100e28ae9346cf1bce9fae70640b8b5cc25a
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-18T14:52:58+01:00
+
+    Le mot de passe doit maintenant faire 12 caracteres
+
+2	2	src/pages/register.astro
+
+commit b6d4286f9f0c071015fb9431700ff0eed717a214
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-18T12:01:24+01:00
+
+    Ajouté paiment
+
+61	2	package-lock.json
+1	0	package.json
+3	1	src/components/Article.astro
+5	1	src/components/basketPages/NotPayedPage.astro
+12	0	src/model/Article.ts
+10	2	src/model/Config.ts
+67	5	src/pages/{pay.astro => pay/index.astro}
+
+commit 8a27bbb2f9621bd7aa30e77f3d8c9f656e8b202b
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-18T11:45:35+01:00
+
+    Fix Message enchere passée
+
+1	1	src/pages/auction/[id].astro
+
+commit 4944ecd2ef2debb0b423c6f623cb16366ecca5af
+Merge: b1d6c0a 0d546b4
+Author: benaichm <mohammed.ben-aicha@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-18T13:24:10+01:00
+
+    Merge branch 'master' of ssh://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit b1d6c0aa10f008b301b865a40c9cd177773227b3
+Author: benaichm <mohammed.ben-aicha@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-18T13:22:49+01:00
+
+    Carrousel presque 100% fonctionnel
+
+58	16	src/components/CarrouselComponent.astro
+2	0	src/components/Navbar.astro
+4	4	src/layouts/LayoutCarrousel.astro
+2	2	src/pages/index.astro
+
+commit 0d546b4a6d03b259a1614a8b1669be6cf566f5f0
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-18T11:21:09+01:00
+
+    Correct link to modify name company
+
+5	1	src/pages/dashboard/settings/index.astro
+
+commit 5734bb18635cd3077dea57c8e4948181ce2fb89c
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-18T11:18:18+01:00
+
+    Déplacement en settings dans dashboard pour company
+
+10	7	src/pages/dashboard/{settings.astro => settings/index.astro}
+6	7	src/pages/{ => dashboard}/settings/modify-name-company.astro
+
+commit 7d616dbb597c461addcab92fb02bf37eea46a54d
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-18T11:11:55+01:00
+
+    Modify name pour Company
+
+139	0	src/pages/settings/modify-name-company.astro
+
+commit f43f5fdb600495cd2807271b9827ae55f4bf881c
+Merge: 834e3f9 0ab70fe
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-18T11:11:37+01:00
+
+    Merge branch 'master' of ssh://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit 834e3f959eb5aba967ed68b8f3a9e6f6f4734ad6
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-18T11:11:06+01:00
+
+    SetNom pour changer nom d'entreprise
+
+5	0	src/model/users/Company.ts
+
+commit 0ab70fed4a9dc87fe7ec8929e01864cfde58a610
+Author: Ahmed Khairi <ahmed.khairi@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-18T11:09:51+01:00
+
+    complétion de la page about us plus amélioration des settings de la page
+    dashboard
+
+-	-	public/img/aboutus/mohammedF.jpg
+1	1	src/pages/aboutus.astro
+6	56	src/pages/settings/index.astro
+
+commit 82c099d7a2ae7cc7d8cd4937cbdc5c400ecbbe17
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-18T10:52:14+01:00
+
+    Correct links from settings to modify name, email, password
+
+7	3	src/pages/dashboard/settings.astro
+16	4	src/pages/settings/index.astro
+
+commit ecf368a609d0cc76ea760cca5f032fd9b94866f2
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-18T10:43:50+01:00
+
+    Changed URL file structure
+
+7	7	src/pages/{settings.astro => settings/index.astro}
+6	6	src/pages/{ => settings}/modify-email.astro
+6	6	src/pages/{ => settings}/modify-name.astro
+5	5	src/pages/{ => settings}/modify-password.astro
+10	12	src/pages/{recover_password.astro => settings/recover-password.astro}
+
+commit 58cc48ff05ef7da7bce4bd77564d9facebb94fb6
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-18T10:32:38+01:00
+
+    Added logs
+
+1	1	scripts/deploy.sh
+
+commit 89f3710b8dec17947a4bde69d65f76dca44abaa2
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-18T10:23:29+01:00
+
+    Fix input text color
+
+1	1	src/components/Notif.astro
+1	0	src/layouts/Layout.astro
+
+commit e66fa037a028bce76cdbfa6d426049f12f97c2cd
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-18T10:21:46+01:00
+
+    Fix notifications
+
+6	6	src/model/Article.ts
+7	3	src/model/Utilitaire.ts
+
+commit ecc0857f0683826496e63424246e8185aea291ee
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-18T10:17:09+01:00
+
+    Enlevé attente idle time car inefficace
+
+2	5	src/pages/auction/[id].astro
+
+commit c88a3695c29877419c3ec96cb7f05a0fadfebed9
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-18T09:55:45+01:00
+
+    Fix create Date
+
+4	0	src/pages/dashboard/create.astro
+
+commit 42e7fce9d4e53adf51d0d941ece25292ab439992
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-18T09:40:47+01:00
+
+    Ajouté events de debut et fin de vente, et notifications
+
+26	1	src/model/Article.ts
+3	4	src/model/Bids.ts
+65	0	src/model/Notification.ts
+18	0	src/model/Utilitaire.ts
+
+commit 68644e3406667d303638d8b7d0c3ab3089c32bca
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-18T10:35:40+01:00
+
+    Merge
+
+3	5	src/pages/dashboard/settings.astro
+4	12	src/pages/{modify_email.astro => modify-email.astro}
+0	0	src/pages/{modify_name.astro => modify-name.astro}
+7	9	src/pages/{modify_password.astro => modify-password.astro}
+3	3	src/pages/settings.astro
+
+commit c0f6cd330114beaf9b91bd057dee73dcae467c8a
+Merge: d3c111c 047b5bd
+Author: Ahmed Khairi <ahmed.khairi@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-18T10:18:24+01:00
+
+    Merge branch 'master' of ssh://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit d3c111cd7e0017df754e5c3677d36e9a54aabe24
+Author: Ahmed Khairi <ahmed.khairi@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-18T10:09:37+01:00
+
+    amélioration du design de la nav bar et du footer
+
+-	-	public/img/aboutus/Cedric.jpg
+-	-	public/img/aboutus/Gaspard.jpg
+-	-	public/img/aboutus/mohammedB.jpg
+-	-	public/img/aboutus/wsl_update_x64.msi
+30	18	src/components/Navbar.astro
+3	3	src/pages/aboutus.astro
+6	0	src/pages/dashboard/settings.astro
+
+commit 047b5bd965737e7549a5e9d80e4de3e0e3c60372
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-18T09:58:02+01:00
+
+    Link modify mail and name to /dashboard/settings, modify_name Company NO
+
+4	3	src/pages/dashboard/settings.astro
+
+commit f58c4c1ed32ec39dbac2e970f99356a02ab19cf7
+Author: Ahmed Khairi <ahmed.khairi@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-18T09:12:14+01:00
+
+    modification du design du footer et de la nav bar
+
+-	-	public/img/aboutus/wsl_update_x64.msi
+10	16	src/components/AboutUs.astro
+3	0	src/components/Footer.astro
+6	1	src/components/Navbar.astro
+19	12	src/pages/aboutus.astro
+4	0	src/pages/contact.astro
+
+commit 008535347c06b80191e91effe110c56aa7dc4506
+Merge: e23947e a01d710
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-18T00:53:28+01:00
+
+    Merge branch 'master' of gricad-gitlab.univ-grenoble-alpes.fr:iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit e23947e6023734d8c2e9a37c55ccd94c9c489e98
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-18T00:53:07+01:00
+
+    Ajout du frontEnd pour le filtre
+
+-	-	public/img/icons/filter.png
+4	8	src/components/Article.astro
+139	0	src/components/Filter.astro
+34	32	src/model/Article.ts
+0	128	src/pages/filter-page.astro
+54	9	src/pages/search.astro
+
+commit a01d710ec249655b88e3f1914e01a741fe6c3646
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-17T23:02:58+01:00
+
+    contact.replikas comme adresse mail et msg html fournie
+
+2	2	src/pages/recover_password.astro
+
+commit e3cfcbf77fc6cd8e33271d9c7407adce3d947434
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-17T22:47:00+01:00
+
+    API fonctionne, recover password OK
+
+1	1	src/pages/recover_password.astro
+
+commit 449bca3cbd6215b4325a09b8fc731e93b07b3ee5
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-17T22:45:18+01:00
+
+    getters, setters pour Last et First Name, Changement d'infos OK
+
+25	2	src/model/users/Account.ts
+12	9	src/pages/modify_email.astro
+73	50	src/pages/modify_name.astro
+
+commit 0ae3e1e61c5ee67a2073b099c94ae0eae307f618
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-17T22:13:12+01:00
+
+    Renommé test pour plus de précisivitude
+
+0	0	tests-playwright/{api.spec.ts => create.spec.ts}
+
+commit c26e9dd0f5ccc6dfb02c7011177d9b9cee1040df
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-17T22:08:16+01:00
+
+    Ajouté un test de saucisse
+
+45	0	tests-playwright/api.spec.ts
+-	-	tests-playwright/images/saucisse-fumee.jpg
+
+commit 2bd982355eb5b8f4da97e0cf21aa4bbdd25e3bf9
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-17T22:08:00+01:00
+
+    Fix test cas d'utilisation register
+
+5	5	tests-playwright/register.spec.ts
+
+commit 44970ec88fe2f2ccef82b4de522ca7edbb085203
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-17T21:51:07+01:00
+
+    Fixé condition mal faite pour lien settings
+
+10	21	src/components/Navbar.astro
+
+commit 62c0afe4fb66c029178b5a3a6fe99be1557c1a79
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-17T21:32:39+01:00
+
+    Fil d'ariane fonctionnel et corrigé
+
+11	0	src/components/Breadcrumb.astro
+
+commit 9ee12ef6522c801d548e1ed517a36d52a8a446a7
+Merge: a9f5643 91f21fd
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-17T17:28:19+01:00
+
+    Merge branch 'master' of gricad-gitlab.univ-grenoble-alpes.fr:iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit a9f5643a2a49ad5a152360cdca5f76c563f1f52a
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-17T17:27:42+01:00
+
+    Ajout de la suppression d'un article
+
+-	-	public/img/icons/3dots.png
+199	52	src/components/Article.astro
+2	2	src/components/dashboard/ComingSoon.astro
+1	1	src/components/dashboard/Ongoing.astro
+18	0	src/pages/action/deleteArticle.astro
+1	1	src/pages/dashboard/index.astro
+
+commit a6e1dbc712ac9b2d3b9ea328b92c01288c2462d1
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-17T17:06:14+01:00
+
+    Fix sql max length error
+
+2	0	src/components/TextField.astro
+5	1	src/model/Article.ts
+3	1	src/pages/dashboard/create.astro
+
+commit 394ed5f965fdaab665b8cabbad974df34a3acb88
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-17T17:00:15+01:00
+
+    Fix cyclic dependency
+
+3	10	src/model/users/Account.ts
+
+commit 2640e24bc6a4fe81c282189155e52c57263402d7
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-17T16:56:07+01:00
+
+    Ajouté JSDoc
+
+60	12	src/model/users/Account.ts
+
+commit 5ecdc78bd829151a8b788994d16ac042c7be52d7
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-17T16:41:54+01:00
+
+    Bien nommé des méthodes
+
+2	2	src/model/users/Account.ts
+
+commit 85327588f1ebf8edde0b7c646082c8656f06417b
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-17T16:41:13+01:00
+
+    Git c bizarre des fois
+
+0	65	tests/api.test.ts
+
+commit b9e0ab68639b31ded1d6ab5559b56877ecef45ab
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-17T16:40:56+01:00
+
+    Fix typo
+
+1	1	src/model/users/Company.ts
+
+commit 855e314806787c2ac80849e62385fbf425fcaee6
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-17T16:39:57+01:00
+
+    Adedd company test
+
+1	1	tests/bids.test.ts
+69	0	tests/company.test.ts
+
+commit 3a95a53845c71d8c4763e1f978be047be09af707
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-17T16:35:32+01:00
+
+    Fixed company create
+
+1	1	src/model/users/Company.ts
+
+commit 536314a5cb5e1d13a6f9e74db5e79e43429975ab
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-17T16:29:54+01:00
+
+    Rendu delete public
+
+1	1	src/model/users/Account.ts
+
+commit f6841265656543e7d939fa31bbefa6e6b1891288
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-17T16:24:46+01:00
+
+    Ajouté test utilitaire
+
+20	0	tests/utilitaire.test.ts
+
+commit 2d47923cdb862638dc25e9723fac0d39991b473f
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-17T15:26:18+01:00
+
+    Ajouté test article autoclean
+
+56	0	tests/article.test.ts
+
+commit 36afec1461328d16ae1c0a91b82f06f66a7ad155
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-17T15:13:19+01:00
+
+    Ajouté test model Bids
+
+40	0	tests/bids.test.ts
+
+commit 7e2a5ae9fe1c51cc867d1770acef2b488e7c4ad3
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-17T15:02:37+01:00
+
+    Ajouté hint width height pour images socials, a nouveau.
+
+30	5	src/components/Footer.astro
+
+commit b5983fb7e3b4546dedf1dcfc57aaff2ce8bdf45b
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-17T14:36:43+01:00
+
+    Viré le franglais
+
+1	1	src/pages/dashboard/create.astro
+
+commit 91f21fdea26f7bc177ba1e23a301e811b6638f8e
+Merge: 55dc611 f4de49e
+Author: benaichm <mohammed.ben-aicha@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-17T16:25:26+01:00
+
+    Merge branch 'master' of ssh://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit 55dc611f662b375b68be530acfeb51553f29638e
+Author: benaichm <mohammed.ben-aicha@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-17T16:25:10+01:00
+
+    Fix Carrousel (min 5 enchères en cours)
+
+36	11	src/components/CarrouselComponent.astro
+1	1	src/layouts/Layout.astro
+16	38	src/layouts/LayoutCarrousel.astro
+
+commit f4de49e0fb268cbfb5e2ee6b7b64905527664024
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-17T16:09:05+01:00
+
+    Correctifs modify_name not authorized value input
+
+17	4	src/pages/modify_name.astro
+
+commit 6aadd030336d82bc3ba49a4bc6ef3642145e16ae
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-17T15:43:43+01:00
+
+    Link setting to modify name
+
+2	2	src/pages/settings.astro
+
+commit 9e86a91801e7ff60f2ec18ec84b43be308d4f809
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-17T15:42:09+01:00
+
+    Page Modify Name (nom, prénom)
+
+244	0	src/pages/modify_name.astro
+
+commit 7cdc3163716dd2ed6d4ec731af513428e54ed12b
+Merge: 91efcb9 b3a3265
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-17T14:14:03+01:00
+
+    Merge branch 'master' of ssh://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit b3a326522a9caa737a5851d56b9ce5f7c2571eab
+Merge: ffa53aa a0f3a1d
+Author: benaichm <mohammed.ben-aicha@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-17T14:13:35+01:00
+
+    Merge branch 'master' of ssh://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit ffa53aad143298920e002d18b97782515a4bf321
+Author: benaichm <mohammed.ben-aicha@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-17T14:13:20+01:00
+
+    Click sur fleche fixé timing carrousel
+
+6	15	src/layouts/LayoutCarrousel.astro
+
+commit 91efcb9cc8fc56a1ae2b531dbfd455acc478de7c
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-17T14:13:15+01:00
+
+    Corriger noms méthodes
+
+2	2	src/model/users/Account.ts
+
+commit a0f3a1ddc7122a8235885361d6ca68a691d4f60e
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-17T13:45:06+01:00
+
+    Fix JS type inference
+
+4	3	src/pages/auction/[id].astro
+
+commit 175de14d24c36874d67175175ad464699f12716e
+Merge: 232c912 9698d90
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-17T13:37:44+01:00
+
+    Merge branch 'master' of ssh://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit 232c912fea508d174ec749bd6562158147d042e2
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-17T13:36:36+01:00
+
+    Méthode Set_First_Name & Set_Last_Name pour modifier Name dans settings
+
+22	0	src/model/users/Account.ts
+
+commit 9698d901285ea2e4ed3e6f9a70b9a2a08d409dd4
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-17T13:33:44+01:00
+
+    Meilleur page d'enchere
+
+5	1	src/pages/api/article/[id]/info.ts
+164	127	src/pages/auction/[id].astro
+
+commit f123f1aafc3b4c572b0b2e1c7f3055b396684f88
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-17T12:37:57+01:00
+
+    ajouté methode getEncheres d'un article
+
+26	0	src/model/Bids.ts
+
+commit ebb8a9d020c7b37536949a5b58aaa1d063398376
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-17T12:37:25+01:00
+
+    Fix disconnect not using appropriate moel method
+
+1	1	src/model/users/Account.ts
+2	1	src/pages/action/disconnect.astro
+
+commit 4ab9f34d45195c97c12bf07bde3424aafeb97672
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-17T08:27:50+01:00
+
+    Actually removed debug logs
+
+0	2	src/model/Article.ts
+
+commit 8353c2d344eccae77c075cd72be0c4d4451e44d3
+Author: benaichm <mohammed.ben-aicha@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-17T12:38:26+01:00
+
+    fix hitbox carrousel coloré repère
+
+9	0	src/layouts/LayoutCarrousel.astro
+
+commit f23818ced82860682850363e71371099f86cd127
+Author: benaichm <mohammed.ben-aicha@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-17T12:25:49+01:00
+
+    Carrousel Component + affichage articles Carrousel
+
+34	9	src/components/CarrouselComponent.astro
+11	12	src/layouts/LayoutCarrousel.astro
+
+commit ad614190111c834a068af5e554079f4ad2569444
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-17T09:37:05+01:00
+
+    Correction de l'affichage du prix d'un article
+
+6	1	src/components/Article.astro
+0	1	src/model/Bids.ts
+
+commit 0b5035dd37ec714ba238d9de02b6f3c97f2ebda2
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-17T00:53:54+01:00
+
+    Modification du style du carroussel
+
+11	11	src/layouts/LayoutCarrousel.astro
+
+commit 6bd2cda1f62203a81325e6f223d987669bb45b5c
+Merge: ecef0fe 6627a40
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-17T00:42:07+01:00
+
+    Merge branch 'master' of gricad-gitlab.univ-grenoble-alpes.fr:iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit ecef0fe91c2c28eafa06fbcd0a54c5d03fd70204
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-17T00:35:51+01:00
+
+    Modification du style de certains éléments et correction de bugs
+
+4	1	src/components/Article.astro
+14	45	src/components/Breadcrumb.astro
+51	64	src/components/Footer.astro
+3	1	src/components/Navbar.astro
+4	8	src/components/basketPages/LikedPage.astro
+4	8	src/components/basketPages/NotPayedPage.astro
+4	8	src/components/basketPages/PossessedPage.astro
+4	8	src/components/dashboard/ComingSoon.astro
+4	8	src/components/dashboard/Ongoing.astro
+1	1	src/layouts/ArticleContainer.astro
+3	6	src/layouts/Layout.astro
+176	173	src/layouts/LayoutCarrousel.astro
+1	0	src/model/Bids.ts
+105	48	src/pages/auction/[id].astro
+2	2	src/pages/dashboard/create.astro
+30	31	src/pages/index.astro
+7	1	src/pages/search.astro
+66	8	src/pages/settings.astro
+
+commit 6627a4052ad9c6d55527b7c3d213ade0e7211f63
+Merge: 4652ea7 95cdf3b
+Author: benaichm <mohammed.ben-aicha@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-16T17:17:46+01:00
+
+    Merge branch 'master' of ssh://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit 4652ea7d47948d2f2950390748cdfa8427cba1ab
+Author: benaichm <mohammed.ben-aicha@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-16T17:17:35+01:00
+
+    preload bold font
+
+1	0	src/layouts/Layout.astro
+
+commit 95cdf3bbb2f6be63d39ca8ae2dbc81e6ee295b66
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-16T17:13:25+01:00
+
+    Improve lighthouse results
+
+0	11	src/layouts/Layout.astro
+6	2	src/pages/auction/[id].astro
+
+commit 8f0eaed5e2cece3e9f6e4b5a1b0d84b62bc39d29
+Merge: 29bf105 ae4cd17
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-16T17:12:57+01:00
+
+    Merge branch 'master' of ssh://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit 29bf1053ed5ba0bd5a7a2b6faa6c42bf922dcfd0
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-16T17:12:28+01:00
+
+    Changement d'adresse mail OK
+
+2	3	src/model/Article.ts
+3	7	src/model/users/Account.ts
+1	1	src/pages/dashboard/settings.astro
+115	0	src/pages/modify_email.astro
+1	1	src/pages/settings.astro
+
+commit ae4cd17162c939ad9a71f33c6304d5a1b06f13d7
+Merge: 8292cc8 9da9c06
+Author: benaichm <mohammed.ben-aicha@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-16T17:08:15+01:00
+
+    Merge branch 'master' of ssh://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit 8292cc8917a29fd7e001323a5e53b550965bdce2
+Author: benaichm <mohammed.ben-aicha@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-16T17:08:02+01:00
+
+    preload font
+
+1	0	src/layouts/Layout.astro
+
+commit 9da9c0690d4f5dbb80c97b2b268f10ce801683a3
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-16T16:54:13+01:00
+
+    Fix image array fallback
+
+3	1	src/pages/auction/[id].astro
+
+commit 3da2a7cf444c01dec4a0cfef55b64ddfc2f0baba
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-16T16:50:31+01:00
+
+    Yeet scrollbar
+
+9	2	src/pages/auction/[id].astro
+
+commit a7258478c1b13acfcf311f468a15a7dd685a1862
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-16T16:40:44+01:00
+
+    Article affiche toutes les images
+
+3	2	src/pages/auction/[id].astro
+
+commit 0d9882b6942cdb3c539083f131b30bfea4fa5f26
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-16T16:39:49+01:00
+
+    Méthode setEmail ancien_mail=>mail
+
+12	0	src/model/users/Account.ts
+
+commit 8699ac1c993a88e3f7d8f6102e2b4a4ff8291771
+Merge: 163cd8d bfbf975
+Author: benaichm <mohammed.ben-aicha@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-16T16:22:14+01:00
+
+    Merge branch 'master' of ssh://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit 163cd8d83eea1e326a8c3f1783c57c934b5f2b16
+Author: benaichm <mohammed.ben-aicha@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-16T16:21:57+01:00
+
+    Flèches stylisés CSS avec transition et animations
+
+180	95	src/layouts/LayoutCarrousel.astro
+
+commit bfbf975b57efbb2d38c92b702a2a629732792600
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-16T16:05:42+01:00
+
+    Url dynamique qui s'adapte au site
+
+3	1	src/pages/recover_password.astro
+
+commit 919fa50d5e992212e1bdb394b9b00a1c1747f77b
+Merge: 9f66489 3ebf717
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-16T17:04:46+01:00
+
+    Merge branch 'master' of gricad-gitlab.univ-grenoble-alpes.fr:iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit 9f66489ccbf564cc6585dd5923b9ab11d53ef72b
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-16T17:01:02+01:00
+
+    Modification du style de la page d'auction
+
+1	0	src/components/Navbar.astro
+3	1	src/layouts/Layout.astro
+103	52	src/pages/auction/[id].astro
+2	2	src/pages/dashboard/settings.astro
+1	1	src/pages/settings.astro
+
+commit 3ebf717b229f839ac312ccf621a2fcab7480ad66
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-16T15:56:12+01:00
+
+    Update test account hashes
+
+2	2	sql/insert.sql
+
+commit c05e524cd8471807cbc2ea94fade52bf557cfa04
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-16T15:54:55+01:00
+
+    Auto complétion si connecté et readonly => true
+
+13	2	src/components/TextField.astro
+20	0	src/pages/recover_password.astro
+
+commit 79f7045876646ef2f95e032354fe9e0f3e397f1e
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-16T15:47:42+01:00
+
+    Ajouté notre grain de sel
+
+10	3	src/model/users/Account.ts
+
+commit 7fd7640cc5af5ffc2d02d06ae6ecca1aaa41556e
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-16T15:31:52+01:00
+
+    Removed debug logs
+
+3	2	src/model/Article.ts
+
+commit 6272d07ae11fa093da3ec0b0f4006e22d6da78a0
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-16T15:23:26+01:00
+
+    Fix auto clean qui crash tout
+
+16	11	src/model/Article.ts
+
+commit a6a0167d449bdcfe8b7b3c55b84974744c362f82
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-16T14:47:46+01:00
+
+    Fix bug critique d'email non défini dans Account
+
+3	3	src/model/users/Account.ts
+
+commit 79f80dec0d77a90ed951890f70d86a1b377e8659
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-16T14:44:47+01:00
+
+    Ajouté méthode de clean pour la DB et les images uploadés
+
+21	1	package-lock.json
+2	1	package.json
+25	0	src/model/Article.ts
+22	38	src/model/Database.ts
+25	2	src/model/users/Account.ts
+
+commit d146fbb1b76abafd4f4ffeaceacbbc1c0ae68d11
+Merge: 76d6ef8 a1393dc
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-16T14:36:38+01:00
+
+    Merge branch 'master' of gricad-gitlab.univ-grenoble-alpes.fr:iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit 76d6ef82ad4a6575402b68de2501676bd971d328
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-16T12:46:54+01:00
+
+    Modifications sur le style du site
+
+44	0	package-lock.json
+1	0	package.json
+1	1	src/components/Button.astro
+1	1	src/components/Navbar.astro
+3	2	src/components/Notif.astro
+6	2	src/components/SearchBar.astro
+3	0	src/components/TextField.astro
+10	6	src/layouts/Layout.astro
+86	74	src/pages/auction/[id].astro
+3	2	src/pages/dashboard/create.astro
+2	3	src/pages/dashboard/settings.astro
+1	2	src/pages/settings.astro
+
+commit a1393dc546892be75f4ffa2acb7feea3c6f1aed4
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-16T11:46:21+01:00
+
+    Added database accessor abstract class
+
+33	0	src/model/Database.ts
+
+commit 4fce9a8a282c84075da081f1248babdc66afec44
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-16T11:08:50+01:00
+
+    Je vais me reconvertir en boulanger
+
+5	6	src/components/AutoCompleteTextField.astro
+
+commit 15979c6849300662defee8368a4e023e246a6e4b
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-16T11:03:16+01:00
+
+    Fix search pages
+
+12	5	src/model/Article.ts
+1	3	src/pages/search.astro
+
+commit 381e007e4ff55364e7c623e7f57d6734cb07a065
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-16T10:26:21+01:00
+
+    Added sendgrid
+
+44	0	package-lock.json
+1	0	package.json
+
+commit 34839f1f938eebd944fd1ea20c56104ead41441f
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-16T11:33:06+01:00
+
+    Link modify password on settings to recover password
+
+4	2	src/components/UserSetting.astro
+1	1	src/pages/dashboard/settings.astro
+1	1	src/pages/settings.astro
+
+commit ca2bac02044d5095343b8dda61b69abc760afd9f
+Merge: 6f7e5cd 09f0453
+Author: benaichm <mohammed.ben-aicha@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-16T11:21:45+01:00
+
+    Merge branch 'master' of ssh://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit 6f7e5cd9e2e37d2284c7af2bf6462ac404a1161c
+Author: benaichm <mohammed.ben-aicha@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-16T11:20:15+01:00
+
+    Affichage à la bonne taille des éléments du carrousel
+
+5	4	src/layouts/LayoutCarrousel.astro
+
+commit 09f045362dae30f60506ab72f5b0da369c74a19a
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-16T11:14:16+01:00
+
+    Modification Invalid token
+
+3	3	src/pages/modify_password.astro
+
+commit d2d74fa0b372a759b855e7971923abd7c217c95f
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-16T11:04:47+01:00
+
+    Recover Password fonctionnel, token, password change works !
+
+1	1	src/pages/login.astro
+32	1	src/pages/modify_password.astro
+5	5	src/pages/recover_password.astro
+
+commit 37c810c792134d4251cf005aca882febf21831fb
+Merge: 2052cc8 335b8c7
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-16T11:02:46+01:00
+
+    Merge branch 'master' of gricad-gitlab.univ-grenoble-alpes.fr:iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit 2052cc8525be8b660708a9577870f9ab641834d2
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-16T11:01:58+01:00
+
+    Régler le problème d'affichage des plus attendus et revenu sur le LayoutCarrousel
+
+110	14	src/layouts/LayoutCarrousel.astro
+10	110	src/pages/index.astro
+
+commit fd9c305b7a62564717ace6573ebeba2d1c9b5157
+Author: benaichm <mohammed.ben-aicha@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-16T10:56:46+01:00
+
+    Changement couleur lien avec nouvelle police
+
+13	2	src/layouts/Layout.astro
+
+commit edf943d8b97a3d2364c063bbbf99b97283e5d4e7
+Merge: 2903a1d 32fa9b0
+Author: benaichm <mohammed.ben-aicha@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-16T10:36:09+01:00
+
+    Merge branch 'master' of ssh://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit 2903a1dc8b5c4ef5ca4ab49059d822e0940d901a
+Author: benaichm <mohammed.ben-aicha@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-16T10:35:22+01:00
+
+    Ajout police Larsseit et Larsseit-Bold
+
+-	-	public/fonts/Larsseit-Bold.otf
+-	-	public/fonts/Larsseit.otf
+
+commit 32fa9b0c90a1ad7cddb6ed6831d81788f38112be
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-16T10:32:26+01:00
+
+    Vérification des mdp et token sinon => missing_token
+
+10	1	src/pages/modify_password.astro
+
+commit 66288d5809b9e58bbde211230148911dddfcbfbe
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-16T10:30:12+01:00
+
+    Corriger erreurs modify et recover password
+
+10	0	src/pages/modify_password.astro
+0	0	src/pages/{recover-password.astro => recover_password.astro}
+
+commit 0f35031802b88336bafb04bcac93eaf7cd9d7542
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-16T10:26:23+01:00
+
+    Modification Page modify_password
+
+1	1	src/model/users/Account.ts
+36	7	src/pages/modify_password.astro
+3	7	src/pages/recover-password.astro
+
+commit a78fd55113d73f6f82fd160d648ad51a87f833fb
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-16T10:15:18+01:00
+
+    Cleaned up dependencies
+
+0	112	package-lock.json
+0	4	package.json
+65	0	tests/api.test.ts
+
+commit 13ada9fda3afb175668fe79ed18978a3885e417c
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-16T10:14:51+01:00
+
+    Fix contact colors
+
+5	7	src/pages/contact.astro
+
+commit c8fc3d06635283d3f63e7964211fd254649c12ce
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-16T09:56:32+01:00
+
+    Ajouté table password recovery
+
+9	2	sql/create.sql
+1	0	sql/drop.sql
+
+commit 335b8c70e32b50a8ac43b5dac5bb29bebe36d92c
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-16T09:51:33+01:00
+
+    Création du lien avec token
+
+5	3	src/pages/recover-password.astro
+
+commit 1720762efc3fc526939daa596d70264edb6f7b63
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-16T09:45:17+01:00
+
+    Added slick design
+
+1	1	src/components/Article.astro
+15	6	src/layouts/Layout.astro
+
+commit 6de7eefd806bdd655cafe571d03b72e1f049303a
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-16T08:40:24+01:00
+
+    Fix autoComplete text field issue with quotes
+
+6	9	src/components/AutoCompleteTextField.astro
+
+commit fd38093cc4fa7780bb65999568771989e39b0fe7
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-16T09:28:20+01:00
+
+    CreatePasswordRecoveryToken, SetPassword, TODO Check token valididty
+
+43	0	src/model/users/Account.ts
+
+commit fec325d62888b40c32005199da26046a7b404e8f
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-16T09:12:51+01:00
+
+    Page pour réinitialiser le mdp avec un code envoyé par mail
+
+1	1	src/pages/{forgot_password.astro => modify_password.astro}
+1	3	src/pages/recover-password.astro
+
+commit 4e04a7aff1873337ca50204b9efd7f42e61de8f1
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-16T09:01:24+01:00
+
+    Promise -- await Vérification mail
+
+5	5	src/pages/recover-password.astro
+
+commit 391c27467daae83d47d11ded3e94e008a9ffdd1d
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-16T08:52:47+01:00
+
+    Vérifier si l'utilisateur existe grâce a son mail
+
+3	7	src/pages/recover-password.astro
+
+commit 7b71e38428197b72611999bb732e6b4277486ae0
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-16T08:51:41+01:00
+
+    Méthode qui vérifie si l'utilisateur existe grâce au mail
+
+7	0	src/model/users/Account.ts
+
+commit 21eb1094f737f1ac34effcd6bd31b5fc39e2c5da
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-16T08:39:58+01:00
+
+    Verification mail subdomain exemple : etu.univ
+
+6	1	src/pages/register.astro
+
+commit 292299cb81daed3ea064facffaab8229e5f8f826
+Merge: dac72c2 81786dd
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-16T08:39:02+01:00
+
+    Merge branch 'master' of ssh://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit dac72c2e670a3f46ea195a89e005b824fe356615
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-16T08:37:26+01:00
+
+    Modification des conditions de verifications de mail (subdomain : etu)
+
+6	1	src/pages/recover-password.astro
+
+commit 81786dd978f38e4d5035615c99be4606153a9ff3
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-16T08:30:52+01:00
+
+    Ajouté variable de theme --theme-input
+
+0	2	src/components/AutoCompleteTextField.astro
+1	1	src/components/SearchBar.astro
+1	1	src/components/TextField.astro
+3	4	src/layouts/Layout.astro
+
+commit c7b2c6f79b152696dba87412c4c36a905a6af2a9
+Author: benaichm <mohammed.ben-aicha@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-16T05:09:35+01:00
+
+    Carrousel fonctionnel (article a ajouter)
+
+8	7	src/pages/index.astro
+
+commit f65e8352a342f8aa97c47c6e3f0304d9a7961982
+Merge: ca67075 49e5ee9
+Author: benaichm <mohammed.ben-aicha@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-16T04:48:46+01:00
+
+    Merge branch 'master' of ssh://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit ca670757038b90208db18b55e5d5e8408bb18f20
+Author: benaichm <mohammed.ben-aicha@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-16T04:45:48+01:00
+
+    Carrousel bientot disponible
+
+18	13	src/pages/index.astro
+
+commit 49e5ee9c04388cce1fe68ef6eaecaef8f1e2aadd
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-15T23:03:11+01:00
+
+    Envoie de mail OK Gérer exceptions en cours,add replikas mail to SendGrid API !
+
+5	3	src/pages/recover-password.astro
+
+commit e4611419e2696c7a604cb0495e5df187fdf6ce31
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-15T22:43:49+01:00
+
+    read properties getEmail
+
+4	3	src/pages/recover-password.astro
+
+commit b5bc5ece26f2585ac60e2f60cd7356674a98910a
+Merge: 701dd82 6489ea5
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-15T22:31:32+01:00
+
+    Merge branch 'master' of ssh://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit 6489ea5876006b300688eab40698ee84af618e48
+Merge: aa0b1cf e9e4316
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-15T23:23:37+01:00
+
+    Merge branch 'master' of gricad-gitlab.univ-grenoble-alpes.fr:iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit aa0b1cfb3809dcbf12fddb5bd6a80c76113f1afb
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-15T23:21:43+01:00
+
+    Ajout de trigger dans create.sql pour gérer la fin d'une enchère et le paiement d'un article.
+
+31	0	sql/create.sql
+
+commit 701dd825edd8648fb3cb57a5ce40238fa6452748
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-15T22:30:42+01:00
+
+    Ligne 47 try catch non executé ?
+
+12	3	src/pages/recover-password.astro
+
+commit 9140aae716b5d13774a05336535c14c1a9410ec7
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-15T22:16:15+01:00
+
+    recover-password.astro
+
+1	1	src/pages/recover-password.astro
+
+commit e9e431625aa9fa3729282d3e9e09c0e969c9c9db
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-15T21:56:47+01:00
+
+    Export getAccountBySession et Modification de recover-password.astro
+
+1	1	src/model/Utilitaire.ts
+45	5	src/pages/recover-password.astro
+
+commit 34cc32579f63019946ed8f5d66fb6111c51f9b53
+Merge: ad91bf2 d4fcac0
+Author: Matis Basso <Matis.Bassom@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-15T20:30:22+01:00
+
+    Merge branch 'master' of ssh://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit ad91bf27f144579db23bcb659204f5d1806466ec
+Author: Matis Basso <Matis.Bassom@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-15T20:29:52+01:00
+
+    Changes filter-page + Article.ts
+
+41	0	src/model/Article.ts
+73	12	src/pages/filter-page.astro
+
+commit d4fcac0deabb4edc768fa764e0667d3cca36afea
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-15T20:15:45+01:00
+
+    Modification du style des boutons sur la NavBars
+
+49	19	src/components/Navbar.astro
+
+commit 3c1e63fab67ce15244833b12093992e88cd9bc26
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-15T16:39:22+01:00
+
+    Rollback auto delete des images car fait crasher serveur
+
+0	14	src/model/Database.ts
+
+commit 46fa0b4ae1c91d60d470df240b4278bdbfccbbfb
+Merge: 544d9c7 db832f4
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-15T17:28:48+01:00
+
+    Merge branch 'master' of gricad-gitlab.univ-grenoble-alpes.fr:iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit 544d9c7d7fc1f50983ae2bb19cf949a2148bf19f
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-15T17:28:11+01:00
+
+    Ajout de la récupération des notifications dans la base de donnée et de leur affichage
+
+25	2	src/components/Notif.astro
+
+commit 2e286c360fee2a067124152a03f88bcac1799eca
+Merge: e855c19 4f5962b
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-15T16:54:19+01:00
+
+    Merge branch 'master' of gricad-gitlab.univ-grenoble-alpes.fr:iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit e855c19b8bb8b957101886b2a119a76c5daf73db
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-15T16:53:50+01:00
+
+    Ajout du système de notification
+
+25	0	src/components/Notif.astro
+0	2	src/components/Notifications.astro
+52	0	src/model/Notification.ts
+4	0	src/pages/dashboard/settings.astro
+4	0	src/pages/settings.astro
+
+commit db832f4bca27e4da3885e549eb217818f00bf8d4
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-15T16:25:34+01:00
+
+    Delete uploaded images when removed from DB
+
+16	0	src/model/Database.ts
+
+commit 020913bb8a1a99da8bc956fe225bc281b1d2d1c0
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-15T16:25:13+01:00
+
+    Ajouté insert de test dans notification
+
+1	0	sql/insert.sql
+
+commit e68ced3e1666b40403b3b9fa07b237960e62147a
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-15T16:10:52+01:00
+
+    Mis image de fallback pour api d'image
+
+2	4	src/pages/api/image/[name].ts
+
+commit 2132589a625435500431943a98abbcbe0e1fab85
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-15T16:07:41+01:00
+
+    Fix client side js countdown display
+
+12	2	src/pages/auction/[id].astro
+
+commit 69876b391e3074a3c8f723bfe03e6a6bf2d7f666
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-15T16:03:10+01:00
+
+    Ajouté headers de Cache-Control pour les images
+
+1	0	src/pages/api/image/[name].ts
+
+commit e6ec1a9521f80112288fd71d6f6cf6a4d4e79dce
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-15T15:47:10+01:00
+
+    Fix null redirect
+
+1	1	src/pages/register.astro
+
+commit 25d692299b550e9976bebf21c99e1b49232cf07e
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-15T15:39:50+01:00
+
+    Fix sql drop & permissions
+
+2	1	sql/create.sql
+1	0	sql/drop.sql
+
+commit eb822a85cc018a5b788bdfe1488e05735ec2e1a3
+Merge: e776a1d 2e286c3
+Author: Ahmed Khairi <ahmed.khairi@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-15T16:07:18+01:00
+
+    Merge branch 'master' of ssh://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit e776a1d444952ee0240a455d668c8894e5ff3c1a
+Author: Ahmed Khairi <ahmed.khairi@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-15T16:06:35+01:00
+
+    insertion des href mes articles selon si le user est connécté ou pas
+
+18	1	src/components/Navbar.astro
+
+commit 56d281a3ba1872d435a4bd45b7075cb2bcc52322
+Merge: 8dd25e6 fcb0d91
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-15T15:58:32+01:00
+
+    Merge branch 'master' of gricad-gitlab.univ-grenoble-alpes.fr:iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit 8dd25e6805413d4b6c6d73a31dd4a0aa012215de
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-15T15:58:09+01:00
+
+    Modification bdd
+
+4	10	sql/create.sql
+2	0	src/components/Notifications.astro
+3	0	src/model/Notification.ts
+
+commit 7bb8c4dd7b94e841006dd3e6e9bc008b63b9c003
+Merge: 57beabb 02de60b
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-15T15:43:45+01:00
+
+    Merge branch 'master' of gricad-gitlab.univ-grenoble-alpes.fr:iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit 57beabb3fd15ac613ac1d5553055af5d2cd059bd
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-15T15:43:21+01:00
+
+    Modification de la structure de la bdd
+
+13	0	sql/create.sql
+0	0	src/components/Notifications.astro
+
+commit 4f5962bff067638e3def2e7bb90640fa12d0bbd2
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-15T15:36:58+01:00
+
+    Upload d'image completement fonctionnel
+
+2	1	.gitignore
+6	3	src/model/Article.ts
+3	0	src/model/Config.ts
+25	22	src/model/Utilitaire.ts
+27	0	src/pages/api/image/[name].ts
+2	2	src/pages/dashboard/create.astro
+
+commit 63a7d8c338ebb5a57a8d41f7f8e8f752c5bd6f17
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-15T15:01:41+01:00
+
+    Fix oublis copy paste
+
+1	1	src/pages/api/article/[id]/info.ts
+
+commit 94a6caaba6362e039983cec9df763c9fea9fa3e1
+Merge: 6f5c95e ab00759
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-15T15:05:59+01:00
+
+    Merge branch 'master' of gricad-gitlab.univ-grenoble-alpes.fr:iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit 6f5c95edcfb6aedf4694510e8b02e6c902d3fb42
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-15T15:05:43+01:00
+
+    Modifications de style sur le footer
+
+41	11	src/components/Footer.astro
+
+commit b2b4efe36edfb489c9ead1ffdec141dbd409b153
+Merge: 7e43d57 542de5c
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-15T14:51:37+01:00
+
+    Merge branch 'master' of gricad-gitlab.univ-grenoble-alpes.fr:iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit fcb0d912d7fe1e1ab816523fffb9d3803999fee7
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-15T14:46:36+01:00
+
+    Erreur de config custom pour meilleure copréhension
+
+14	8	src/model/Config.ts
+
+commit 6bf4ab747d6b08afc1f77eb6abd9d811e1297fa7
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-15T14:40:10+01:00
+
+    Résolu probleme d'upload avec chatGPT qui carry
+
+26	13	src/model/Utilitaire.ts
+
+commit 02de60bb0ef2e19ba8e8bf8cd8b9a68eac667d42
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-15T14:16:56+01:00
+
+    Fix gros problème que les dates de l'article etaient au mauvaix format.
+
+2	2	src/model/Article.ts
+1	2	src/pages/auction/[id].astro
+
+commit c49964db89f31c18bd3aa14c9824db4caf791abd
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-15T14:11:42+01:00
+
+    Fix date update
+
+6	6	src/pages/auction/[id].astro
+
+commit 69bca67136d81586a30c02147b396ee8214efae2
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-15T14:07:10+01:00
+
+    Fix link color
+
+2	2	src/pages/auction/[id].astro
+
+commit ab00759315a6fe62a27fbc06bddc08119ea31eaf
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-15T14:02:40+01:00
+
+    Ajouté redirection dans parametres URL
+
+2	2	src/pages/auction/[id].astro
+4	2	src/pages/login.astro
+11	6	src/pages/register.astro
+
+commit dd6b278bee6175279cf7ca7ec09fcd50c9b5e169
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-15T13:47:48+01:00
+
+    La page d'auction est functionnelle
+
+3	2	src/pages/api/article/[id]/info.ts
+95	30	src/pages/auction/[id].astro
+
+commit dad5f28b99474f35717baea851f2d9b3a1d5fb18
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-15T13:11:22+01:00
+
+    Added missing file from previous commit
+
+3	6	public/src/like.js
+
+commit 5b230434197dd3a575228383162e15101b1a3a21
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-15T13:04:31+01:00
+
+    article API routing refactor
+
+27	0	src/pages/api/article/[id]/info.ts
+66	0	src/pages/api/article/[id]/like.ts
+0	31	src/pages/api/article/info.ts
+0	33	src/pages/api/article/like.ts
+6	6	src/pages/auction/[id].astro
+
+commit a2031de8f96bbb3a81592495ceac0f5a8e54b1c6
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-15T12:29:21+01:00
+
+    More precise JSDoc
+
+1	0	src/model/users/Buyer.ts
+
+commit 71fbf944d4248474748e1f1d0482ac9b26059569
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-15T11:53:58+01:00
+
+    Plus de dérif quand auction et MAJ date coté client fix
+
+35	8	src/pages/auction/[id].astro
+
+commit 542de5c3f400797274694bc692748923acebdc5f
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-15T11:38:18+01:00
+
+    Avancé la page principale et créé ArtcileContainer layout
+
+37	0	src/layouts/ArticleContainer.astro
+97	117	src/pages/index.astro
+
+commit 7e43d57e085a42e350a3b01de6b206ef40263c7e
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-15T00:54:39+01:00
+
+    Ajout des requêtes sql pour afficher les articles possédés et les articles non payés d'un acheteur et les requêtes sql pour les ventes en cour et à venir d'une entreprise
+
+2	2	src/components/basketPages/LikedPage.astro
+5	3	src/components/basketPages/NotPayedPage.astro
+5	3	src/components/basketPages/PossessedPage.astro
+10	1	src/components/dashboard/ComingSoon.astro
+10	1	src/components/dashboard/Ongoing.astro
+5	1	src/model/Article.ts
+20	0	src/model/users/Buyer.ts
+25	0	src/model/users/Company.ts
+2	2	src/pages/dashboard/index.astro
+
+commit 5b99671849f9bee92e5e460e3a82f6466db3be7d
+Merge: 0367cdc 0b8a45f
+Author: Ahmed Khairi <ahmed.khairi@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-15T00:15:01+01:00
+
+    Merge branch 'master' of ssh://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit 0367cdc252e9352be0a99420b3decb97bab3d92c
+Author: Ahmed Khairi <ahmed.khairi@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-15T00:14:38+01:00
+
+    modification de la navbar
+
+3	2	src/components/Navbar.astro
+2	1	src/layouts/Layout.astro
+1	1	src/pages/index.astro
+
+commit 0b8a45f1fc2ee3abed4588dc3ea8b520ba872953
+Merge: 06443ba cd40bfa
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-14T21:10:41+01:00
+
+    Merge branch 'master' of gricad-gitlab.univ-grenoble-alpes.fr:iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit 06443ba9c149ff23037fb6d46ac78294703f74e7
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-14T21:10:17+01:00
+
+    Modification du nom des pages de settings
+
+1	1	src/components/Navbar.astro
+0	0	src/pages/dashboard/{companySettings.astro => settings.astro}
+1	1	src/pages/settings.astro
+
+commit 52c077b8f10fb38e752e3e2d16d2b10a5b2af5b1
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-14T20:44:27+01:00
+
+    Ajout de la requête SQL pour avoir les articles les plus attendus
+
+4	10	src/model/Article.ts
+2	2	src/pages/index.astro
+
+commit 2ad269676c03a08759cbc70af1da964c590c5aff
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-14T20:28:08+01:00
+
+    Récupération de la page d'inscription qui avait le même code que la page de login
+
+118	84	src/pages/register.astro
+
+commit cd40bfa82b494d27e97d63557d5fd570b5cb548a
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-14T20:00:30+01:00
+
+    Bug fixing, upload tjrs pas fonctionnel sur serveur...
+
+7	4	src/components/UploadInput.astro
+13	13	src/model/Utilitaire.ts
+0	5	src/pages/dashboard/create.astro
+
+commit ba745009166f829bf230b94c07b42b3a507a33ba
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-13T23:08:45+01:00
+
+    More error handlers
+
+4	0	src/model/Utilitaire.ts
+0	9	src/pages/dashboard/create.astro
+
+commit 683cda5c5d58aae031cfec3829432490849cfe5c
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-13T23:06:13+01:00
+
+    Fix UploadInput delete button
+
+16	2	src/components/UploadInput.astro
+
+commit 9d9bffb531bc7d85a7d4d073fcfec86a59d317c3
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-14T19:54:02+01:00
+
+    Résolue un problème du commit préxédent
+
+1	1	src/pages/index.astro
+
+commit 4b6ab9715d9f6254f9ef08ee2ae38620db6e174b
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-14T19:51:26+01:00
+
+    Ajout de la page companySettings
+
+21	6	src/components/Navbar.astro
+20	0	src/model/Article.ts
+123	0	src/pages/dashboard/companySettings.astro
+3	2	src/pages/index.astro
+1	1	src/pages/settings.astro
+
+commit 17acb80b292aec8eb3450a1b5bd43ec5047a783a
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-14T19:02:06+01:00
+
+    Résolu problème de supprssion d'image dans UploadingInput.astro
+
+9	10	src/components/UploadInput.astro
+1	0	src/pages/dashboard/create.astro
+
+commit ffa73c75fdda9422effea578078dedf582bb3195
+Merge: bf4186a 99be49f
+Author: Ahmed Khairi <ahmed.khairi@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-14T17:20:12+01:00
+
+    Merge branch 'master' of ssh://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit 99be49fac20345769d1ca0e40e013f00a9f5a3fc
+Merge: 5641672 77d80b9
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-14T17:56:21+01:00
+
+    Merge branch 'master' of gricad-gitlab.univ-grenoble-alpes.fr:iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit 5641672b1ae53a7145b3d645e486197d25b69735
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-14T17:54:28+01:00
+
+    Modification de la structure des pages appelés dans basket et ajout du dashboard index qui référence les articles en cours de vente et à venir d'une entreprise (pas de backend)
+
+40	38	src/components/basketPages/LikedPage.astro
+44	80	src/components/basketPages/NotPayedPage.astro
+39	76	src/components/basketPages/PossessedPage.astro
+98	0	src/components/dashboard/ComingSoon.astro
+98	0	src/components/dashboard/Ongoing.astro
+8	0	src/pages/dashboard/create.astro
+31	0	src/pages/dashboard/index.astro
+
+commit bf4186a140cb28bbc797482c730632066240f4ed
+Author: Ahmed Khairi <ahmed.khairi@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-14T17:19:27+01:00
+
+    complétion du fil d'arianne avec du design
+
+106	28	src/components/Breadcrumb.astro
+3	2	src/layouts/Layout.astro
+
+commit 77d80b998a8871d6c0c6278507a38c1d8f8dac3b
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-13T22:50:21+01:00
+
+    Fix sweetAlert version and improved popups
+
+5	5	package-lock.json
+1	1	package.json
+5	1	src/pages/dashboard/create.astro
+
+commit 05eee09c02802afe643140917477fef4bcc5f35d
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-13T22:42:27+01:00
+
+    Rendu création d'article à nouveau fonctionnelle
+
+1	1	.gitignore
+106	5	package-lock.json
+3	1	package.json
+71	0	src/model/Utilitaire.ts
+21	22	src/pages/dashboard/create.astro
+
+commit 3c018fefbbeebef32926cf4cc68bd8e18d06abbd
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-13T22:18:38+01:00
+
+    Deleted uploaded images
+
+1	1	.gitignore
+-	-	public/img/article/uploaded/0bc6ef41-b629-409e-89a1-743bff3be0fe.jpg
+-	-	public/img/article/uploaded/7ca8b4d7-dad0-4df8-a0f4-ab40127f63c9.jpg
+-	-	public/img/article/uploaded/b88087f9-b81f-4b3a-b426-440203856959.jpg
+
+commit 75d71df24be6bac1c00d945062f4604132eeae7f
+Merge: a0598b7 63aa95b
+Author: Ahmed Khairi <ahmed.khairi@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-13T16:59:38+01:00
+
+    Merge branch 'master' of ssh://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit a0598b7e2ca722d88cb3ba23dec76789129b9262
+Author: Ahmed Khairi <ahmed.khairi@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-13T16:58:08+01:00
+
+    Creéation du fil d'arianne
+
+88	0	src/components/Breadcrumb.astro
+3	0	src/layouts/Layout.astro
+3	1	src/pages/aboutus.astro
+
+commit 63aa95bd1b9a1a0968d34e22ef3a6b1394947856
+Merge: 872173d 4aabfa2
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-13T16:30:07+01:00
+
+    Merge branch 'master' of ssh://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit 872173d89d8b8d39f51dfebb2c9b51b13d043adc
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-13T16:29:35+01:00
+
+    Création de la page recover-password.astro
+
+89	0	src/pages/recover-password.astro
+
+commit be98d4a74f270ebeb06f2b4e3f62fb361d988ca9
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-13T16:12:24+01:00
+
+    Création de l'article fonctionnelle, simplement un problème lors de la selection d'un film avec une single quote
+
+2	1	src/components/AutoCompleteTextField.astro
+1	0	src/layouts/Layout.astro
+44	47	src/pages/dashboard/create.astro
+
+commit 4aabfa26fdaa975c3645a4c6472bc302e09bbf7c
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-13T15:58:37+01:00
+
+    Now using Swal npm package
+
+10	0	package-lock.json
+1	0	package.json
+0	1	src/layouts/Layout.astro
+1	0	src/pages/dashboard/create.astro
+
+commit 7e344dd1689c09d11cbee07ca7ada93bbff36f0a
+Merge: e9a068a 42bd9e1
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-13T15:57:52+01:00
+
+    Merge branch 'master' of ssh://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit e9a068a6f0328fad355822bd0681778b05e3e487
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-13T15:57:20+01:00
+
+    Modification du nom de la page
+
+101	0	package-lock.json
+2	0	package.json
+84	118	src/pages/register.astro
+
+commit 42bd9e17c9b2804f621cbc76ed7a7cbb47b165ae
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-13T15:55:41+01:00
+
+    Fixed image uploading
+
+3	0	.gitignore
+6	1	src/components/UploadInput.astro
+1	1	src/pages/dashboard/create.astro
+
+commit 60d982f9aaf4366e1276995b01577fb878fb9713
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-13T15:15:13+01:00
+
+    Fix create bid table primary keys
+
+1	2	sql/create.sql
+
+commit c6dd180224ce9455d27c72e646c5cc6e89cd94b1
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-13T15:14:32+01:00
+
+    MAJ valeurs sur page auction
+
+51	0	src/model/Bids.ts
+31	0	src/pages/api/article/info.ts
+87	33	src/pages/auction/[id].astro
+255	260	src/pages/contact.astro
+2	0	src/pages/dashboard/create.astro
+
+commit b430937593bf7e8b653551e06cbb2f44efd2feec
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-13T14:42:19+01:00
+
+    Removed adult content fromTMDB search
+
+1	1	src/model/TMDB.ts
+
+commit f7ba8f8baee9d26f2d00f32ebdaddbefb5cf8dad
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-13T14:16:50+01:00
+
+    Changed API routes
+
+1	1	public/src/like.js
+2	2	src/pages/api/{ => article}/like.ts
+
+commit 03a411995637f06934e82ab850e36a95d4e93349
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-13T14:48:48+01:00
+
+    Modification create.astro
+
+2	5	src/components/AutoCompleteTextField.astro
+48	30	src/pages/dashboard/create.astro
+
+commit a09d006a95a0cf09e9c28001bcae557b247379b1
+Merge: 4ece889 e45c687
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-13T14:47:35+01:00
+
+    Merge branch 'master' of gricad-gitlab.univ-grenoble-alpes.fr:iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit 4ece889bca6ed5b9ae5daa7bdf6c4c83adfe74d1
+Merge: 7161023 9e7163f
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-13T13:44:52+01:00
+
+    Merge branch 'master' of gricad-gitlab.univ-grenoble-alpes.fr:iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit 7161023b9af33f765ed4602369b716a45fbe00f3
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-13T13:35:29+01:00
+
+    Modification sur la formulaire de création d'article
+
+1	1	src/components/AutoCompleteTextField.astro
+19	3	src/components/Drag&Drop.astro
+10	5	src/components/Navbar.astro
+4	1	src/components/TextField.astro
+97	62	src/pages/dashboard/create.astro
+
+commit e45c6878d775ecc929340fc04db17f41eba99c5c
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-12T22:50:02+01:00
+
+    Rendu création article fonctionnel
+
+10	1	package-lock.json
+2	1	package.json
+-	-	public/img/article/uploaded/0bc6ef41-b629-409e-89a1-743bff3be0fe.jpg
+-	-	public/img/article/uploaded/7ca8b4d7-dad0-4df8-a0f4-ab40127f63c9.jpg
+-	-	public/img/article/uploaded/b88087f9-b81f-4b3a-b426-440203856959.jpg
+1	1	sql/create.sql
+2	2	src/components/AutoCompleteTextField.astro
+17	1	src/model/Article.ts
+114	34	src/pages/dashboard/create.astro
+
+commit cec0691a2855948321a62b5c2dd1589c7a1a6ff1
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-12T21:44:41+01:00
+
+    Fix unhandled promise rejects
+
+4	4	src/components/Article.astro
+31	3	src/model/Utilitaire.ts
+2	4	src/pages/api/like.ts
+4	4	src/pages/basket.astro
+2	4	src/pages/settings.astro
+
+commit 9e7163f2c32d4cf9e6fdeb422ef0c29323e09d13
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-12T21:33:36+01:00
+
+    changé getBuyerBySession à getAccountBySession pour des cas d'utilisation plus larges
+
+4	4	src/components/Article.astro
+3	6	src/model/Utilitaire.ts
+4	2	src/pages/api/like.ts
+4	4	src/pages/basket.astro
+8	6	src/pages/settings.astro
+
+commit a052172d67941733b918a4742cc0df8233a1420c
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-12T20:11:07+01:00
+
+    Fixed UploadInput not loading all files
+
+20	11	src/components/UploadInput.astro
+
+commit 092312714ce93a02ba6c4d458a7c25323d03dacf
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-12T19:39:52+01:00
+
+    Renommé Drag&Drop à UploadInput
+
+0	0	src/components/{Drag&Drop.astro => UploadInput.astro}
+
+commit 3724b9be0e4f1a3064471da09fdfb06c7c4f0b81
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-12T19:06:37+01:00
+
+    Fix coeur affiché quand non dispo
+
+22	16	src/components/Article.astro
+
+commit 8e11cf38d6503866bb5b72686e2535d17ad3b4dd
+Merge: 340e3dc de00475
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-12T18:56:00+01:00
+
+    Merge branch 'master' of gricad-gitlab.univ-grenoble-alpes.fr:iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit 340e3dc8079d76a1fa06dafd23daa040d988e2bb
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-12T18:55:33+01:00
+
+    Modification du style pour like un article
+
+25	13	src/components/Article.astro
+
+commit 4434ffdea91c7ee89552d6688d3b53f55a58d42d
+Merge: 0240015 d36699d
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-12T18:40:57+01:00
+
+    Merge branch 'master' of gricad-gitlab.univ-grenoble-alpes.fr:iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit 024001534c4f2fddbbd31e3edac6ca8b002daf01
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-12T18:36:15+01:00
+
+    Modification de l'api de recherche search.ts, ajout d'un attribut limit dans TMDB.search, ajout d'un components de Drag&Drop pour les images utilisé dans create.astro et création du components AutoCompleteTextField qui utilise TextField et ajoute une feature d'auto-complétion pour la recherche d'un film
+
+187	0	src/components/AutoCompleteTextField.astro
+201	0	src/components/Drag&Drop.astro
+3	2	src/model/TMDB.ts
+2	5	src/pages/api/search.ts
+6	200	src/pages/dashboard/create.astro
+
+commit de0047537f7a54451d8bdcb891a4d80f38559909
+Merge: 5375287 4434ffd
+Author: benaichm <mohammed.ben-aicha@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-12T17:46:10+01:00
+
+    Merge branch 'master' of ssh://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit d36699d3664ea7b381fbb51898e9ddf96db83b06
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-12T17:36:30+01:00
+
+    Ajouté alt image pour lighthouse
+
+1	0	src/components/Article.astro
+
+commit 9bfa3faf3be2f187073dd3fa9713de7005846777
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-12T17:32:35+01:00
+
+    Ajouté test likes
+
+24	0	tests/buyer.test.ts
+
+commit 59b5bde60098a1632f1ec5ab6de0802f3b244b5b
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-12T17:31:32+01:00
+
+    Fait transaction sql pour création d'article
+
+13	8	src/model/Article.ts
+
+commit 53752873a98e34bb41ea52b50910d2a15a28a675
+Merge: 61881b5 c4338a2
+Author: benaichm <mohammed.ben-aicha@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-12T17:25:48+01:00
+
+    Merge branch 'master' of ssh://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit 61881b5eaca9fe35416537d95d31f9f74f727dd9
+Author: benaichm <mohammed.ben-aicha@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-12T17:22:59+01:00
+
+    carrousel
+
+97	17	src/pages/index.astro
+
+commit f3c6ec90b89091cc6e70205a425edd246647c29a
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-12T17:19:18+01:00
+
+    Edit contraints (ON DELETE CASCADE)
+
+6	6	sql/create.sql
+
+commit 5c599a8e5af1cefc60f1780a7e8f3de9560c327c
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-12T17:12:58+01:00
+
+    Enlevé html inutile
+
+0	4	src/pages/index.astro
+
+commit b8ff1c497bc492bea05aa2b02056d5cd942bf3fe
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-12T17:01:47+01:00
+
+    Rendu page likedpage fonctionnelle
+
+6	38	src/components/basketPages/LikedPage.astro
+3	2	src/components/basketPages/NotPayedPage.astro
+3	2	src/components/basketPages/PossessedPage.astro
+12	1	src/model/users/Buyer.ts
+13	3	src/pages/basket.astro
+
+commit c4338a217c6a348cda815c0b6d88cdfd65212319
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-12T16:42:17+01:00
+
+    Added hover effect
+
+4	0	src/components/Article.astro
+
+commit e6528f56b5835cba7b551275fef741d0fedd92b3
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-12T16:40:19+01:00
+
+    Fixed liked
+
+5	2	src/components/Article.astro
+
+commit e27c94e29c25d8c2bde6a28f63bd41fb53ccccc2
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-12T16:24:49+01:00
+
+    Added like mechanic to article component
+
+1	0	public/img/icons/heart.svg
+33	0	public/src/like.js
+58	28	src/components/Article.astro
+33	0	src/pages/api/like.ts
+
+commit 907a5874a073f2f674a0bf263bfc098b1e4e9ac0
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-12T16:24:32+01:00
+
+    Added like and unlike article methods
+
+31	0	src/model/users/Buyer.ts
+
+commit 1c867d4860603589249914714178c828d66c5c74
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-12T16:00:47+01:00
+
+    Ajouté isLikedBy
+
+12	0	src/model/Article.ts
+
+commit 1bfc32072d5101983c5a835ded5cd86b224fac55
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-12T14:54:12+01:00
+
+    added idle timeeout
+
+3	2	src/model/Database.ts
+
+commit d94ecca8c5b5289d8cbd5d29bf9a8c6e80a883f0
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-12T14:28:11+01:00
+
+    Ajouté style global pour filtre couleur svg
+
+7	4	src/components/Footer.astro
+10	0	src/layouts/Layout.astro
+
+commit f718e0b850e74969afa5b720cf86fd8f0fd7cd7f
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-12T14:27:34+01:00
+
+    fix jsdoc
+
+1	1	src/model/Article.ts
+10	1	src/model/Utilitaire.ts
+5	5	src/model/users/Account.ts
+6	6	src/model/users/Buyer.ts
+6	6	src/model/users/Company.ts
+
+commit 780781f17b761adf2e4188fd4d47b3afe0bc78f3
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-12T15:51:04+01:00
+
+    Enlever les erreurs d'index.astro
+
+1	14	src/pages/index.astro
+
+commit 9a245a1864e004473f14e5ab83444fc258c42378
+Merge: eb42230 05f0201
+Author: benaichm <mohammed.ben-aicha@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-12T13:31:26+01:00
+
+    Merge branch 'master' of ssh://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit eb422305b6b93a3046abac668591fe3846a02030
+Author: benaichm <mohammed.ben-aicha@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-12T13:24:04+01:00
+
+    Carrousel - en cours
+
+13	0	src/components/CarrouselComponent.astro
+22	0	src/layouts/LayoutCarrousel.astro
+100	42	src/pages/index.astro
+
+commit 05f0201c900db567135d6842ee7144ee32faa00f
+Merge: 7ca0394 186f31d
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-12T01:14:54+01:00
+
+    Merge branch 'master' of gricad-gitlab.univ-grenoble-alpes.fr:iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit 7ca0394f06dec1d247c88e3af3ce2be5b12a6bc7
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-12T01:11:50+01:00
+
+    Changement sur la page de créatio d'article : drag&drop image, verification des inputs à revoir, et modification du html/css
+
+3	2	src/components/Button.astro
+5	1	src/components/TextField.astro
+483	195	src/pages/dashboard/create.astro
+
+commit 186f31df4304da7642dcf745c3017f72e8793222
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-11T22:58:43+01:00
+
+    rendu le site plus bo
+
+1	1	src/components/Article.astro
+0	1	src/components/basketPages/LikedPage.astro
+0	3	src/components/basketPages/NotPayedPage.astro
+1	3	src/components/basketPages/PossessedPage.astro
+6	3	src/pages/register.astro
+7	2	src/pages/search.astro
+
+commit 9b35243f65813a377e0a567fb0f43efa40a9ac5d
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-11T14:51:10+01:00
+
+    Essayé de rendre le site beau
+
+0	0	src/pages/{recover-password.astro => forgot_password.astro}
+22	16	src/pages/login.astro
+
+commit 6f5653c6a0bbd52f45d6fb6a15794803f8ab1b64
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-11T19:29:34+01:00
+
+    Modification du title create.astro
+
+1	1	src/pages/dashboard/create.astro
+
+commit 55f1d4672ae8ba5f53430a97fbde031a68ebca29
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-11T19:26:44+01:00
+
+    Modification pay.astro (arrow-script)
+
+43	28	src/pages/pay.astro
+
+commit cee1be79c814505034283073a81b69fc186efc04
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-11T14:37:32+01:00
+
+    Rendu le querystring nécessaire coté client
+
+1	0	src/components/SearchBar.astro
+
+commit 5345af85a659814afd05b46846dd271b2044e5d9
+Merge: 50d7a70 8fb239c
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-11T14:37:00+01:00
+
+    Merge branch 'master' of ssh://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit 8fb239c83e3890f4b38410dc7aac7675169c64d5
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-11T14:36:39+01:00
+
+    RIP bastien scapin
+
+3	1	src/pages/login.astro
+1	1	src/pages/register.astro
+
+commit 50d7a708ac3bf17c1441cd94c8f5bb40ea34b0f0
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-11T14:36:11+01:00
+
+    Modification de settings.astro
+
+1	1	src/pages/pay.astro
+5	0	src/pages/settings.astro
+
+commit b554fb1001ffe7dcbf9ffd1d330ce7f551acd877
+Merge: 7c4956e 7624a1b
+Author: Matis Basso <Matis.Bassom@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-11T14:36:00+01:00
+
+    Merge branch 'master' of ssh://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit 7c4956e9a5c671e37ec599087e8f4bd7338cdcf6
+Author: Matis Basso <Matis.Bassom@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-11T14:34:34+01:00
+
+    Createcgu filter-page privacy_policy + Changes register footer
+
+1	1	src/components/Footer.astro
+171	0	src/pages/cgu.astro
+67	0	src/pages/filter-page.astro
+229	0	src/pages/privacy_policy.astro
+7	1	src/pages/register.astro
+
+commit 7624a1b9f9aa3da3a0bb11dba5c063053b7effea
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-11T14:22:03+01:00
+
+    Ajouté erreur plu spécifique à la page d'auction
+
+3	1	.vscode/settings.json
+6	2	src/pages/auction/[id].astro
+30	30	tests-playwright/demo-todo-app.spec.ts.example
+
+commit d38fbc616788e81f12f00d8a3024390217c10ce9
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-11T14:17:05+01:00
+
+    Ajouté extension bien pratique
+
+2	1	.vscode/extensions.json
+
+commit 47a0c8f1df55309d56de95d844ac51fb8bd84947
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-11T14:11:31+01:00
+
+    Ajouté de la doc dans le modele
+
+55	1	src/model/Article.ts
+6	0	src/model/TMDB.ts
+5	0	src/model/Utilitaire.ts
+182	178	src/model/users/Account.ts
+90	64	src/model/users/Buyer.ts
+84	57	src/model/users/Company.ts
+21	24	src/pages/api/search.ts
+1	1	src/pages/auction/[id].astro
+
+commit 1a424f7da168e5e497d9407cc6546e54f255d42a
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-11T13:32:16+01:00
+
+    fixed edge cases
+
+7	2	src/pages/settings.astro
+
+commit f4fbecb55c255956635134c40f848376dce0153e
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-11T13:23:04+01:00
+
+    Verification d'erreur plus précise
+
+2	0	src/pages/settings.astro
+
+commit 0cb6a3bb6345630dd013fa603178331a69f44147
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-11T13:20:27+01:00
+
+    Rendu page settings nécessitant auth
+
+29	6	src/model/Utilitaire.ts
+13	4	src/pages/settings.astro
+
+commit 4a63586e6be19df1144e87b70d2171f76aaca3fe
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-11T10:16:15+01:00
+
+    Fixed page links border style
+
+4	2	src/pages/search.astro
+
+commit 827bd5e8eae583f902aa83f5a3aaed2d44ea199e
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-11T14:13:00+01:00
+
+    Modification d'un texte dans register
+
+1	1	src/pages/register.astro
+
+commit 443f1f69721a4a13f8f59c60e8a3a4b29a9eedf8
+Author: Ahmed Khairi <ahmed.khairi@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-11T11:41:45+01:00
+
+    merge package.json
+
+0	10011	package-lock.json
+
+commit 10c6084492c36e3f32743273c9fdb608b97ca0a9
+Author: Ahmed Khairi <ahmed.khairi@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-11T11:40:47+01:00
+
+    Merge package.json
+
+0	33	package.json
+
+commit c0344ddb5cdeda987020e6d271d547c27b2a127b
+Merge: c82ca7f 856dcef
+Author: Ahmed Khairi <ahmed.khairi@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-11T11:32:20+01:00
+
+    Merge branch 'master' of ssh://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit c82ca7fbb17e2f444e7dc2d79e498ae044c23a16
+Author: Ahmed Khairi <ahmed.khairi@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-11T11:30:07+01:00
+
+    Configuration d'envoie de mail grace au formulaire de contact
+
+19	0	package-lock.json
+2	0	package.json
+284	231	src/pages/contact.astro
+
+commit 856dcefa82908ab4502c27207ed991b9201b78ca
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-11T09:59:26+01:00
+
+    Rendu le susteme de pages dans la recherche fonctionnel
+
+59	16	src/pages/search.astro
+
+commit c275d84cd70bb96ab643662a18570eb6771cdcf2
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-11T09:58:55+01:00
+
+    Ajouté méthodes et rendu plus clean le modele Article
+
+45	68	src/model/Article.ts
+
+commit 74cb3b30dca9d687f05b6bf0b7692489692e2ce3
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-11T08:39:46+01:00
+
+    rendu le component Article plus performant
+
+3	3	src/components/Article.astro
+1	1	src/pages/index.astro
+1	1	src/pages/search.astro
+
+commit 1a88d56d499d61ae15151e33f1f184928c743abe
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-11T09:45:22+01:00
+
+    Changement propriétés buton (border, color, filter, cursor)
+
+7	0	src/pages/dashboard/create.astro
+
+commit 6291ce2a6b8342e1bca1309c8c6d3ece2b9736a1
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-11T09:42:34+01:00
+
+    Modification bouton (border, color, filter, cursor)
+
+6	0	src/pages/pay.astro
+
+commit a01a8a7fea4b4f9673248c9a3118f97a6520c26f
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-11T09:28:51+01:00
+
+    Affinement de la page pay.astro
+
+37	4	src/pages/pay.astro
+
+commit d30b5eb1de5ed9d962979043a441367fe36d1608
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-11T09:04:12+01:00
+
+    Modification de Pay.astro et changement de couleurs
+
+42	2	src/pages/pay.astro
+
+commit e38a99374860ac48ce596ba76ae4265a702c5d0a
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-11T08:48:06+01:00
+
+    Amélioration de la page pay.astro
+
+31	1	src/pages/pay.astro
+
+commit 7dc59e795d382fc782961df47768f4b7a76801aa
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-11T08:32:18+01:00
+
+    Ajouté la logique backend a la page principale
+
+4	56	src/pages/index.astro
+
+commit 195b27622e08d448e6962d11f3ff5e8ad8d50ac2
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-11T08:31:20+01:00
+
+    Ajouté parametres a la méthode mostBids
+
+4	2	src/model/Article.ts
+
+commit bcb3b086c9b2aa0f73a824952fb1c57656717412
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-10T22:32:52+01:00
+
+    Ajouté poster à la page d'auction
+
+1	4	src/pages/auction/[id].astro
+
+commit c740956e715e3b2fbc0a3cffd7fc3ff4ecf91b63
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-10T22:30:58+01:00
+
+    Rendu le component Article défini par son ID dans la db et il va chercher des poster de fallback sur TMBD si il n'a pas n'images
+
+14	7	src/components/Article.astro
+0	1	src/pages/auction/[id].astro
+1	15	src/pages/search.astro
+
+commit 802fe82ef61377e0211ac0f5d819d9fffc76ea6d
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-10T22:30:38+01:00
+
+    Mit les bons id TMDB dans les insert de test
+
+64	64	sql/insert.sql
+
+commit cbfc39e59f32750b0025729c9169fb99ebf33e4e
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-10T22:29:26+01:00
+
+    Ajouté méthode pour récuperer un article factice en cas d'article non trouvé
+
+16	0	src/model/Article.ts
+
+commit 488cd37704edd901bffd0ef54a6d8c5240c4b4bb
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-10T22:22:12+01:00
+
+    Ajouté options de taille d'image pour le poster
+
+12	2	src/model/TMDB.ts
+
+commit c635610480ca8ff619bb61c84f104132938c7d43
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-10T22:21:15+01:00
+
+    Fix oublis des nom de proprietes sql
+
+15	3	src/model/Article.ts
+
+commit 88261e74296c86399b385270a4251e701c3caca2
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-10T21:26:09+01:00
+
+    Tweaks dans la requete de recherche d'article
+
+3	3	src/model/Article.ts
+0	2	tests/article.test.ts
+
+commit fb817e22bf8ba66c44aace5a0fdb131970245f4d
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-10T21:12:32+01:00
+
+    Ajouté le nom du film d'un article comme critere de recherche
+
+183	178	src/model/Article.ts
+9	4	tests/article.test.ts
+
+commit b8217578e6e8ce993885c6470dee687b36eebbd6
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-10T21:10:11+01:00
+
+    Ajouté methode de recherche à l'API TMDB et rajouté les tests qui vont avec
+
+11	0	src/model/TMDB.ts
+6	0	tests/tmdb.test.ts
+
+commit ca67683725ae48a157f2f79e748958de31dbecf5
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-10T21:02:26+01:00
+
+    Rajouté des tests en conséquence
+
+6	2	tests/tmdb.test.ts
+
+commit 80e1752c070ae8f00694b0f44e89f7546ea152ed
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-10T20:59:34+01:00
+
+    Ajouté erreur TMDB si film non trouvé
+
+17	6	src/model/TMDB.ts
+
+commit 5d6769d8e07d616fa96de4a1d3ebfc70e8aea626
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-10T20:45:27+01:00
+
+    Encore fix oubli
+
+1	1	sql/create.sql
+
+commit 3295e2ed000f7e86665afa590cb164a26965c0e0
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-10T20:44:08+01:00
+
+    Fix typo/oubli
+
+1	1	sql/insert.sql
+
+commit 1553477bc93e90a623674b2e1db8bf8d5665637d
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-10T20:42:01+01:00
+
+    MAJ create pour des nom de proprétés plus consistants
+
+2	2	sql/create.sql
+
+commit b4e2a1772964b414c1f60e9b6461ab636b554705
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-10T20:39:46+01:00
+
+    Ajouté plus de valeurs de test pour table film
+
+64	39	sql/insert.sql
+
+commit ce911f3f833e9d6ddf62322ccdddc92f77bba0f7
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-10T19:06:10+01:00
+
+    changé variables theme et ajouté un theme en plus
+
+1	1	src/components/Button.astro
+1	1	src/components/Logo.astro
+1	1	src/components/Navbar.astro
+36	18	src/layouts/Layout.astro
+1	1	src/pages/auction/[id].astro
+3	3	src/pages/dashboard/create.astro
+1	1	src/pages/pay.astro
+1	1	src/pages/search.astro
+1	1	src/pages/settings.astro
+
+commit 17fe64ec8dbcad7076d9fc2c6c2ecd09a67b9325
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-10T18:51:33+01:00
+
+    Ajouté un theme de couleur global
+
+1	4	src/components/AboutUs.astro
+1	2	src/components/Article.astro
+3	3	src/components/Button.astro
+2	4	src/components/Footer.astro
+4	9	src/components/Navbar.astro
+1	1	src/components/SearchBar.astro
+1	1	src/components/UserSetting.astro
+2	2	src/components/basketPages/LikedPage.astro
+2	2	src/components/basketPages/NotPayedPage.astro
+2	2	src/components/basketPages/PossessedPage.astro
+13	1	src/layouts/Layout.astro
+2	9	src/pages/auction/[id].astro
+1	2	src/pages/contact.astro
+4	4	src/pages/dashboard/create.astro
+0	1	src/pages/index.astro
+3	8	src/pages/login.astro
+4	10	src/pages/pay.astro
+1	2	src/pages/recover-password.astro
+1	5	src/pages/register.astro
+1	4	src/pages/report.astro
+3	7	src/pages/search.astro
+2	2	src/pages/settings.astro
+
+commit 9c76a2a134afae41ce90485ef76778629ed1c7d8
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-10T18:42:07+01:00
+
+    Fixed component missing property
+
+9	1	src/pages/index.astro
+
+commit 154eecff2ddb74907794d9191459adcd7fa4f0a2
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-10T18:08:34+01:00
+
+    Modifié README
+
+36	35	README.md
+
+commit 04c71583a1c4dd75ee51fafb3caccbe9761631cc
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-10T17:52:10+01:00
+
+    Added prettier script and set tab space to tab
+
+5	5	.prettierrc.json
+0	1	README.md
+5	5	astro.config.mjs
+3	3	jest.config.ts
+10008	10008	package-lock.json
+30	29	package.json
+12	12	playwright.config.ts
+6	9	src/components/AboutUs.astro
+49	49	src/components/Article.astro
+103	103	src/components/Footer.astro
+11	9	src/components/Navbar.astro
+44	44	src/components/SearchBar.astro
+20	20	src/components/TextField.astro
+12	12	src/components/UserSetting.astro
+125	130	src/components/basketPages/LikedPage.astro
+134	139	src/components/basketPages/NotPayedPage.astro
+130	130	src/components/basketPages/PossessedPage.astro
+2	2	src/layouts/Layout.astro
+2	2	src/pages/aboutus.astro
+13	11	src/pages/action/disconnect.astro
+147	147	src/pages/auction/[id].astro
+9	9	src/pages/basket.astro
+218	218	src/pages/contact.astro
+42	14	src/pages/dashboard/create.astro
+83	83	src/pages/index.astro
+150	150	src/pages/login.astro
+109	109	src/pages/pay.astro
+22	22	src/pages/recover-password.astro
+166	166	src/pages/register.astro
+52	53	src/pages/report.astro
+86	86	src/pages/search.astro
+6	6	src/pages/settings.astro
+11	11	tests-playwright/example.spec.ts
+53	51	tests-playwright/register.spec.ts
+42	42	tests/article.test.ts
+19	14	tests/buyer.test.ts
+2	2	tests/database.test.ts
+4	4	tests/tmdb.test.ts
+
+commit ae1f8183de3a79b2ff0823f5bfd890c65a5cb21d
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-10T17:42:46+01:00
+
+    Rendu la page d'auction fonctionnelle
+
+2	2	src/components/Article.astro
+0	157	src/pages/auction.astro
+178	0	src/pages/auction/[id].astro
+49	47	tests/article.test.ts
+
+commit b5856a381cd8ee57b4535205cf8c35f51bb471b5
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-10T17:38:45+01:00
+
+    MAJ Article pour le sea (c_id)
+
+12	2	src/model/Article.ts
+
+commit 235926bfeaab19399f0a49dc57ddcfd9a8ac9648
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-10T17:35:09+01:00
+
+    Enlevé les dates passées des articles de tests
+
+16	16	sql/insert.sql
+
+commit 8bb85170bc1d58b31c27469b0c9a98c04f4d3cb3
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-10T17:33:27+01:00
+
+    Fix des erreurs dans le sql
+
+1	1	sql/drop.sql
+15	1	sql/insert.sql
+
+commit d00b2a40c7add3d0da18a21ca3f240ef560c76e0
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-10T17:24:59+01:00
+
+    Fix utilisation d'un mauvais id
+
+3	1	src/model/users/Account.ts
+
+commit ea63f7f9c5b40418dec829cef71618045a870757
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-10T17:21:55+01:00
+
+    Simplified and optimised account codebase
+
+179	156	src/model/users/Account.ts
+68	71	src/model/users/Buyer.ts
+61	59	src/model/users/Company.ts
+
+commit 9f001284a30f1def099038f960afd6bdb74c4216
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-10T12:56:11+01:00
+
+    Modification du style de la page login est recover-password
+
+159	141	src/pages/login.astro
+21	14	src/pages/recover-password.astro
+
+commit d9c2f9a2de8b5b20cacc45ab78291f34ebac04b5
+Merge: f734e8c abccfbc
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-10T12:34:06+01:00
+
+    Merge branch 'master' of gricad-gitlab.univ-grenoble-alpes.fr:iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit f734e8c0601e024cb109b3c9a140cb540a5cfcf4
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-10T12:29:18+01:00
+
+    Ajout des pages pour les articles utilisateurs
+
+144	0	src/components/basketPages/LikedPage.astro
+153	0	src/components/basketPages/NotPayedPage.astro
+144	0	src/components/basketPages/PossessedPage.astro
+17	128	src/pages/basket.astro
+
+commit abccfbc8c3feba0c2a19a2f84a8a8dd985282e60
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-10T11:15:46+01:00
+
+    Fix aspect ratio des images dans Article
+
+2	1	src/components/Article.astro
+
+commit bcce6cf8fed5a1dd33bcdf332885673152ed34e2
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-10T11:14:31+01:00
+
+    MAJ les inserts
+
+7	7	sql/create.sql
+
+commit f359896f0977d97be72e2b8e37185a807eb79b10
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-10T11:13:59+01:00
+
+    Maj et fix erreur syntaxe
+
+1	1	sql/drop.sql
+40	38	sql/insert.sql
+
+commit 833440a93533041fdb0b019b4e5bd735044304dd
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-10T11:08:53+01:00
+
+    MAJ premissions pour SEA
+
+1	0	sql/create.sql
+
+commit 896daba8ffe1b62806ab68dc3e9d97199e8a7d8c
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-10T11:07:50+01:00
+
+    MAJ drop pour SEA
+
+1	0	sql/drop.sql
+
+commit 51233022a95a688974155390c6bfd4b6c0c8a161
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-10T11:07:11+01:00
+
+    MAJ create pour SEA
+
+6	1	sql/create.sql
+
+commit 2870b3c37783cc2acd49de9eb1ee00bd09e4511d
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-10T10:55:31+01:00
+
+    La page de recherche marche
+
+-	-	public/img/article/placeholder.jpg
+49	44	src/components/Article.astro
+24	24	src/pages/api/search.ts
+93	129	src/pages/search.astro
+
+commit 090ec8ef0cdecafb05942a4b003d02a83ae395ca
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-10T10:55:27+01:00
+
+    Remis le script qui met la valeur de la recherche à la searchbar
+
+46	35	src/components/SearchBar.astro
+
+commit 204af5362fe4882e308413477129f6d1f391e3fb
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-10T10:54:38+01:00
+
+    Fixed img_paths being undefined
+
+165	162	src/model/Article.ts
+
+commit 97129102bb11ed502dcac3df7636cbe69726fd5b
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-10T10:19:45+01:00
+
+    Ajouté semicolos a fin de ligne
+
+1	1	.prettierrc.json
+
+commit 456a0fe1e96c9531b678739848d36bf973f3fc2a
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-10T10:18:55+01:00
+
+    Ajouté config prettier
+
+6	0	.prettierrc.json
+
+commit 356994872f4f286d6cd27a69925914c0257f974e
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-10T10:16:10+01:00
+
+    Rendu les valeurs par défaut vraiment par défaut
+
+1	1	src/model/Article.ts
+0	2	src/pages/api/search.ts
+
+commit 9b2f4c0ec8b9a2c02adefe55bca6ae839e16e268
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-10T10:11:04+01:00
+
+    Ajouté insert de test dans la table article
+
+47	2	sql/insert.sql
+35	41	src/components/SearchBar.astro
+
+commit 386c1b00da29d13f032a5daf805155182a1ee074
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-10T10:07:52+01:00
+
+    Ajouté parametres limit et offset à l'api search
+
+7	2	src/pages/api/search.ts
+
+commit 8d6e0f4d81d7f5ae897e5e22207e1afebf49dffd
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-10T10:05:25+01:00
+
+    Added search api route
+
+26	0	src/pages/api/search.ts
+
+commit 17130914fa0a522d17ed30ff62e2ca1e5a9a7b73
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-10T10:04:25+01:00
+
+    Donné des valeurs par défaut à params de getBySearch
+
+1	1	src/model/Article.ts
+
+commit bbd0c4bf11a0cef2164305c9338ffcb1d366928f
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-10T10:03:20+01:00
+
+    Ajouté parametres limit et offset à getBySearch
+
+4	3	src/model/Article.ts
+
+commit ad1789f9954d7fae11540a6df188627d608ff737
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-10T09:46:44+01:00
+
+    Changement du nom de la page et ajout de la propriété target="_blank"
+
+8	6	src/pages/contact.astro
+
+commit 49440c18daf7169eaa1ba1c344b89a3cdddfe762
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-10T09:38:33+01:00
+
+    Modification des propriétés css du TextArea dont le resize
+
+65	65	src/pages/contact.astro
+
+commit dd68729df50e9222f725391b8b46fa6f3d95d2ae
+Merge: 9bae351 a7246e4
+Author: Hirlho <ahmedkhairi153@gmail.com>
+Date:   2023-01-10T09:28:30+01:00
+
+    Merge branch 'master' of ssh://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit 9bae351f077c880cde011ea2210f3ef1399e65ba
+Merge: 29793e9 733c3a1
+Author: Hirlho <ahmedkhairi153@gmail.com>
+Date:   2023-01-10T09:28:15+01:00
+
+    Merge branch 'master' of ssh://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit 733c3a1169d76d4f11f2456b48414ab78e8efa83
+Merge: 0083ce7 785d0a4
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-10T10:06:16+01:00
+
+    Merge branch 'master' of gricad-gitlab.univ-grenoble-alpes.fr:iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit 0083ce70d2e658399bba88ea22b0821c817e6473
+Merge: 507c014 95cbdd0
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-10T10:05:26+01:00
+
+    Merge branch 'master' of gricad-gitlab.univ-grenoble-alpes.fr:iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit 507c014873ee43a8ebee23e1beaef64bb7e2d19d
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-10T10:03:50+01:00
+
+    Modifications du stylede la page articleUtilisateur
+
+118	90	src/pages/ArticlesUtilisateur.astro
+81	81	src/pages/index.astro
+
+commit a7246e43a3d9fb655a093a6ef61072d88d7b3d00
+Merge: 7f60810 733c3a1
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-10T09:26:59+01:00
+
+    Merge branch 'master' of ssh://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit 7f6081009740b50febfcdbe586a7ea29df48f835
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-10T09:26:27+01:00
+
+    Modification pay.astro
+
+38	19	src/pages/pay.astro
+
+commit 29793e90d26674b4e7a0c5c1050c5246804d8d97
+Author: Hirlho <ahmedkhairi153@gmail.com>
+Date:   2023-01-10T09:26:24+01:00
+
+    Amélioration du style de la page de contact
+
+80	4	src/pages/contact.astro
+183	151	src/pages/register.astro
+
+commit 785d0a4b299f225dd2c2fbb2e3961459a372256b
+Author: bassom <Matis.Bassom@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-10T09:05:09+01:00
+
+    Create recover-password + change login
+
+1	0	src/pages/login.astro
+27	0	src/pages/recover-password.astro
+
+commit 95cbdd08972989c9882e54cbd3156118c9933587
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-10T08:50:27+01:00
+
+    Renommé les fichiers pour avoir ces URL plus conventionnels
+
+0	0	src/pages/{ArticlesUtilisateur.astro => basket.astro}
+0	241	src/pages/creation.astro
+211	0	src/pages/dashboard/create.astro
+0	0	src/pages/{paiement.astro => pay.astro}
+0	0	src/pages/{Signalement.astro => report.astro}
+
+commit 579a67fecb8db5864a8f253a9febe83dec4348b6
+Merge: 40ac05b 4a4846f
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-10T08:54:41+01:00
+
+    Merge branch 'master' of ssh://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit 40ac05bd2eaf9d0e43ee418dbf2678c78e9c25b6
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-10T08:52:27+01:00
+
+    Page de paiement modifié
+
+72	62	src/pages/paiement.astro
+
+commit 4a4846fba6ea542568997d24c0434b88576e8bfc
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-10T08:39:30+01:00
+
+    Fixé scope astro fermé trop tot dans la page register
+
+1	3	src/pages/register.astro
+
+commit 4b81c896ece0f231a87010363f5b7a4164fa1a94
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-10T08:37:54+01:00
+
+    Centré les msg d'erreur
+
+1	0	src/pages/login.astro
+1	0	src/pages/register.astro
+
+commit d88c84310c495a1427c63d61948cce0ae7a6b848
+Merge: 80308dd 53d297e
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-10T08:34:05+01:00
+
+    Merge branch 'master' of ssh://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit 80308dd7e569465b682ccbd1ac022f9bbd31ba12
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-10T08:32:53+01:00
+
+    Changement du code : Social.astro supprimé et Footer.astro modifié
+
+103	101	src/components/Footer.astro
+0	11	src/components/Social.astro
+
+commit 53d297e3d7192fe03ad756594ee46fe452482767
+Merge: 50805d9 0045d39
+Author: Hirlho <ahmedkhairi153@gmail.com>
+Date:   2023-01-10T08:29:49+01:00
+
+    Merge branch 'master' of ssh://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit 50805d99a7621d11d8607b64b9d8f7b90bab74ea
+Author: Hirlho <ahmedkhairi153@gmail.com>
+Date:   2023-01-10T08:23:09+01:00
+
+    amélioration des page contact et register
+
+4	4	src/pages/contact.astro
+5	5	src/pages/register.astro
+
+commit 0045d39c7adbd8864262570f94ee9fef1c3465bb
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-09T20:16:24+01:00
+
+    made buyer jest test exit gracefully
+
+2	0	tests/buyer.test.ts
+
+commit 3b6b1aaa71c7dd1f61496f253ed5aa59d9f1433e
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-09T20:05:10+01:00
+
+    Fix le test d'article
+
+2	0	tests/article.test.ts
+
+commit 66e833d7ac3e631a6817ec750f49d0fbc3a334fc
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-09T20:04:37+01:00
+
+    Fix les noms des textfield manquants dans la page register
+
+11	5	src/pages/register.astro
+
+commit 014072407f850e837da9638b224bcc35315359e1
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-09T19:46:02+01:00
+
+    Tout mis a jour pour que les tests de cas d'utilisation passent à nouveau
+
+1	1	sql/create.sql
+10	7	src/components/Navbar.astro
+5	3	src/model/users/Account.ts
+4	0	src/model/users/Buyer.ts
+6	2	src/model/users/Company.ts
+132	144	src/pages/login.astro
+145	175	src/pages/register.astro
+
+commit fb0ab8322fba4b76a20ec17d0b0039def1487068
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-09T19:25:28+01:00
+
+    MAJ la classe article pour le SEA
+
+2	2	sql/create.sql
+1	1	sql/insert.sql
+173	208	src/model/Article.ts
+0	52	tests/acheteur.test.ts
+
+commit fe57a99cbc38a72391f92687818b4af6fe051393
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-09T19:17:47+01:00
+
+    Rejouté tests Acheteur et fixé les bugs qu'ils ont permis de débusquer
+
+6	0	src/model/Utilitaire.ts
+1	1	src/model/users/Account.ts
+0	170	src/model/users/Acheteur.ts
+9	9	src/model/users/Buyer.ts
+47	0	tests/buyer.test.ts
+
+commit 1589b13821adc07d5f246103b2c3cf72ce606ce6
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-09T19:01:53+01:00
+
+    Mis a jour le modele en adéquation avec le nouveau SEA
+
+176	0	src/model/users/Account.ts
+80	0	src/model/users/Buyer.ts
+67	0	src/model/users/Company.ts
+
+commit 3e8b770e1fcbe70e6975cb939843cfbbc3285a49
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-09T18:34:26+01:00
+
+    Encore fixé les petits oublis
+
+4	4	sql/create.sql
+
+commit 64506142642609d3cfefc9dd5bd3e380cc583993
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-09T18:33:35+01:00
+
+    Fixé les petits oublis des scripts sql
+
+11	11	sql/create.sql
+2	2	sql/insert.sql
+
+commit 6846ee3e76b93b8103c64f2fb0513c94e9c679e3
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-09T18:22:16+01:00
+
+    Mis a jour scripts sql en accord avec le nouveau SEA
+
+32	32	sql/create.sql
+6	6	sql/drop.sql
+2	2	sql/insert.sql
+
+commit f5711785994066cf319e4a6014c0e3b79beaa35c
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-09T20:27:23+01:00
+
+    Modification du fichier Article.ts, ajout de fonctions faisant des requête sur la DB et de l'attribut img_paths
+
+209	111	src/model/Article.ts
+
+commit 50ee32a4f143c9c0caa49599402e830339555cbc
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-09T18:21:56+01:00
+
+    Modification du style des pages login, register et contact
+
+20	21	src/components/TextField.astro
+69	28	src/pages/contact.astro
+144	88	src/pages/login.astro
+174	107	src/pages/register.astro
+
+commit 44042197e43a011d2d1df45da47e05273f274dc6
+Merge: 39c7c17 8b0269b
+Author: Hirlho <ahmedkhairi153@gmail.com>
+Date:   2023-01-09T11:29:10+01:00
+
+    Merge branch 'master' of ssh://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit 39c7c17d36406f44abb2d4235ca398723f79ef92
+Author: Hirlho <ahmedkhairi153@gmail.com>
+Date:   2023-01-09T11:26:49+01:00
+
+    Finition de la page contact
+
+4	2	src/components/TextField.astro
+107	95	src/pages/contact.astro
+1	1	src/pages/register.astro
+
+commit 8b0269b902d0545b1c965de9d050ed5a3f968800
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-09T11:18:55+01:00
+
+    Page de paiement
+
+1	39	src/pages/paiement.astro
+
+commit 74f8aa579fb044e145f7e656bf0e8572ce403c98
+Merge: d3a2126 2928365
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-09T11:15:25+01:00
+
+    Merge branch 'master' of ssh://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit d3a21268871f1155bff87c98cb264777c7747b86
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-09T11:14:56+01:00
+
+    Page de paiement
+
+126	0	src/pages/paiement.astro
+
+commit 2928365416c9fc19829c097988fa57ecb7200fad
+Merge: a850a10 0814b09
+Author: bassom <Matis.Bassom@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-09T11:12:15+01:00
+
+    Merge branch 'master' of ssh://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit a850a102bc6a87c8d514d2c2738ed2fcc8a6a32d
+Author: bassom <Matis.Bassom@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-09T11:11:39+01:00
+
+    Create Signalement + change ArticlesUtilisateur
+
+5	2	src/pages/ArticlesUtilisateur.astro
+76	0	src/pages/Signalement.astro
+
+commit 0814b099d08bc5ff9886c484aa83ff956aff57db
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-09T10:59:46+01:00
+
+    Changé structure BDD
+
+23	20	sql/create.sql
+1	0	sql/drop.sql
+2	0	sql/insert.sql
+
+commit 5f8345dabf4ddb84abbb49fb85a95c7de0269113
+Merge: af36620 0825cac
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-09T10:54:23+01:00
+
+    Merge branch 'master' of ssh://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit af36620fd93d8475584bd9c0e3b71cda4cd215f7
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-09T10:53:35+01:00
+
+    Page de création d'articles
+
+225	178	src/pages/creation.astro
+
+commit 0825cacdd7f3defa4e49bea0878f5c6c63f6d6e3
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-09T10:23:06+01:00
+
+    Ajouté deconnection
+
+33	0	src/pages/action/disconnect.astro
+1	0	src/pages/login.astro
+73	73	src/pages/settings.astro
+
+commit 2d0d1ee3a74f0f26ef27e9699dba6c428199b0a7
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-09T10:09:54+01:00
+
+    Rendu la page register fonctionnelle
+
+3	0	src/model/users/Acheteur.ts
+65	7	src/pages/register.astro
+67	0	tests-playwright/register.spec.ts
+2	2	tsconfig.json
+
+commit 7cee57ef7bdf490b5a0b5a10c5e90dadcf23d4c5
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-09T09:56:44+01:00
+
+    Corrigé non prise en compte su espect etant async
+
+1	1	tests-playwright/example.spec.ts
+
+commit dbc86676afd766ca4277ec92f10c1420642b6713
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-09T09:15:04+01:00
+
+    Ajouté methode supression utilisateur
+
+5	0	src/model/users/Acheteur.ts
+
+commit 130ef38dbcce117966af6343604475f11dfd644c
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-09T08:55:37+01:00
+
+    Ajouté nouveau message d'erreur au lieu d'un plantage si le formulaire n'est pas complet
+
+3	1	src/pages/login.astro
+
+commit e312494246fee981664d339220a2abde72c7e882
+Author: bassom <Matis.Bassom@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-09T09:53:58+01:00
+
+    Changes ArticlesUtilisateur
+
+42	36	src/pages/ArticlesUtilisateur.astro
+
+commit 0dc38845747247d81470c89fb6c49560c380cfd2
+Author: bassom <Matis.Bassom@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-09T09:39:41+01:00
+
+    Création de la page ArticleUtilisateur
+
+2	2	src/pages/login.astro
+
+commit 181eaff8dd1b7d35b53632d67ff674e3a7251f0f
+Author: bassom <Matis.Bassom@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-09T09:33:49+01:00
+
+    Create ArticlesUtilisateur
+
+98	0	src/pages/ArticlesUtilisateur.astro
+2	2	src/pages/login.astro
+
+commit af80a12230ee760dbc8f093450ef96b33fb66be6
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-09T08:37:35+01:00
+
+    Page création d'articles
+
+4	6	src/pages/creation.astro
+
+commit c649b80de8c8bc6fa8dfde0c93de2b37d0a8d83c
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-09T08:27:56+01:00
+
+    Page création article
+
+5	0	src/pages/creation.astro
+
+commit d0d280ab474474e6f09084836f35712ff9624ade
+Merge: f278b86 5767892
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-09T08:16:30+01:00
+
+    Merge branch 'master' of ssh://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit f278b86395b24d4994f29c333e26657b61a2453c
+Author: Mohammed FRIOUICHEN <98142644+MedFrio@users.noreply.github.com>
+Date:   2023-01-09T08:11:24+01:00
+
+    Page création d'article
+
+11	0	src/components/Social.astro
+191	0	src/pages/creation.astro
+
+commit 57678921fc6fe73583d20db493df38450eb8c19d
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-09T08:03:31+01:00
+
+    Enlevé délais non nécéssaire
+
+0	1	tests-playwright/example.spec.ts
+
+commit 2486a42a6c451e112a13d5564bfeb242aeaca5cd
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-08T20:44:04+01:00
+
+    Ajouté test connection
+
+11	0	tests-playwright/example.spec.ts
+
+commit 2e0699c9b7eb7ba32e0ae15005d1a2748f76e3f1
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-08T20:28:16+01:00
+
+    Input types plus précis
+
+1	1	src/pages/login.astro
+56	61	src/pages/register.astro
+
+commit c0698ec7f2089e1c8f2966091adedc911fcdc790
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-08T16:43:33+01:00
+
+    Cree classe article et les tests qui vont avec
+
+137	0	src/model/Article.ts
+58	0	tests/article.test.ts
+
+commit 2467a3ad787d28a98affad638796320e0e9007a5
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-08T16:43:05+01:00
+
+    Fixed database not ending after tests
+
+1	1	tests/acheteur.test.ts
+4	0	tests/database.test.ts
+
+commit 793992ce83edf44831694c549d2a9e70625995ed
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-08T16:42:27+01:00
+
+    Fixed DROP order
+
+1	1	sql/drop.sql
+
+commit 83eb3a912401cbf931aebe4aac61e0c446e8b40d
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-08T15:45:04+01:00
+
+    Annulé ajout propriété à la table article
+
+1	2	sql/create.sql
+
+commit 406bd9c62bcfca250d792dc36c3a0ab9c483e891
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-08T15:42:34+01:00
+
+    Modifié table article et créé table article_image
+
+8	1	sql/create.sql
+1	0	sql/drop.sql
+
+commit 2bcb34705f0ba804d1e2867ededf4d27a864e779
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-08T15:19:01+01:00
+
+    wtf
+
+0	0	src/pages/{userAccount.astro => settings.astro}
+
+commit 4bc7b769dd37b67e3848270ee589454bba4dd1a5
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-08T15:16:34+01:00
+
+    Ajouté message erreur si identifiants invalides
+
+14	0	src/pages/login.astro
+
+commit 63ce72015ea45f5f1dd5bef9c67bcb328c3452db
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-08T15:12:06+01:00
+
+    Ajouté un peut de doc
+
+5	4	src/components/Navbar.astro
+4	0	src/model/Config.ts
+7	0	src/model/Database.ts
+4	8	src/model/TMDB.ts
+3	5	src/model/Utilitaire.ts
+27	0	src/model/users/Acheteur.ts
+7	1	src/pages/login.astro
+0	0	src/pages/{settings.astro => userAccount.astro}
+
+commit f880d774d4911e634b728ffd94e814e99e08ca82
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-08T14:57:43+01:00
+
+    Meilleur orthographe
+
+1	0	.vscode/settings.json
+3	3	src/components/Article.astro
+
+commit 605c3dadc9ad1551e0e7b1f375660d28d8dbc52c
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-08T13:50:20+01:00
+
+    Supprimmé style par défaut <a> dans Article
+
+43	42	src/components/Article.astro
+
+commit 34cf89ee377572035d01195b595146fd50c5a908
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-08T13:48:28+01:00
+
+    Ajouté icone utilisateur
+
+12	0	public/img/icons/user.svg
+23	3	src/components/Navbar.astro
+
+commit 609edbaf8b7ef0347b9b410cb2e391c7bb2f380b
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-08T13:32:37+01:00
+
+    Debut de systeme d'authenttification fonctionnel
+
+9	0	sql/create.sql
+1	0	sql/drop.sql
+32	2	src/components/Navbar.astro
+42	3	src/pages/login.astro
+
+commit 3569a9560dde84250da4d0b98091af9b1775847b
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-08T01:20:40+01:00
+
+    Resolu l'erreur de dev
+
+5	0	astro.config.mjs
+
+commit 4a262224072d771553ed25de8dbf06688db46404
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-08T01:10:28+01:00
+
+    Changé le module postgres
+
+6	6	astro.config.mjs
+509	8136	package-lock.json
+1	1	package.json
+4	12	src/model/Database.ts
+29	38	src/model/users/Acheteur.ts
+6	8	tests/acheteur.test.ts
+6	6	tests/database.test.ts
+
+commit 05048d07a257cafda2a0ad5f4f429fad029813f1
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-08T00:21:10+01:00
+
+    Fixed node-postgres import causing preview error
+
+4	4	src/model/Database.ts
+
+commit 9ddc00c2956a1a92ebff978f4fdeb77e88094b6f
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-07T23:26:49+01:00
+
+    Cree les méthodes de sessions dans la class Acheteur et créé les tests qui vont avec
+
+54	6	src/model/users/Acheteur.ts
+25	13	tests/acheteur.test.ts
+
+commit e1e52693b24ebf1a017b90cff7185d5ba7d82951
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-07T23:05:06+01:00
+
+    Ajouté la fonction utilitaire addCookie
+
+16	0	src/model/Utilitaire.ts
+
+commit 62a50dfb5fc1dbf1b7aaf351246aa59ef0edc60a
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-07T22:53:49+01:00
+
+    Plus de parametres dans le cmpnt TextField
+
+9	2	src/components/TextField.astro
+
+commit d9c98e4f38a795bda2cac593386f59963828dd19
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-07T22:45:09+01:00
+
+    Definned return type for dateDiff func
+
+18	18	src/model/Utilitaire.ts
+
+commit 9076e479fd0165e94e1a8a31f6b599e1fe7ef395
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-07T22:40:32+01:00
+
+    Renommé page parametres utilisateur
+
+0	0	src/pages/{userAccount.astro => settings.astro}
+
+commit 7f78e80634f87ff57e9e64dae24a49c5c30c9b41
+Merge: 597b59f 8ce96d9
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-07T23:38:06+01:00
+
+    Merge branch 'master' of gricad-gitlab.univ-grenoble-alpes.fr:iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit 597b59f7499af2f00d9cac5d654000d940cc9441
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-07T23:37:04+01:00
+
+    Création de la page userAccount qui permet de gérer les paramêtres utilisateur et du component UserSetting
+
+25	0	src/components/UserSetting.astro
+105	0	src/pages/userAccount.astro
+
+commit 8ce96d9fba82a254bca988e8844d4921cee4dd8d
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-07T22:31:46+01:00
+
+    Mit un peut d'ordre
+
+56	58	src/pages/aboutus.astro
+
+commit 36486bb6bf520f8a3c873846c682b4f3745c4eb0
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-07T22:29:34+01:00
+
+    Jsp ce que j'ai changé
+
+1	1	src/components/Navbar.astro
+
+commit 9fbd7e52298d69cf899e8ad9d2b48d2e0a3c3042
+Merge: f9aa2d9 bf278c9
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-07T18:39:26+01:00
+
+    Merge branch 'master' of gricad-gitlab.univ-grenoble-alpes.fr:iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit f9aa2d9c7e9e809c09ba3e23a53c942f429429ca
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-07T18:37:26+01:00
+
+    Création de la page auction.astro qui a besoin d'une modification de son style et création de Utilitaire.ts qui contient la fonction dateDiff qui calcul permet de savoir la différence de temps entre 2 dates
+
+12	10	src/components/Article.astro
+33	0	src/model/Utilitaire.ts
+157	0	src/pages/auction.astro
+
+commit bf278c9f8dca0d09c4ed6bafad3f1afa1c56a4cb
+Author: Hirlho <ahmedkhairi153@gmail.com>
+Date:   2023-01-07T17:25:55+01:00
+
+    creation de la page contact
+
+108	0	src/pages/contact.astro
+
+commit b87923311dec1619d135d49d2ffda512d04e80f6
+Author: Hirlho <ahmedkhairi153@gmail.com>
+Date:   2023-01-07T16:37:49+01:00
+
+    rectification de la page login
+
+1	0	src/pages/login.astro
+
+commit d8155668319405060c8fc13f7b32f1f6ce74a3e6
+Merge: 1924ab4 a267a4c
+Author: Hirlho <ahmedkhairi153@gmail.com>
+Date:   2023-01-07T16:36:16+01:00
+
+    Merge branch 'master' of ssh://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info-stud/2022-s3/s3.01/team-05/rendus
+    Creation de la page aboutus
+
+commit 1924ab4309fd634b074e4c9bed0c4e66195f4216
+Author: Hirlho <ahmedkhairi153@gmail.com>
+Date:   2023-01-07T16:33:06+01:00
+
+    Création de la page aboutus il manque les photos de chacun et une bonne
+    description.
+
+-	-	public/img/aboutus/Elon_Musk_2015.jpg
+58	0	src/components/AboutUs.astro
+1	1	src/components/Footer.astro
+66	0	src/pages/aboutus.astro
+0	1	src/pages/login.astro
+10	5	src/pages/register.astro
+
+commit a267a4c48884ed337576cfaa55ca1353bbf51298
+Merge: 0f9063c 4894b70
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-07T14:47:28+01:00
+
+    Merge branch 'master' of gricad-gitlab.univ-grenoble-alpes.fr:iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit 0f9063c0d154457ee8d45497939f60719fb77f18
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-07T14:40:56+01:00
+
+    Modifications sur la pages de recherche ajout d'article, de pagination en bas de la page et d'une checkbox pour les enchères en cour ou non
+
+-	-	public/img/article/casque_de_dark_vador.jpeg
+-	-	public/img/article/sabre_laser.jpeg
+41	34	src/components/Article.astro
+41	51	src/components/SearchBar.astro
+47	51	src/pages/register.astro
+142	12	src/pages/search.astro
+
+commit 4894b706864faae2c0cf8162dcf632b3a76dd806
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-06T14:49:32+01:00
+
+    Added alts to images to improve SEO performance
+
+1	1	src/components/Article.astro
+16	3	src/components/Footer.astro
+
+commit 6b1590130a2d3b4ed3234ce3ea74ae9b69ae7bb8
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-06T14:25:25+01:00
+
+    Port redirection 443 -> 8080 using iptables
+
+1	1	scripts/deploy.sh
+
+commit 64031fea654b15218550f78beea25767e46b700a
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-06T14:20:54+01:00
+
+    Added hover effects
+
+5	0	src/components/Button.astro
+4	0	src/components/Navbar.astro
+
+commit fb98b3951b50f9a1f319fcb71b9bc280c97a875c
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-06T14:18:24+01:00
+
+    Removed duplicate import
+
+0	1	src/pages/login.astro
+
+commit dafafddc44ca3be63b4d24f8a52c1605cac0897e
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-06T14:17:33+01:00
+
+    Added meta description for better SEO performance
+
+4	0	src/layouts/Layout.astro
+
+commit 60cbb40414ec9ccddf4d67a0efbe3677c5a0bc2c
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-06T14:09:45+01:00
+
+    Deployed server is now on https
+
+2	2	scripts/deploy.sh
+
+commit aa5ad17c100932380ef5a3c15ac4790fbc4938b9
+Merge: 098ba5a 989de9d
+Author: Hirlho <ahmedkhairi153@gmail.com>
+Date:   2023-01-06T13:35:56+01:00
+
+    Merge branch 'master' of ssh://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit 098ba5ab5c8a215e841de8c523fee2ea3bf6bde6
+Author: Hirlho <ahmedkhairi153@gmail.com>
+Date:   2023-01-06T13:34:32+01:00
+
+    changé des trucs
+
+1	1	src/components/Button.astro
+1	0	src/pages/login.astro
+70	0	src/pages/register.astro
+
+commit 989de9d97b98c608a973569d7c56b62bc717a427
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-06T13:18:45+01:00
+
+    Specified icons dimensions to improve performance
+
+18	6	src/components/Footer.astro
+
+commit bd143787c1fd9a15b6eb3401ce22ad4a1396a314
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-06T13:10:09+01:00
+
+    Removed normalize css for performance reasons
+
+0	5	src/layouts/Layout.astro
+
+commit 7091af62fb11d2220d46757d87d50cf5421cf718
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-06T12:51:22+01:00
+
+    Code formatting, nothing changed
+
+13	13	src/components/Button.astro
+1	1	src/components/Footer.astro
+1	1	src/components/SearchBar.astro
+4	4	src/components/TextField.astro
+1	2	src/layouts/Layout.astro
+49	10	src/pages/index.astro
+29	32	src/pages/login.astro
+9	9	src/pages/search.astro
+
+commit d0084cdac42cf26228038a7f04ab592fb0ed9c2c
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-06T12:27:38+01:00
+
+    resolu balise tr non fermée dans register.astro
+
+1	1	src/pages/register.astro
+1	0	src/pages/search.astro
+
+commit cd835deebfa5fadba531ec01f677639aecfee41f
+Merge: 26ef9f4 5545478
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-06T12:26:03+01:00
+
+    Merge branch 'master' of gricad-gitlab.univ-grenoble-alpes.fr:iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit 26ef9f43bda17b39d2de7b17643a9a016bfda431
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-06T12:25:33+01:00
+
+    modifications sur la page search.astro
+
+6	2	src/components/SearchBar.astro
+1	0	src/layouts/Layout.astro
+16	1	src/pages/search.astro
+
+commit 30b4eda72835638e8df47527e7d1fa1879813795
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-06T12:12:15+01:00
+
+    Updated acheteur test
+
+5	3	tests/acheteur.test.ts
+
+commit 66d09245ae1b6563db51e7057009601adf98dc18
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-06T12:11:55+01:00
+
+    Updated Acheteru model
+
+7	5	src/model/users/Acheteur.ts
+
+commit 849a6a229d3b0de1c0120f7657859a0f2184536f
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-06T12:11:30+01:00
+
+    Tweaked string lengths
+
+9	8	sql/create.sql
+
+commit 3409358e9daeaf8bfe83ede373e16d241c1212d3
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-06T11:59:08+01:00
+
+    Increased string length and added persmission commands
+
+19	10	sql/create.sql
+
+commit 939cc7155cd49957d7435434b5e17337e263c264
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-06T11:43:20+01:00
+
+    Increased email string size
+
+2	2	sql/create.sql
+
+commit dc70f2d6fbfc2583290304586034af042a1289eb
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-06T11:38:20+01:00
+
+    renamed acheteurs table for more consistency
+
+4	4	sql/create.sql
+
+commit 3b1c1d8613cddf84db9cb4f03e3693911cd4013c
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-06T11:37:03+01:00
+
+    Inversé l'ordre de drop
+
+6	6	sql/drop.sql
+
+commit 2e25246833fd8ad4236d54ef6a730c0c231a632c
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-06T11:35:36+01:00
+
+    Actually added drop functions
+
+7	0	sql/drop.sql
+
+commit 74f5be76d8b5aa211cb5c53b3b2a7ea9036c4c38
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-06T11:35:01+01:00
+
+    added drop tables
+
+0	0	sql/drop.sql
+
+commit 4292c51ed8ee1f47a6005066c20e7199c7a95bcf
+Author: bassom <Matis.Bassom@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-06T12:09:28+01:00
+
+    Correction login
+
+1	0	src/pages/login.astro
+
+commit 1ad39605b9e2335fb4074d5043f63544048a33c2
+Merge: 2c1ef17 67ba033
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-06T12:05:35+01:00
+
+    Merge branch 'master' of gricad-gitlab.univ-grenoble-alpes.fr:iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit 2c1ef17361de329adcbf51e5b2f8756e12b49bab
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-06T12:04:53+01:00
+
+    Modification du fichier create.sql
+
+45	4	sql/create.sql
+9	3	src/components/SearchBar.astro
+8	0	src/pages/search.astro
+
+commit 134b4e9a68dc50e7f948ac1b1cfd5f4b4448e81d
+Merge: d8aba90 cedbb87
+Author: bassom <Matis.Bassom@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-06T12:01:53+01:00
+
+    Merge branch 'master' of ssh://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit d8aba901d972775ae9ce6d45fbb37d6ed9b0ddca
+Author: bassom <Matis.Bassom@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-06T11:59:53+01:00
+
+    Changes Butt
+
+2	1	src/components/Button.astro
+3	2	src/pages/login.astro
+
+commit cedbb87aee2c35a057209ecb99ae7cd2711fa0fd
+Merge: 2a8980c b3fc82c
+Author: Hirlho <ahmedkhairi153@gmail.com>
+Date:   2023-01-06T11:47:09+01:00
+
+    Merge branch 'master' of ssh://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit 2a8980c9f61e02e964f546ea9a889628afc900f7
+Author: Hirlho <ahmedkhairi153@gmail.com>
+Date:   2023-01-06T11:43:44+01:00
+
+    modification de la couleur des buttons
+
+1	1	src/components/Button.astro
+7	10	src/pages/login.astro
+21	13	src/pages/register.astro
+
+commit b3fc82ccd16b2d3041c94f2403696284a26e7595
+Merge: 174a5c9 d0084cd
+Author: bassom <Matis.Bassom@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-06T11:40:49+01:00
+
+    Merge branch 'master' of ssh://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit 174a5c9cf8979d338fb8d632dbe81c50a4e9ad9d
+Author: bassom <Matis.Bassom@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-06T11:40:27+01:00
+
+    Changes login page
+
+12	2	src/pages/login.astro
+
+commit 55454783f50bc80edc647cb8e6ce11750604f551
+Merge: 001867d 3207e90
+Author: Hirlho <ahmedkhairi153@gmail.com>
+Date:   2023-01-06T11:18:10+01:00
+
+    Merge branch 'master' of ssh://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit 001867dec2d1c65b54d53e362cf6b7c017e810e3
+Author: Hirlho <ahmedkhairi153@gmail.com>
+Date:   2023-01-06T11:16:47+01:00
+
+    modification de la page register + appuiyer sur le logo revient a
+    l'acceuil
+
+1	1	src/components/Navbar.astro
+53	3	src/pages/register.astro
+
+commit 3207e9049eff7c080f9be5a357a971f3e250593d
+Merge: 974b398 1ad3960
+Author: bassom <Matis.Bassom@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-06T11:15:26+01:00
+
+    Merge branch 'master' of ssh://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit 974b398e256b87b78b420c518b9cc4ed30a5904f
+Author: bassom <Matis.Bassom@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-06T11:14:30+01:00
+
+    Create component Button + Changes login
+
+21	0	src/components/Button.astro
+10	7	src/pages/login.astro
+
+commit 67ba033301725d5ec5615f2b7cd7b25803edafe7
+Author: bassom <Matis.Bassom@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-06T10:52:39+01:00
+
+    Changes TextField + login
+
+6	21	src/components/TextField.astro
+1	1	src/pages/login.astro
+
+commit 3924e96aeed68da5897e6de2e605456ebfafaf2d
+Author: bassom <Matis.Bassom@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-06T10:31:11+01:00
+
+    Change LoginForm to TextField + login
+
+6	9	src/components/{LoginForm.astro => TextField.astro}
+3	7	src/pages/login.astro
+
+commit 931a0a83015e42b36738d6a276c7a4898c50b6b6
+Merge: 5ffba5e 2917da3
+Author: Hirlho <ahmedkhairi153@gmail.com>
+Date:   2023-01-06T09:38:05+01:00
+
+    Merge branch 'master' of ssh://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit 5ffba5ebbfb5d924239500492a7184dca13699ef
+Author: Hirlho <ahmedkhairi153@gmail.com>
+Date:   2023-01-06T09:36:40+01:00
+
+    modification des <P> du footer pour que les pages de about_us contact et
+    confidentialité soit des liens
+
+6	4	src/components/Footer.astro
+3	0	src/pages/register.astro
+
+commit 2917da3dd4613975bf5222feeaf25165a5cb130a
+Merge: 8fe7bd8 e9f40cb
+Author: bassom <Matis.Bassom@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-06T09:31:07+01:00
+
+    Merge branch 'master' of ssh://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit 8fe7bd8b25dbf90c63677145c33b31e98b818611
+Author: bassom <Matis.Bassom@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-06T09:26:40+01:00
+
+    Create component LoginForm + login page
+
+43	0	src/components/LoginForm.astro
+1	1	src/pages/index.astro
+42	0	src/pages/login.astro
+
+commit e9f40cbb0b2f143945cea520489c73e7fd5a78cd
+Author: Hirlho <ahmedkhairi153@gmail.com>
+Date:   2023-01-06T09:19:24+01:00
+
+    ajouter parametre no_searchbar au layout principale et creation de la
+    page register
+
+4	2	src/layouts/Layout.astro
+8	0	src/pages/register.astro
+
+commit c1018f573eda87c9243873807f7a6684d66460b4
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-05T22:42:00+01:00
+
+    Fixed Cedric dumbness
+
+35	36	src/components/Article.astro
+
+commit 546115e35e0900bce7092f11f6087fe3be9d7979
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-05T22:15:01+01:00
+
+    Corrigé un chemin éronné d'image
+
+1	1	src/components/Footer.astro
+1	1	src/components/SearchBar.astro
+
+commit e1f0ae29614b24291f70e28abb517af2e02f0224
+Merge: 7ea59cb 34b7cd7
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-05T23:05:52+01:00
+
+    Merge branch 'master' of gricad-gitlab.univ-grenoble-alpes.fr:iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit 7ea59cbf9cfe5b956d66f6f93c1b365214a3531a
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-05T23:04:39+01:00
+
+    modification sur le lien pour les images dans Article.astro
+
+1	1	src/components/Article.astro
+8	8	src/pages/index.astro
+
+commit 34b7cd7dea165f35a26f61877560c4ac90dcdc5d
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-05T21:59:25+01:00
+
+    Fait des jolis tests
+
+48	7	package-lock.json
+4	2	package.json
+0	0	public/img/{ => icons}/search.svg
+0	0	public/img/{ => icons}/socials/facebook.svg
+0	0	public/img/{ => icons}/socials/instagram.svg
+0	0	public/img/{ => icons}/socials/linkedin.svg
+0	0	public/img/{ => icons}/socials/twitter.svg
+0	0	public/img/{ => icons}/socials/youtube.svg
+-	-	public/img/logo.png
+9	1	sql/create.sql
+2	2	src/model/{config.ts => Config.ts}
+8	2	src/model/{database.ts => Database.ts}
+1	1	src/model/{tmdb.ts => TMDB.ts}
+94	0	src/model/users/Acheteur.ts
+40	0	tests/acheteur.test.ts
+15	2	tests/database.test.ts
+1	1	tests/tmdb.test.ts
+
+commit f2162ec8171d34cfdbaa130cb0d485442eb39ee9
+Merge: 7626f1c cecc30c
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-05T18:39:35+01:00
+
+    Merge branch 'master' of gricad-gitlab.univ-grenoble-alpes.fr:iut2-info-stud/2022-s3/s3.01/team-05/rendus
+
+commit 7626f1c7fd5500fd9b68f4f20125d30e5c72ab2d
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-05T18:36:25+01:00
+
+    Ajout du components article.astro
+
+-	-	public/img/article/chapeau_de_gandalf.jpeg
+46	0	src/components/Article.astro
+2	2	src/components/Navbar.astro
+19	6	src/pages/index.astro
+
+commit 0c3e4df941320fff91bc2945c73fa1b03cb6ef34
+Author: Champeix Cédric <champeic@debian-BULLSEYE-live-builder-AMD64>
+Date:   2023-01-05T17:33:17+01:00
+
+    Suppression de la page de base de Astro dans index.astro
+
+28	65	src/pages/index.astro
+
+commit cecc30c04b91cf967aebd40300cca5ab9b9ac3e6
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-05T17:04:10+01:00
+
+    Changed public folder file structure
+
+5	5	src/components/Footer.astro
+3	12	src/pages/index.astro
+
+commit 374d663aac858608b76b043c01b45a60a4607c6d
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-05T16:28:32+01:00
+
+    Removed debug screenshot
+
+0	3	tests-playwright/example.spec.ts
+
+commit 69dd28fb358f32811e2caa1b64f3cc5580dca337
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-05T16:27:41+01:00
+
+    Removed unused components and moved navbar
+
+0	62	src/components/Card.astro
+0	0	src/{layouts => components}/Navbar.astro
+0	46	src/components/NavigationItem.astro
+0	34	src/components/SquareLink.astro
+1	1	src/layouts/Layout.astro
+
+commit 8c56f6d07dafad518af78e191095eac3d792756b
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-05T16:23:31+01:00
+
+    Added normalize css
+
+5	0	src/layouts/Layout.astro
+
+commit ebc4bdda7a22b0320803f83d3adf0296abb0d183
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-05T13:41:36+01:00
+
+    Added VSCode extension recommentdations
+
+6	2	.vscode/extensions.json
+-	-	example.png
+23	0	package-lock.json
+1	0	package.json
+0	1	src/model/database.ts
+1	1	tests-playwright/example.spec.ts
+
+commit bfdf147250fe13f3813a2ef5dd6874cd5dad17af
+Author: Cedric Champeix <cedric.champeix@etu.univ-grenoble-alpes.fr>
+Date:   2023-01-05T09:48:21+01:00
+
+    Upload New File
+
+-	-	docs/Team-05_Iteration-2_Dossier_de_projet.pdf
+
+commit 2975920f024f61fd097823feb41ce129cb4d7d15
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-04T17:55:23+01:00
+
+    Youpi
+
+-	-	example.png
+3	2	package.json
+85	92	playwright.config.ts
+3	3	src/components/Footer.astro
+0	0	tests-playwright/{demo-todo-app.spec.ts => demo-todo-app.spec.ts.example}
+10	16	tests-playwright/example.spec.ts
+
+commit 996c5276405785fed3afb9e7028b5bb4b2774e11
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-04T17:15:41+01:00
+
+    Implemented hell, satan and eternal pain
+
+1	0	public/img/socials/youtube.svg
+15	4	src/components/Footer.astro
+2	2	src/layouts/Navbar.astro
+1	1	src/pages/index.astro
+
+commit bec4a1be6b7e97944ee4372c0b3e33b735e97412
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-04T16:41:45+01:00
+
+    Added socials icons to footer
+
+1	0	public/img/socials/facebook.svg
+1	0	public/img/socials/instagram.svg
+1	0	public/img/socials/linkedin.svg
+1	0	public/img/socials/twitter.svg
+9	3	src/components/Footer.astro
+6	0	src/layouts/Layout.astro
+
+commit 91e91322e8c7fbe457fba314a755477774c67fc0
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-04T15:02:48+01:00
+
+    Changed footer icon color
+
+4	1	src/components/Footer.astro
+
+commit 23116642a4de3305627fbfd968358006d8b0c930
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-04T14:34:33+01:00
+
+    Added footer
+
+83	13	public/favicon.svg
+60	0	src/components/Footer.astro
+24	2	src/layouts/Layout.astro
+5	2	src/layouts/Navbar.astro
+
+commit ba272cd3b6527d2415a9f6071282114c9b37c9d7
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-04T13:40:02+01:00
+
+    Created main layout
+
+1	0	public/img/search.svg
+9	14	src/layouts/Layout.astro
+2	2	src/pages/index.astro
+
+commit c22a6f7bba2a0a87340549cf5b45b425ac5a1901
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-04T13:39:51+01:00
+
+    Added searchbar
+
+53	0	src/components/SearchBar.astro
+15	17	src/layouts/Navbar.astro
+
+commit 160c2c3662817eab5cf50a0b7430e47a2a18c3ab
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-04T11:37:00+01:00
+
+    Updated navbar
+
+2	2	src/components/Logo.astro
+0	159	src/components/Navbar.astro
+69	0	src/layouts/Navbar.astro
+5	4	src/pages/index.astro
+
+commit 5b74617f413316e84efdc66f1ff5da66982d4fc6
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-03T15:39:34+01:00
+
+    New logo
+
+1	0	sql/create.sql
+45	0	src/components/Logo.astro
+145	145	src/components/Navbar.astro
+
+commit f836dde7af4f66423e1a76008a7f11915a3e8494
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2023-01-03T15:39:02+01:00
+
+    Switch to Jest for unit test
+
+9	9	.vscode/launch.json
+192	0	jest.config.ts
+13205	5859	package-lock.json
+8	3	package.json
+39	25	src/model/config.ts
+34	0	src/model/database.ts
+61	47	src/model/tmdb.ts
+0	0	{tests-examples => tests-playwright}/demo-todo-app.spec.ts
+0	0	{tests => tests-playwright}/example.spec.ts
+3	0	tests/database.test.ts
+0	12	tests/tmdb.spec.ts
+11	0	tests/tmdb.test.ts
+
+commit 7fd4cbc47ac48b828f7b2f83725a2304f173eccc
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2022-12-20T10:45:07+01:00
+
+    Changed config structure and added getMoviePosterURL method to the TMDB api
+
+0	2	src/model/config.ts
+7	1	src/model/tmdb.ts
+3	0	tests/tmdb.spec.ts
+
+commit 9addbf490a1809f7e43268a382b139b8f67b7df4
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2022-12-20T10:27:51+01:00
+
+    More precise TMDBMovie type
+
+8	8	src/model/tmdb.ts
+
+commit 9ed0fb76b27f10f994cf296697d36d2ad0b98c7e
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2022-12-20T10:22:05+01:00
+
+    Added TMDBMovie type
+
+34	1	src/model/tmdb.ts
+
+commit 9060570c9275e733da536ee471991f77de414dba
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2022-12-20T10:03:22+01:00
+
+    Fixed dumbness
+
+1	1	src/components/Navbar.astro
+
+commit 56b75d57f04bba02065ee6e66206f35862d29161
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2022-12-20T09:58:52+01:00
+
+    Ain't this navbar responsive biatch ?
+
+1	2	package.json
+115	6	src/components/Navbar.astro
+10	2	src/components/NavigationItem.astro
+4	0	src/components/SquareLink.astro
+1	1	src/layouts/Layout.astro
+
+commit 7a3c1f0d0255dbc45f9d23b6feedae542ea80356
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2022-12-20T09:23:17+01:00
+
+    Better deploy script
+
+7	1	scripts/deploy.sh
+
+commit 6f1be1d5129331a67f6fbbbe977ca2c2159cd650
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2022-12-19T17:11:13+01:00
+
+    Created TMDB test and updated playwright
+
+15	15	package-lock.json
+1	1	package.json
+7	1	src/model/tmdb.ts
+9	0	tests/tmdb.spec.ts
+
+commit 9dc7f7b874fec63f07859e67eb79f6e53780952d
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2022-12-19T16:40:14+01:00
+
+    Created TMDB class
+
+10	0	src/model/tmdb.ts
+
+commit c4a6624a28f4c0ccfc923e0fec35f68f9286939b
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2022-12-19T16:35:19+01:00
+
+    Fixed Config constructor
+
+1	1	src/model/config.ts
+
+commit f79bb1df58b616a7236c58c9d36d15485fe7e720
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2022-12-19T16:34:04+01:00
+
+    Created config class
+
+15	1	package-lock.json
+2	1	package.json
+38	0	src/model/config.ts
+
+commit d24977d538aa08d7dd5d1d34e14e5dfad3fbf327
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2022-12-09T17:10:57+01:00
+
+    Fixed port deploy script
+
+2	2	scripts/deploy.sh
+
+commit 624d5ea0926721b4c4d04c64ff14e1fd1eaa92ae
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2022-12-09T16:54:04+01:00
+
+    Working on the navbar
+
+-	-	public/img/logo.png
+50	0	src/components/Navbar.astro
+38	0	src/components/NavigationItem.astro
+30	0	src/components/SquareLink.astro
+2	0	src/pages/index.astro
+
+commit 8165833c2602d30eb72e319bb1ac56230a3a7300
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2022-12-09T15:35:53+01:00
+
+    Added test npm script
+
+2	1	package.json
+
+commit f18d5d426a755131c171c0546826390ed408cca4
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2022-12-09T15:19:46+01:00
+
+    Changed dev port, set up simple astro test
+
+1	2	astro.config.mjs
+7	1	playwright.config.ts
+1	1	scripts/deploy.sh
+5	5	tests/example.spec.ts
+
+commit 00d1527ffd1909f2c6622c1f7d175c900bc8df5c
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2022-12-09T14:55:10+01:00
+
+    Added and initialized playwright test framework
+
+3	0	.gitignore
+59	0	package-lock.json
+3	0	package.json
+107	0	playwright.config.ts
+437	0	tests-examples/demo-todo-app.spec.ts
+20	0	tests/example.spec.ts
+
+commit d3dc3516806955844c6564e3a5ac2f9ca64efa76
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2022-12-06T19:11:34+01:00
+
+    Enhanced deploy script
+
+1	1	astro.config.mjs
+4	1	scripts/colors.sh
+32	16	scripts/deploy.sh
+
+commit 6d502a6b5b2fb7f788b41929ba5235fc797b9d3a
+Author: GaspardCulis <gaspard.culis@gmail.com>
+Date:   2022-12-06T18:56:23+01:00
+
+    Added fancy script and changed astro config
+
+2	1	astro.config.mjs
+2	1	package.json
+11	0	scripts/colors.sh
+37	0	scripts/deploy.sh
+4	0	scripts/load-dotenv.sh
+
+commit c5ad0ee646bed04d133b2dc406b449e910f99996
+Author: Mohammed Friouichen <mohammed.friouichen@etu.univ-grenoble-alpes.fr>
+Date:   2022-11-30T22:13:19+01:00
+
+    Team-05_01_Dossier_de_projet
+
+-	-	docs/Team-05_01_Dossier_de_projet.pdf
+
+commit 319fde832688c3b9655bd706bb43018f60791f62
+Author: Mohammed Friouichen <mohammed.friouichen@etu.univ-grenoble-alpes.fr>
+Date:   2022-11-30T22:12:48+01:00
+
+    Delete Team-05_01_Dossier_de_projet.pdf
+
+-	-	Team-05_01_Dossier_de_projet.pdf
+
+commit 33a6d4c1c1f33c3962d21189d1600b7ed579de53
+Author: Mohammed Friouichen <mohammed.friouichen@etu.univ-grenoble-alpes.fr>
+Date:   2022-11-30T22:10:34+01:00
+
+    Team-05_01_Dossier_de_projet
+
+-	-	Team-05_01_Dossier_de_projet.pdf
+
+commit 35af86146d4e6a4ccf918d3c45265d764dd12ad6
+Author: Gaspard Culis <gaspard.culis@gmail.com>
+Date:   2022-11-25T15:12:27+01:00
+
+    Switch astro to SSR mode
+
+7	1	astro.config.mjs
+302	0	package-lock.json
+1	0	package.json
+
+commit e7f3810a6f57d87a93b171284e29febe1e7c933e
+Author: Gaspard Culis <gaspard.culis@gmail.com>
+Date:   2022-11-22T14:54:56+01:00
+
+    Initialized astro project
+
+13	504	.gitignore
+4	0	.vscode/extensions.json
+11	0	.vscode/launch.json
+45	19	README.md
+4	0	astro.config.mjs
+9852	0	package-lock.json
+16	0	package.json
+13	0	public/favicon.svg
+62	0	src/components/Card.astro
+1	0	src/env.d.ts
+35	0	src/layouts/Layout.astro
+81	0	src/pages/index.astro
+3	0	tsconfig.json
+
+commit 6ef51bb395f3286c9bfe7bb87a3bfe1892254371
+Author: Raphaël Bleuse <raphael.bleuse@univ-grenoble-alpes.fr>
+Date:   2022-11-07T16:12:23+01:00
+
+    Update module reference (s/M3301/SAÉ 3·01/)
+
+2	2	README.md
+
+commit 77716c4f9bb8732d7c572e5e7320ef1efd616e1d
+Author: Raphaël Bleuse <raphael.bleuse@univ-grenoble-alpes.fr>
+Date:   2022-11-07T15:48:13+01:00
+
+    Remove reference to .gitlab folder
+
+0	4	README.md
+
+commit 6f9d96ce7337ae11a2947761741e0ac464d73afe
+Author: Raphaël Bleuse <raphael.bleuse@univ-grenoble-alpes.fr>
+Date:   2021-09-24T12:50:50+02:00
+
+    Remove provided issue template
+
+0	5	".gitlab/issue_templates/Question pr\303\251sentiel.md"
+
+commit a9da6a8227b374bf23d7fa50d975ec7fb3d0a6c2
+Author: Raphaël Bleuse <raphael.bleuse@univ-grenoble-alpes.fr>
+Date:   2021-09-21T16:09:16+02:00
+
+    Remove .gitkeep from export
+    
+    Tracking empty files in directories is a git hack to preserve a
+    directory structure regardless of their content.
+    
+    Rename .keepdir into .gitkeep to explicit it is a git hack.
+    Remove .gitkeep from export as it is a git-specific file.
+
+1	0	.gitattributes
+0	0	docs/{.keepdir => .gitkeep}
+
+commit c00281632bda4d1612009772f1d3819d5351a1f9
+Author: Raphaël Bleuse <raphael.bleuse@univ-grenoble-alpes.fr>
+Date:   2021-09-21T15:55:14+02:00
+
+    Remove GitLab-specific files from export
+
+3	0	.gitattributes
+
+commit 8563a69c7c3abb61a9b24f87194c5a9f68e9e5e9
+Author: Raphaël Bleuse <raphael.bleuse@iut2.univ-grenoble-alpes.fr>
+Date:   2020-09-24T10:20:53+02:00
+
+    Configure GitLab issue template
+
+5	0	".gitlab/issue_templates/Question pr\303\251sentiel.md"
+9	3	README.md
+
+commit c9238effa482c673f33cf5aa11b08169c4eae461
+Author: Raphaël Bleuse <raphael.bleuse@iut2.univ-grenoble-alpes.fr>
+Date:   2020-09-17T13:53:53+02:00
+
+    Create & Document repository structure
+
+22	0	README.md
+0	0	docs/.keepdir
+4	0	docs/README.md
+
+commit c04466feecf399e6d3019067f95a1d40b0d6d707
+Author: Raphaël Bleuse <raphael.bleuse@iut2.univ-grenoble-alpes.fr>
+Date:   2020-09-16T17:51:23+02:00
+
+    Initialize repository
+
+3	0	.gitattributes
+511	0	.gitignore

@@ -1,0 +1,28 @@
+---
+export interface Props {
+	text?: string;
+	id?: string;
+}
+
+const { text, id } = Astro.props;
+---
+
+<input type="submit" value={text} name="" id={id} />
+
+<style>
+	input {
+		border: none;
+		border-radius: 5px;
+		background-color: var(--theme-button);
+		color: var(--theme-button-text);
+		margin: 0.7rem;
+		font-size: 1.2rem;
+		font-weight: 600;
+		padding: 0.7rem;
+	}
+
+	input:hover {
+		filter: brightness(1.2);
+		cursor: pointer;
+	}
+</style>

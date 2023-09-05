@@ -1,0 +1,70 @@
+---
+import AboutUs from '../components/AboutUs.astro';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="A propos de nous">
+	<main>
+		<section class="aboutus">
+			<ul>
+				<div>
+					<AboutUs
+						nom="Cedric Champeix"
+						image="Cedric.jpg"
+						description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dui enim, iaculis vel mauris id, fermentum condimentum est. Curabitur posuere erat eu tincidunt suscipit. Nullam bibendum, felis in porttitor laoreet."
+					/>
+				</div>
+				<div>
+					<AboutUs
+						nom="Ahmed Khairi"
+						image="Elon_Musk_2015.jpg"
+						description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dui enim, iaculis vel mauris id, fermentum condimentum est. Curabitur posuere erat eu tincidunt suscipit. Nullam bibendum, felis in porttitor laoreet."
+					/>
+				</div>
+
+				<div>
+					<AboutUs
+						nom="Mohammed BenAicha"
+						image="mohammedB.jpg"
+						description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dui enim, iaculis vel mauris id, fermentum condimentum est. Curabitur posuere erat eu tincidunt suscipit. Nullam bibendum, felis in porttitor laoreet."
+					/>
+				</div>
+				<div>
+					<AboutUs
+						nom="Mohammed Friouichen"
+						image="mohammedF.jpg"
+						description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dui enim, iaculis vel mauris id, fermentum condimentum est. Curabitur posuere erat eu tincidunt suscipit. Nullam bibendum, felis in porttitor laoreet."
+					/>
+				</div>
+				<div>
+					<AboutUs
+						nom="Matis Basso"
+						image="Elon_Musk_2015.jpg"
+						description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dui enim, iaculis vel mauris id, fermentum condimentum est. Curabitur posuere erat eu tincidunt suscipit. Nullam bibendum, felis in porttitor laoreet."
+					/>
+				</div>
+				<div>
+					<AboutUs
+						nom="Gaspard Culis"
+						image="gaspard.png"
+						description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dui le meilleur pour la fin enim, iaculis vel mauris id, fermentum condimentum est. Curabitur posuere erat eu tincidunt suscipit. Nullam bibendum, felis in porttitor laoreet."
+					/>
+				</div>
+			</ul>
+		</section>
+	</main>
+</Layout>
+
+<style>
+	section {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-wrap: wrap;
+	}
+
+	ul {
+		width: 90%;
+		padding: 0;
+	}
+</style>

@@ -1,0 +1,58 @@
+---
+export interface Props {
+	text?: string;
+	minNumber?: number;
+	placeholder?: string;
+	name?: string;
+	type?: any;
+	length?: string;
+	id?: string;
+	required?: boolean;
+	readonly?: boolean;
+	maxLength?: number | string;
+}
+
+const {
+	text,
+	placeholder,
+	name,
+	type,
+	length,
+	id,
+	readonly,
+	required,
+	minNumber,
+	maxLength,
+} = Astro.props;
+---
+
+<input
+	placeholder={placeholder}
+	value={text}
+	name={name}
+	type={type || 'text'}
+	id={id}
+	required={required}
+	min={minNumber}
+	readonly={readonly}
+	maxlength={maxLength || 64}
+	class="textfield"
+/>
+
+<br />
+<style define:vars={{ length }}>
+	.textfield {
+		border: none;
+		background-color: var(--theme-input);
+
+		border: 1px solid;
+		border-radius: 5px;
+
+		margin: 1rem;
+		padding: 0.7rem;
+		width: var(--length);
+	}
+	.textfield:focus {
+		outline: none;
+	}
+</style>

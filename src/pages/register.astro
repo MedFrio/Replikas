@@ -1,0 +1,233 @@
+---
+import Button from '../components/Button.astro';
+import TextField from '../components/TextField.astro';
+import Layout from '../layouts/Layout.astro';
+import PasswordTextField from '../layouts/PasswordTextField.astro';
+import { EmailDejaUtiliseError } from '../model/users/Account';
+import Buyer from '../model/users/Buyer';
+
+if (Astro.request.method == 'POST') {
+	const formData = await Astro.request.formData();
+	const { last_name, first_name, email, password, password_confirm } =
+		Object.fromEntries(formData) as {
+			last_name: string;
+			first_name: string;
+			email: string;
+			password: string;
+			password_confirm: string;
+		};
+
+	const redirect = Astro.url.searchParams.get('redirect') || '';
+	if (
+		![last_name, first_name, email, password, password_confirm].every(
+			(value) => value
+		)
+	)
+		return Astro.redirect('/register?error=missing_field&redirect=' + redirect);
+	if (password != password_confirm)
+		return Astro.redirect(
+			'/register?error=password_mismatch&redirect=' + redirect
+		);
+	// Vérification du mail
+	if (
+		!/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-]+)(\.[a-zA-Z]{2,5}){1,2}$/.test(
+			email
+		) &&
+		!/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-]+)(\.[a-zA-Z0-9_\-]+)(\.[a-zA-Z]{2,5}){1,2}$/.test(
+			email
+		)
+	)
+		return Astro.redirect('/register?error=invalid_email&redirect=' + redirect);
+	// Mot de passe fort https://www.section.io/engineering-education/password-strength-checker-javascript/
+	if (
+		!/(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{12,})/.test(
+			password
+		)
+	)
+		return Astro.redirect('/register?error=weak_password&redirect=' + redirect);
+
+	try {
+		await Buyer.createBuyer(email, password, last_name, first_name);
+	} catch (e) {
+		if (e instanceof EmailDejaUtiliseError) {
+			return Astro.redirect(
+				'/register?error=already_exists&redirect=' + redirect
+			);
+		} else {
+			// Si une autre erreur non prevue est survenue
+			console.error(e);
+			return new Response('Internal server error', { status: 500 }); // FIXME : Rip bastien scapin
+		}
+	}
+	return Astro.redirect('/login?info=account_created&redirect=' + redirect);
+}
+
+// Si on a reçu un paramètre "error"
+let error_msg = '';
+let error: string;
+if (Astro.url.searchParams.has('error')) {
+	error = Astro.url.searchParams.get('error');
+	// On affiche un message d'erreur
+	if (error == 'missing_field') {
+		error_msg = 'Veuillez remplir tous les champs';
+	} else if (error == 'password_mismatch') {
+		error_msg = 'Les mots de passe ne correspondent pas';
+	} else if (error == 'invalid_email') {
+		error_msg = "L'adresse email n'est pas valide";
+	} else if (error == 'weak_password') {
+		error_msg =
+			'Le mot de passe doit contenir au moins 12 caractères, une majuscule, une minuscule, un chiffre et un caractère spécial';
+	} else if (error == 'already_exists') {
+		error_msg = 'Un compte avec cette adresse email existe déjà';
+	}
+}
+---
+
+<Layout title="Créer un compte" no_searchbar>
+	<main>
+		<form method="post" class="formlist">
+			<h1>Créer votre compte</h1>
+			<table>
+				<tr>
+					<th>Nom :</th>
+					<td>
+						<TextField
+							text=""
+							placeholder="Entrez votre nom"
+							length="15rem"
+							name="last_name"
+						/>
+					</td>
+				</tr>
+				<tr>
+					<th>Prénom :</th>
+					<td>
+						<TextField
+							text=""
+							placeholder="Entrez votre prénom"
+							length="15rem"
+							name="first_name"
+						/>
+					</td>
+				</tr>
+				<tr>
+					<th>E-mail :</th>
+					<td>
+						<TextField
+							text=""
+							placeholder="Entrez votre e-mail"
+							type="email"
+							length="15rem"
+							name="email"
+						/>
+					</td>
+				</tr>
+				<tr>
+					<th>Mot de passe :</th>
+					<td>
+						<PasswordTextField
+							text=""
+							placeholder="Entrez votre mot de passe"
+							length="15rem"
+							name="password"
+						/>
+					</td>
+				</tr>
+				<tr>
+					<th>Confirmer le mot de passe :</th>
+					<td>
+						<PasswordTextField
+							text=""
+							placeholder="Confirmer le mot de passe"
+							length="15rem"
+							name="password_confirm"
+						/>
+					</td>
+				</tr>
+			</table>
+
+			{
+				error != 'weak_password' && (
+					<p>
+						Le mot de passe doit contenir au moins 12 caractères, une majuscule,
+						une minuscule, un chiffre et un caractère spécial
+					</p>
+				)
+			}
+			{error_msg && <p class="error_msg">{error_msg}</p>}
+			<div id="button">
+				<div>
+					<input type="checkbox" id="accept_cgu" required />
+					<label for="accept_cgu">
+						J'accepte les <a href="cgu">conditions générales d'utilisation</a
+						></label
+					>
+				</div>
+				<Button text="S'inscrire" />
+			</div>
+		</form>
+	</main>
+</Layout>
+
+<style>
+	.formlist {
+		padding: 1.5rem 3rem;
+		margin: 1rem auto;
+		max-width: 80ch;
+
+		border-radius: 1rem;
+
+		background-color: var(--theme-secondary);
+	}
+
+	/*-----------------Table--------------------*/
+
+	table {
+		width: 100%;
+		margin: 1rem auto;
+	}
+
+	th {
+		text-align: end;
+	}
+
+	td {
+		text-align: start;
+	}
+
+	/*-----------------Boutton s'inscrire--------------------*/
+
+	#button {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	#button div {
+		text-align: center;
+		margin-bottom: 1rem;
+	}
+
+	/*-----------------Texts--------------------*/
+	h1 {
+		font-size: 2rem;
+		text-align: center;
+		margin: 2rem 0;
+	}
+	.error_msg {
+		color: red;
+		text-align: center;
+	}
+	a {
+		color: var(--theme-link);
+	}
+	a:hover {
+		filter: hue-rotate(20deg);
+	}
+
+	p {
+		width: 80%;
+		text-align: center;
+		margin: 1rem auto;
+	}
+</style>

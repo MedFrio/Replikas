@@ -1,0 +1,156 @@
+---
+import TextField from '../components/TextField.astro';
+import Article from '../model/Article';
+
+export interface Props {
+	button_id?: string;
+}
+
+const button_id = Astro.props.button_id;
+
+const minPrice = parseInt(Astro.url.searchParams.get('minPrice')) || 0;
+const maxPrice =
+	parseInt(Astro.url.searchParams.get('maxPrice')) || Article.MAX_PRICE;
+let onGoingText = Astro.url.searchParams.get('enCours') || 'false';
+let onGoing = onGoingText === 'true';
+---
+
+<form>
+	<div class="prixMin centered">
+		<label>Prix min :</label>
+		<TextField
+			id="minPrice"
+			type="number"
+			placeholder="Ex : 70"
+			minNumber={0}
+			text={minPrice.toString()}
+		/>
+	</div>
+	<div class="prixMax centered">
+		<label>Prix max :</label>
+		<TextField
+			id="maxPrice"
+			type="number"
+			placeholder="Ex : 250"
+			minNumber={0}
+			text={maxPrice.toString()}
+		/>
+	</div>
+	<div class="enCour centered">
+		<label for="pending">Afficher uniquement les enchères en cours</label>
+		<label class="switch">
+			{
+				onGoing ? (
+					<input id="enCours" type="checkbox" checked />
+				) : (
+					<input id="enCours" type="checkbox" />
+				)
+			}
+			<span class="slider round"></span>
+		</label>
+	</div>
+	<p id="errorMsg"></p>
+	<button id={button_id} type="submit">Rechercher</button>
+</form>
+
+<style>
+	form {
+		text-align: center;
+	}
+
+	.centered {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.enCour > * {
+		margin: 1rem;
+	}
+
+	button {
+		color: var(--theme-button-text);
+		background-color: var(--theme-button);
+
+		font-size: 1.5rem;
+		font-weight: bold;
+
+		border: none;
+		border-radius: 0.5rem;
+
+		padding: 0.5rem 1rem;
+
+		cursor: pointer;
+	}
+
+	button:hover {
+		transition: 0.5s ease;
+		filter: brightness(1.2);
+	}
+
+	/*----------------Toggle button------------------*/
+
+	/* The switch - the box around the slider */
+	.switch {
+		position: relative;
+		display: inline-block;
+		width: 60px;
+		height: 34px;
+		scale: 0.8;
+	}
+
+	/* Hide default HTML checkbox */
+	.switch input {
+		opacity: 0;
+		width: 0;
+		height: 0;
+	}
+
+	/* The slider */
+	.slider {
+		position: absolute;
+		cursor: pointer;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-color: #ccc;
+		-webkit-transition: 0.4s;
+		transition: 0.4s;
+	}
+
+	.slider:before {
+		position: absolute;
+		content: '';
+		height: 26px;
+		width: 26px;
+		left: 4px;
+		bottom: 4px;
+		background-color: white;
+		-webkit-transition: 0.4s;
+		transition: 0.4s;
+	}
+
+	input:checked + .slider {
+		background-color: var(--theme-button);
+	}
+
+	input:focus + .slider {
+		box-shadow: 0 0 1px var(--theme-button);
+	}
+
+	input:checked + .slider:before {
+		-webkit-transform: translateX(26px);
+		-ms-transform: translateX(26px);
+		transform: translateX(26px);
+	}
+
+	/* Rounded sliders */
+	.slider.round {
+		border-radius: 34px;
+	}
+
+	.slider.round:before {
+		border-radius: 50%;
+	}
+</style>

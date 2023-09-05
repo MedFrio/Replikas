@@ -1,0 +1,330 @@
+---
+import { Stripe } from 'stripe';
+import Layout from '../../layouts/Layout.astro';
+import Article from '../../model/Article';
+import Bids from '../../model/Bids';
+import Config from '../../model/Config';
+import Buyer from '../../model/users/Buyer';
+import { getBuyerBySession } from '../../model/Utilitaire';
+
+const article_id = parseInt(Astro.url.searchParams.get('article'));
+if (isNaN(article_id))
+	return new Response('Paramètre invalide', { status: 400 });
+
+const buyer: Buyer = await getBuyerBySession(Astro.request.headers).catch(
+	() => null
+);
+if (!buyer)
+	return new Response('Vous devez être connecté pour accéder à cette page', {
+		status: 401,
+	});
+
+const article: Article = await Article.get(article_id).catch(() => null);
+if (!article) return new Response('Article introuvable', { status: 404 });
+
+const fin = article.getFinVente();
+if (fin > new Date())
+	return new Response("L'enchère n'est toujours pas terminée", { status: 400 });
+
+const gagnant = await Bids.getEncherisseurGagnant(article);
+if (!gagnant)
+	return new Response("L'enchère n'a pas de gagnant", { status: 400 });
+
+if (gagnant.getId() !== buyer.getId())
+	return new Response("Vous n'êtes pas le gagnant de l'enchère", {
+		status: 400,
+	});
+
+const prix = await Bids.getEnchereMax(article);
+if (!prix) return new Response("L'enchère n'a pas de prix", { status: 400 });
+
+const stripe = new Stripe(Config.get().stripe.secretKey, {
+	apiVersion: '2022-11-15',
+});
+
+const protocol = import.meta.env.MODE == 'production' ? 'https://' : 'http://';
+const images = article
+	.getImages()
+	.map((img) => `${protocol}${Astro.url.host}${img}`);
+const session = await stripe.checkout.sessions.create({
+	payment_method_types: ['card'],
+	line_items: [
+		{
+			price_data: {
+				currency: 'eur',
+				product_data: {
+					name: article.getName(),
+					images: images,
+				},
+				unit_amount: prix * 100,
+			},
+			quantity: 1,
+		},
+	],
+	mode: 'payment',
+	success_url: `${protocol}${
+		Astro.url.host
+	}/pay/success?article=${article.getId()}`,
+	cancel_url: `${protocol}${
+		Astro.url.host
+	}/pay/cancel?article=${article.getId()}`,
+	metadata: {
+		article_id: article.getId(),
+		buyer_id: buyer.getId(),
+	},
+});
+
+const poster = await article
+	.getPoster()
+	.catch(() => '/img/article/placeholder.jpg');
+
+const url = session.url;
+---
+
+<Layout title="Paiement" no_searchbar>
+	<link
+		rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+	/>
+	<main>
+		<div class="article">
+			<article>
+				<div class="img">
+					<img src={poster} alt="" />
+				</div>
+				<div class="informations">
+					<h1>{article.getName()}</h1>
+					<p></p>
+					<h3 style="margin-top: 15%;">
+						Date fin de l'enchère : {
+							`${fin.getDate()}/${fin.getMonth() + 1}/${fin.getFullYear()}`
+						}
+					</h3>
+					<h3 style="margin-top: 10%;">Prix à payer : {prix} €</h3>
+				</div>
+			</article>
+			<h3 class="Description">Description :</h3>
+			<p style="font-size: large;">{article.getDescription()}</p>
+		</div>
+		<div class="pay-button-container">
+			<a class="button_pay" href={url}>Payer</a>
+		</div>
+		<div class="container_info">
+			<div style="width:500px;margin-left: 30%;">
+				<h3 class="titre_payment">
+					<span>
+						<a href="javascript:void(0);" id="arrow" onclick="toggleText()"
+							><i class="fas fa-arrow-down" id="arrow-icon"></i>
+							Voir les détails du paiement</a
+						>
+					</span>
+				</h3>
+			</div>
+			<div class="details" id="text1" style="display:none;">
+				<h2>Un mode de payement simple et sécurisé :</h2>
+				<p>
+					Afin de satisfaire nos clients, Replikas met à votre disposition un
+					système simple et entièrement sécurisé via Paypal pour vos paiements
+					en ligne.
+				</p>
+				<br />
+				<h2>Vous avez des difficultés à payer en ligne avec votre carte ?</h2>
+				<h3>Si vous avez dépassé votre limite de paiement en ligne :</h3>
+				<p>
+					L'article sera redirigé vers le second plus grand donateur des
+					enchères. Cela est nécessaire afin de garantir la transparence et
+					l'équité de notre processus d'enchères. Nous comprenons que des
+					problèmes de paiement peuvent survenir de manière inattendue, et nous
+					sommes toujours disposés à travailler avec nos clients pour trouver
+					une solution.
+				</p>
+				<br />
+				<h2>Si vous rencontrez des difficultés pour effectuer le paiement :</h2>
+				<p>
+					Veuillez nous contacter immédiatement afin que nous puissions trouver
+					une solution adaptée à votre situation.
+				</p>
+
+				<p>
+					Nous vous remercions de votre confiance et de votre soutien, et nous
+					espérons que vous soyez satisfait de votre achat avec Replikas.
+				</p>
+				<br />
+				<p class="note">
+					Note : Replikas n'a pas accès aux informations financières des clients
+					et ne peut aucunement modifier ou supprimer les plafonds de paiement
+					appliqués à la carte. Seule votre banque est en mesure de les
+					modifier.
+				</p>
+			</div>
+		</div>
+	</main>
+</Layout>
+
+<script language="JavaScript">
+	function isInViewport(element) {
+		const rect = element.getBoundingClientRect();
+		return (
+			rect.top >= 0 &&
+			rect.left >= 0 &&
+			rect.bottom <=
+				(window.innerHeight || document.documentElement.clientHeight) &&
+			rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+		);
+	}
+
+	var isVisible = false;
+	var arrowIcon = document.getElementById('arrow-icon');
+	function toggleText() {
+		if (isVisible) {
+			document.getElementById('text1').style.display = 'none';
+			arrowIcon.classList.remove('fa-arrow-down');
+			arrowIcon.classList.add('fa-arrow-up');
+
+			arrowIcon.style.transform = 'rotate(180deg)';
+		} else {
+			document.getElementById('text1').style.display = 'block';
+			arrowIcon.classList.remove('fa-arrow-up');
+			arrowIcon.classList.add('fa-arrow-down');
+			arrowIcon.style.transform = 'rotate(180deg)';
+		}
+		isVisible = !isVisible;
+	}
+</script>
+
+<style>
+	a {
+		text-decoration: none;
+		color: whitesmoke;
+	}
+
+	.note {
+		font-size: 12.7px;
+	}
+
+	.details {
+		text-align: center;
+	}
+
+	.container_info {
+		width: 100%;
+		padding-top: 1.5rem;
+		padding-bottom: 1.5rem;
+		padding-left: 3rem;
+		padding-right: 3rem;
+		max-width: 80ch;
+		background-color: var(--theme-button);
+		border-radius: 15px;
+	}
+
+	.pay-button-container {
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin: 3rem;
+	}
+
+	.button_pay {
+		background-color: var(--theme-button);
+		border-radius: 5px;
+		font-family: Arial;
+		font-size: 20px;
+		width: 200px;
+		padding: 10px;
+		color: var(--theme-button-text);
+		border: none;
+		color: inherit;
+		text-align: center;
+	}
+
+	.button_pay:hover {
+		filter: brightness(1.2);
+		cursor: pointer;
+	}
+
+	main {
+		margin: auto;
+		padding-top: 1.5rem;
+		padding-bottom: 1.5rem;
+		padding-left: 3rem;
+		padding-right: 3rem;
+		max-width: 80ch;
+		background-color: var(--theme-secondary);
+		border-radius: 15px;
+	}
+
+	.Description {
+		margin-left: 2%;
+	}
+
+	h1 {
+		text-align: center;
+		font-size: 25px;
+	}
+
+	h2 {
+		margin-top: 0;
+	}
+
+	main {
+		margin: 20px auto;
+		padding: 40px 8%;
+		width: 80%;
+
+		border-radius: 20px;
+
+		background-color: var(--theme-secondary);
+	}
+
+	article {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	.img {
+		position: sticky;
+		width: 30%;
+		margin-left: 0%;
+	}
+
+	.img > img {
+		width: 100%;
+	}
+
+	.informations {
+		margin-left: 10%;
+	}
+
+	form {
+		width: 200px;
+		margin-left: 20px;
+
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	form > div {
+		display: flex;
+		width: 100%;
+		justify-content: space-around;
+	}
+
+	form > * {
+		margin: 10px 0;
+	}
+
+	#placerOffre {
+		width: 120px;
+	}
+
+	.button {
+		background-color: var(--theme-button);
+
+		border: none;
+		border-radius: 5px;
+
+		padding: 5px;
+	}
+</style>

@@ -1,0 +1,174 @@
+---
+import Button from '../../../components/Button.astro';
+import TextField from '../../../components/TextField.astro';
+import Layout from '../../../layouts/Layout.astro';
+import { EmailDejaUtiliseError } from '../../../model/users/Account';
+import Company from '../../../model/users/Company';
+import { getCompanyBySession } from '../../../model/Utilitaire';
+
+const redirect = Astro.url.searchParams.get('redirect') || '';
+
+//Get Account
+const company: Company = await getCompanyBySession(Astro.request.headers).catch(
+	() => null
+);
+
+// Vérification de la connexion
+if (!company) {
+	return Astro.redirect('/login?redirect=' + redirect);
+}
+
+if (Astro.request.method == 'POST') {
+	const formData = await Astro.request.formData();
+	const nom = formData.get('nom_textarea').toString() || '';
+	const nom_confirm = formData.get('nom_textarea2').toString() || '';
+	//Un nom d'entreprise peut etre un nombre, donc on ne vérifie pas si c'est un nombre ou pas
+	if (nom != nom_confirm) {
+		Astro.props.error = 'Les deux noms ne correspondent pas';
+		return Astro.redirect(
+			'/dashboard/settings/modify-name-company/?error=nom_differents' + redirect
+		);
+	}
+	if (nom == nom_confirm) {
+		// Vérification si nom == ""
+		if (nom == '') {
+			//rien n'est modifié
+			Astro.props.error = "Aucune modification n'a été effectuée";
+			return Astro.redirect(
+				'/dashboard/setting/modify-name-company/?error=aucune_modification' +
+					redirect
+			);
+		} else if (nom != '') {
+			//un seul est modifié
+			if (nom != '' && nom == nom_confirm) {
+				if (nom != (await company.getNom())) {
+					//nom modifié
+					try {
+						await company.setNom(nom);
+					} catch (err) {
+						if (err instanceof EmailDejaUtiliseError) {
+							Astro.props.error = 'Email déjà utilisé';
+							return Astro.redirect(
+								'/dashboard/settings/modify-name-company/?error=email_deja_utilise' +
+									redirect
+							);
+						} else {
+							throw err;
+						}
+					}
+					Astro.props.error = 'Votre nom a été modifié';
+					Astro.redirect(
+						'/dashboard/settings/modify-name-company/?success=nom_modifie' +
+							redirect
+					);
+				}
+			}
+		}
+	}
+}
+let error_msg = '';
+let success_msg = '';
+if (Astro.url.searchParams.has('error')) {
+	const error = Astro.url.searchParams.get('error');
+	if (error == 'aucune_modification') {
+		error_msg = "Aucune modification n'a été effectuée";
+	} else if (error == 'email_deja_utilise') {
+		error_msg = 'Email déjà utilisé';
+	} else if (error == 'nom_differents') {
+		error_msg = 'Les deux noms ne correspondent pas';
+	}
+}
+if (Astro.url.searchParams.has('success')) {
+	const success = Astro.url.searchParams.get('success');
+	if (success == 'nom_modifie') {
+		success_msg = 'Votre nom a été modifié';
+	}
+}
+---
+
+<Layout title="Modifier vos informations générales" no_searchbar>
+	<main>
+		<h1>Modifier votre nom d'entreprise</h1>
+		{error_msg && <p class="error_msg">{error_msg}</p>}
+		{success_msg && <p class="success_msg">{success_msg}</p>}
+		<form method="post" class="formlist">
+			<table>
+				<tr>
+					<th id="nom_th">Nouveau nom :</th>
+					<td>
+						<TextField
+							text=""
+							placeholder="Entrez votre nouveau nom"
+							type="text"
+							length="15rem"
+							name="nom_textarea"
+							readonly={false}
+							id="nom_textarea"
+						/>
+					</td>
+					<td>
+						<TextField
+							text=""
+							placeholder="Confirmez votre nouveau nom"
+							type="text"
+							length="15rem"
+							name="nom_textarea2"
+							readonly={false}
+							id="nom_textarea2"
+						/>
+					</td>
+				</tr>
+			</table>
+
+			<div id="btn">
+				<Button text="Modifier le nom de votre entreprise" />
+			</div>
+		</form>
+	</main>
+
+	<style>
+		.error_msg {
+			color: red;
+			text-align: center;
+		}
+		.success_msg {
+			color: green;
+			text-align: center;
+		}
+		#options-th {
+			padding-left: 4rem;
+		}
+		.options1 {
+			margin-right: 4rem;
+			margin-left: 2rem;
+		}
+		.options2 {
+			margin-left: 5rem;
+		}
+		.options1-2 {
+			display: flex;
+			flex-direction: row;
+			margin-left: 2rem;
+			text-align: center;
+		}
+		#btn {
+			/* centre le bouton */
+			text-align: center;
+		}
+		main {
+			background-color: var(--theme-secondary);
+			margin: 3rem 5rem;
+			padding: 2rem;
+
+			border-radius: 2rem;
+
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
+		h1 {
+			margin-top: 0rem;
+		}
+	</style>
+</Layout>

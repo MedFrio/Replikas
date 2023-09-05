@@ -1,0 +1,376 @@
+---
+import Button from '../../components/Button.astro';
+import TextField from '../../components/TextField.astro';
+import Layout from '../../layouts/Layout.astro';
+import { EmailDejaUtiliseError } from '../../model/users/Account';
+import Buyer from '../../model/users/Buyer';
+import { getBuyerBySession } from '../../model/Utilitaire';
+
+const redirect = Astro.url.searchParams.get('redirect') || '';
+
+//Get Account
+const account: Buyer = await getBuyerBySession(Astro.request.headers).catch(
+	(err) => null
+);
+
+// Vérification de la connexion
+if (!account) {
+	return Astro.redirect('/login?redirect=' + redirect);
+}
+let error_msg = '';
+let success_msg = '';
+
+if (Astro.request.method == 'POST') {
+	const formData = await Astro.request.formData();
+	const nom = formData.get('nom_textarea').toString() || '';
+	const prenom = formData.get('prenom_textarea').toString() || '';
+	const nom_confirm = formData.get('nom_textarea2').toString() || '';
+	const prenom_confirm = formData.get('prenom_textarea2').toString() || '';
+	const nomCheckbox = formData.get('nom_checkbox') || false;
+	const prenomCheckbox = formData.get('prenom_checkbox') || false;
+	//Vérification si nom et prenom sont vides
+	if (nom == '' && prenom == '' && nomCheckbox && prenomCheckbox) {
+		Astro.props.error = 'Veuillez remplir au moins un champ';
+		return Astro.redirect(
+			'/settings/modify-name?error=champ_vide&redirect=' + redirect
+		);
+	}
+	//Vérification si nom ou prenom sont vides
+	if (nom == '' && nom_confirm == '' && nomCheckbox) {
+		Astro.props.error = 'Veuillez remplir le champ nom';
+		return Astro.redirect(
+			'/settings/modify-name?error=champ_nom_vide&redirect=' + redirect
+		);
+	}
+	if (prenom == '' && prenom_confirm == '' && prenomCheckbox) {
+		Astro.props.error = 'Veuillez remplir le champ prénom';
+		return Astro.redirect(
+			'/settings/modify-name?error=champ_prenom_vide&redirect=' + redirect
+		);
+	}
+
+	//Vérification si nom et/ou prenom ont des caractères spéciaux ou chiffres .test() renvoie true si il y a des caractères spéciaux ou chiffres
+	if (
+		/[0-9!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/.test(nom) ||
+		/[0-9!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/.test(prenom)
+	) {
+		console.log(
+			'nom et/ou prenom contient des caractères spéciaux ou des chiffres'
+		);
+		Astro.props.error =
+			'Votre nom et/ou prénom ne doit pas contenir de caractères spéciaux ou de chiffres';
+		return Astro.redirect(
+			'/settings/modify-name?error=caractere_speciaux_ou_chiffres&redirect=' +
+				redirect
+		);
+	}
+	// Vérification si meme nom
+	if (nom == nom_confirm || prenom == prenom_confirm) {
+		// Vérification si nom == ""
+		if (nom == '' && prenom == '') {
+			//rien n'est modifié
+			Astro.props.error = "Aucune modification n'a été effectuée";
+			return Astro.redirect(
+				'/settings/modify-name?error=aucune_modification&redirect=' + redirect
+			);
+		} else if (nom == '' || prenom == '' || (nom != '' && prenom != '')) {
+			//un seul est modifié
+			if (nom != '' && nom == nom_confirm) {
+				if (nom != account.getNom()) {
+					//nom modifié
+					try {
+						await account.setNom(nom);
+						Astro.props.success = 'Votre nom a été modifié';
+						return Astro.redirect(
+							'/settings/modify-name?success=nom_modifie' + redirect
+						);
+					} catch (err) {
+						if (err instanceof EmailDejaUtiliseError) {
+							Astro.props.error = 'Email déjà utilisé';
+							return Astro.redirect(
+								'/settings/modify-name?error=mail_deja_utilise&redirect=' +
+									redirect
+							);
+						}
+					}
+					Astro.props.success = 'Votre nom a été modifié';
+					return Astro.redirect(
+						'/settings/modify-name?success=nom_modifie&redirect=' + redirect
+					);
+				}
+			}
+			if (prenom != '' && prenom == prenom_confirm) {
+				if (prenom != (await account.getPrenom())) {
+					//nom modifié
+					try {
+						await account.setPrenom(prenom);
+					} catch (err) {
+						if (err instanceof EmailDejaUtiliseError) {
+							Astro.props.error = 'Email déjà utilisé';
+							return Astro.redirect(
+								'/settings/modify-name?error=mail_deja_utilise&redirect=' +
+									redirect
+							);
+						} else {
+							throw err;
+						}
+					}
+					Astro.props.success = 'Votre prenom a été modifié';
+					return Astro.redirect(
+						'/settings/modify-name?success=?redirect=' + redirect
+					);
+				}
+			} else {
+				//erreur
+				Astro.props.error = 'Erreur lors de la modification';
+				return Astro.redirect(
+					'/settings/modify-name?error=erreur_modification&redirect=' + redirect
+				);
+			}
+		}
+	}
+}
+//error_msg
+if (Astro.url.searchParams.has('error')) {
+	// On affiche un message d'erreur
+	const error = Astro.url.searchParams.get('error');
+	if (error == 'caractere_speciaux_ou_chiffres') {
+		error_msg =
+			'Votre nom et/ou prénom ne doit pas contenir de caractères spéciaux ou de chiffres';
+	} else if (error == 'aucune_modification') {
+		error_msg = 'Veuillez remplir au moins un des champs';
+	} else if (error == 'erreur_modification') {
+		error_msg = 'Erreur lors de la modification';
+	} else if (error == 'mail_deja_utilise') {
+		error_msg = 'Email déjà utilisé';
+	} else if (error == 'champ_nom_vide') {
+		error_msg = 'Veuillez remplir le champ nom';
+	} else if (error == 'champ_prenom_vide') {
+		error_msg = 'Veuillez remplir le champ prénom';
+	} else if (error == 'champ_vide') {
+		error_msg =
+			'Veuillez remplir les champs pour leqels vous avez cochés les cases';
+	}
+	if (Astro.url.searchParams.has('success')) {
+		// On affiche un message de succès
+		const success = Astro.url.searchParams.get('success');
+		if (success == 'nom_modifie') {
+			success_msg = 'Votre nom a été modifié';
+		}
+	}
+}
+---
+
+<Layout title="Modifier vos informations générales" no_searchbar>
+	<main>
+		<h1>Modifier votre nom et/ou prénom</h1>
+		{error_msg && <p class="error_msg">{error_msg}</p>}
+		{success_msg && <p class="success_msg">{success_msg}</p>}
+		<form method="post" class="formlist">
+			<table>
+				<div class="options">
+					<th id="options-th">Options :</th>
+					<td class="options1-2">
+						<div class="options1">
+							<input
+								type="checkbox"
+								id="nom_cb"
+								name="nom"
+								value="nom"
+								checked
+							/>
+							<label for="nom">Modifier mon nom</label><br />
+						</div>
+
+						<div class="options2">
+							<input
+								type="checkbox"
+								id="prenom_cb"
+								name="prenom"
+								value="prenom"
+								checked
+							/>
+							<label for="prenom">Modifier mon prénom</label><br />
+						</div>
+					</td>
+				</div>
+			</table>
+			<table>
+				<tr>
+					<th id="nom_th">Nouveau nom :</th>
+					<td>
+						<TextField
+							text=""
+							placeholder="Entrez votre nouveau nom"
+							type="text"
+							length="15rem"
+							name="nom_textarea"
+							readonly={false}
+							id="nom_textarea"
+						/>
+					</td>
+					<td>
+						<TextField
+							text=""
+							placeholder="Confirmez votre nouveau nom"
+							type="text"
+							length="15rem"
+							name="nom_textarea2"
+							readonly={false}
+							id="nom_textarea2"
+						/>
+					</td>
+					<tr>
+						<th id="prenom_th">Nouveau prénom :</th>
+						<td>
+							<TextField
+								text=""
+								placeholder="Entrez votre nouveau prénom"
+								type="text"
+								length="15rem"
+								name="prenom_textarea"
+								readonly={false}
+								id="prenom_textarea"
+							/>
+						</td>
+						<td>
+							<TextField
+								text=""
+								placeholder="Confirmez votre nouveau prénom"
+								type="text"
+								length="15rem"
+								name="prenom_textarea2"
+								readonly={false}
+								id="prenom_textarea2"
+							/>
+						</td>
+					</tr>
+				</tr>
+			</table>
+
+			<div id="btn">
+				<Button text="Modifier le nom et/ou le prénom" />
+			</div>
+		</form>
+	</main>
+	<script>
+		const nomCheckbox = document.getElementById('nom_cb') as HTMLInputElement;
+		const prenomCheckbox = document.getElementById(
+			'prenom_cb'
+		) as HTMLInputElement;
+		const nomTextArea = document.getElementById(
+			'nom_textarea'
+		) as HTMLInputElement;
+		const nomTextArea2 = document.getElementById(
+			'nom_textarea2'
+		) as HTMLInputElement;
+		const prenomTextArea = document.getElementById(
+			'prenom_textarea'
+		) as HTMLInputElement;
+		const prenomTextArea2 = document.getElementById(
+			'prenom_textarea2'
+		) as HTMLInputElement;
+		const btn = document.getElementById('btn') as HTMLInputElement;
+
+		nomCheckbox.addEventListener('change', function () {
+			if (nomCheckbox.checked) {
+				nomTextArea.removeAttribute('readonly');
+				nomTextArea2.removeAttribute('readonly');
+				nomTextArea.setAttribute('placeholder', 'Entrez votre nouveau nom');
+				nomTextArea2.setAttribute('placeholder', 'Confirmez votre nouveau nom');
+			} else {
+				nomTextArea.setAttribute('readonly', true as any);
+				nomTextArea2.setAttribute('readonly', true as any);
+				nomTextArea.setAttribute(
+					'placeholder',
+					'Votre nom ne peut pas être modifié'
+				);
+
+				nomTextArea2.setAttribute(
+					'placeholder',
+					'Votre nom ne peut pas être modifié'
+				);
+				nomTextArea.value = '';
+				nomTextArea2.value = '';
+			}
+		});
+
+		prenomCheckbox.addEventListener('change', function () {
+			if (prenomCheckbox.checked) {
+				prenomTextArea.removeAttribute('readonly');
+				prenomTextArea2.removeAttribute('readonly');
+				prenomTextArea.setAttribute(
+					'placeholder',
+					'Entrez votre nouveau prénom'
+				);
+				prenomTextArea2.setAttribute(
+					'placeholder',
+					'Confirmez votre nouveau prénom'
+				);
+			} else {
+				prenomTextArea.setAttribute('readonly', true as any);
+				prenomTextArea2.setAttribute('readonly', true as any);
+				prenomTextArea.setAttribute(
+					'placeholder',
+					'Votre prénom ne peut pas être modifié'
+				);
+				prenomTextArea2.setAttribute(
+					'placeholder',
+					'Votre prénom ne peut pas être modifié'
+				);
+				prenomTextArea.value = '';
+				prenomTextArea2.value = '';
+			}
+		});
+	</script>
+
+	<style>
+		.error_msg {
+			color: red;
+			text-align: center;
+		}
+		.success_msg {
+			color: green;
+			text-align: center;
+		}
+		#options-th {
+			padding-left: 4rem;
+		}
+		.options1 {
+			margin-right: 4rem;
+			margin-left: 2rem;
+		}
+		.options2 {
+			margin-left: 5rem;
+		}
+		.options1-2 {
+			display: flex;
+			flex-direction: row;
+			margin-left: 2rem;
+			text-align: center;
+		}
+		#btn {
+			/* centre le bouton */
+			text-align: center;
+		}
+		main {
+			background-color: var(--theme-secondary);
+			margin: 3rem 5rem;
+			padding: 2rem;
+
+			border-radius: 2rem;
+
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
+		h1 {
+			margin-top: 0rem;
+		}
+		.error_msg {
+			color: red;
+			text-align: center;
+		}
+	</style>
+</Layout>
