@@ -13,10 +13,10 @@
     "test-playwright": "npx playwright test"
   },
   "dependencies": {
-    "@astrojs/node": "^3.1.0",
+    "@astrojs/node": "^8.3.4",
     "@emailjs/browser": "^3.10.0",
     "@sendgrid/mail": "^8.1.0",
-    "astro": "^1.6.10",
+    "astro": "^4.16.0",
     "dotenv": "^16.0.3",
     "postgres": "^3.3.3",
     "sha.js": "^2.4.11",
