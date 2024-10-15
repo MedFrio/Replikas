@@ -16,7 +16,7 @@
     "@astrojs/node": "^8.3.4",
     "@emailjs/browser": "^3.10.0",
     "@sendgrid/mail": "^8.1.0",
-    "astro": "^4.16.0",
+    "astro": "^4.16.3",
     "dotenv": "^16.0.3",
     "postgres": "^3.3.3",
     "sha.js": "^2.4.11",
