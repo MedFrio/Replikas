@@ -1,0 +1,457 @@
+---
+import AutoCompleteTextField from '../../components/AutoCompleteTextField.astro';
+import Button from '../../components/Button.astro';
+import TextField from '../../components/TextField.astro';
+import UploadInput from '../../components/UploadInput.astro';
+import Layout from '../../layouts/Layout.astro';
+import Article from '../../model/Article';
+import Company from '../../model/users/Company';
+import { getCompanyBySession, uploadImages } from '../../model/Utilitaire';
+
+// TODO Plus de vérification sur les paramètres
+
+const company: Company = await getCompanyBySession(Astro.request.headers).catch(
+	(err) => null
+);
+
+if (!company) {
+	return Astro.redirect('/login');
+}
+
+if (Astro.request.method == 'POST') {
+	const formData = await Astro.request.formData();
+
+	let {
+		name,
+		movie_id,
+		description,
+		startDate,
+		endDate,
+		startHour,
+		endHour,
+		base_price,
+		min_bidding,
+	} = Object.fromEntries(formData) as { [key: string]: any };
+
+	const start = new Date(`${startDate} ${startHour}`);
+	const end = new Date(`${endDate} ${endHour}`);
+	name = name ? name.trim() : '';
+	description = description ? description.trim() : '';
+	movie_id = parseInt(movie_id);
+	base_price = parseInt(base_price);
+	min_bidding = parseInt(min_bidding);
+
+	if (
+		!(
+			name.length &&
+			!isNaN(movie_id) &&
+			description.length &&
+			!isNaN(start.getTime()) &&
+			!isNaN(end.getTime()) &&
+			!isNaN(base_price) &&
+			!isNaN(min_bidding)
+		)
+	)
+		return new Response('missing_fields', { status: 400 });
+
+	if (start.getTime() >= end.getTime() || start.getTime() <= Date.now())
+		return new Response('invalid_dates', { status: 400 });
+
+	if (base_price <= 0 || min_bidding < 0)
+		return new Response('invalid_prices', { status: 400 });
+
+	const images: File[] = formData.getAll('images') as File[];
+	const file_paths: string[] = await uploadImages(images).catch((e) => {
+		console.error(e);
+		return null;
+	});
+	if (!file_paths) return new Response('invalid_images', { status: 400 });
+
+	let article: Article;
+	try {
+		article = await Article.create(
+			name,
+			description,
+			base_price,
+			min_bidding,
+			start,
+			end,
+			file_paths,
+			movie_id,
+			company.getId()
+		);
+	} catch (e) {
+		return new Response('invalid_movie_id', { status: 400 });
+	}
+
+	return new Response('success', { status: 200 });
+}
+---
+
+<Layout title="Création article" no_searchbar>
+	<form
+		method="post"
+		id="form"
+		autocomplete="off"
+		enctype="multipart/form-data"
+	>
+		<div class="title">
+			<h1>Poster un nouvel article</h1>
+			<p>
+				Ici vous pourrez personnaliser votre produit à votre guise afin de
+				satisfaire la demande des clients
+			</p>
+		</div>
+		<p>Champs obligatoires notés : *</p>
+		<div class="info_produit">
+			<h2>Informations principales du produit</h2>
+			<div class="main_info">
+				<div class="grid_one">
+					<h3>Libellé : *</h3>
+					<TextField
+						type="text"
+						placeholder="Ex : Sabre Laser..."
+						length="15rem"
+						name="name"
+						id="name"
+						maxLength="50"
+					/>
+
+					<h3>Œuvre(s) d'origine (film/série) : *</h3>
+					<AutoCompleteTextField
+						placeholder="Ex : Star Wars : Un Nouvel Espoir"
+						length="15rem"
+						name="movie_id"
+						id="movie_id"
+					/>
+				</div>
+				<div class="grid_two">
+					<h3>Description du produit : *</h3>
+
+					<textarea
+						id="description"
+						placeholder="Ex : Réplique du sabre de Dark Vador utilisé lors du tournage du film “Star Wars : Un Nouvel Espoir” Note : Les effets lumineux sont indisponibles (rajoutés via effets spéciaux)"
+						name="description"
+						id="description"
+						maxlength="2000"></textarea>
+				</div>
+			</div>
+		</div>
+		<div class="info_produit">
+			<h2>Date de l'enchère</h2>
+
+			<div class="auctionDate">
+				<h3>Début de l’enchère : *</h3>
+				<div class="inputTime">
+					<p>Jour :</p>
+					<TextField type="date" name="startDate" id="startDate" />
+					<p>Heure :</p>
+					<TextField type="time" text="00:00" name="startHour" id="startHour" />
+				</div>
+			</div>
+
+			<div class="auctionDate">
+				<h3>Fin de l’enchère : *</h3>
+				<div class="inputTime">
+					<p>Jour :</p>
+					<TextField type="date" name="endDate" id="endDate" />
+					<p>Heure :</p>
+					<TextField type="time" text="00:00" name="endHour" id="endHour" />
+				</div>
+			</div>
+		</div>
+
+		<div class="info_produit">
+			<h2>Choix du prix du produit</h2>
+			<div>
+				<div>
+					<h3>Prix de base du produit : *</h3>
+					<TextField
+						type="number"
+						placeholder="Ex : 120, 2300,..."
+						name="base_price"
+						id="price"
+						minNumber={0}
+					/>
+				</div>
+				<div>
+					<h3>Surenchère minimum : *</h3>
+					<TextField
+						name="min_bidding"
+						type="number"
+						placeholder="Ex : 1, 13, 50,..."
+						id="bidding"
+						minNumber={0}
+					/>
+				</div>
+			</div>
+		</div>
+		<div class="info_produit">
+			<h2>Ajout d’images à l’article</h2>
+			<UploadInput name="images" />
+		</div>
+		<div class="create_button">
+			<Button text="Créer l’article" id="create_article" />
+		</div>
+	</form>
+</Layout>
+
+<style>
+	form {
+		margin: auto;
+		padding-top: 1.5rem;
+		padding-bottom: 1.5rem;
+		padding-left: 3rem;
+		padding-right: 3rem;
+		max-width: 80ch;
+		background-color: var(--theme-secondary);
+		border-radius: 15px;
+	}
+
+	.info_produit {
+		background-color: var(--theme-secondary);
+
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+		margin: 25px auto;
+		padding: 1rem 3rem;
+		max-width: 80ch;
+
+		border: 1px solid;
+		border-radius: 15px;
+	}
+
+	.title {
+		margin-bottom: 3rem;
+	}
+
+	/*------------Main informations----------------*/
+
+	.main_info {
+		display: grid;
+	}
+
+	.grid_one {
+		grid-column: 1;
+	}
+
+	.grid_two {
+		grid-column: 2;
+	}
+
+	textarea {
+		background-color: whitesmoke;
+
+		border: 1px solid;
+		border-radius: 5px;
+
+		margin: 1rem;
+		padding: 0.7rem;
+
+		width: 18rem;
+		height: 7rem;
+	}
+
+	textarea:focus {
+		outline: none;
+	}
+
+	/*--------------Auction date------------------*/
+
+	.auctionDate {
+		width: 100%;
+	}
+
+	.inputTime {
+		display: flex;
+		flex-wrap: nowrap;
+		align-items: center;
+		justify-content: center;
+	}
+
+	/*--------------Creation button----------------*/
+	.create_button {
+		text-align: end;
+		margin: 2rem 10% 1rem 0;
+	}
+
+	/*--------------Texts----------------*/
+
+	h1,
+	h2,
+	p {
+		text-align: center;
+	}
+
+	h1 {
+		font-size: 2.5rem;
+		margin: 0;
+	}
+
+	h2 {
+		margin: 0.5rem auto 2rem auto;
+	}
+
+	h3 {
+		margin: 0;
+	}
+</style>
+
+<script>
+	import Swal from 'sweetalert2';
+
+	const error_messages = {
+		missing_fields: 'Veuillez remplir tous les champs obligatoires',
+		invalid_dates: 'Veuillez entrer des dates et heures valides',
+		invalid_prices: 'Veuillez entrer des prix valides',
+		invalid_images:
+			'Erreur lors de la mise en ligne des images (préferer des images jpg ou png)',
+		invalid_movie_id: 'Veuillez sélectionner un film dans la liste proposée',
+	};
+
+	/* Script pour la vérification du contenu du formulaire */
+
+	let form = document.getElementById('form') as HTMLFormElement;
+
+	form.addEventListener('submit', async (event: Event) => {
+		event.preventDefault();
+
+		let name = document.getElementById('name') as HTMLInputElement;
+		let movie = document.getElementById('movie_id') as HTMLInputElement;
+		let description = document.getElementById(
+			'description'
+		) as HTMLInputElement;
+		let startDate = document.getElementById('startDate') as HTMLInputElement;
+		let startHour = document.getElementById('startHour') as HTMLInputElement;
+		let endDate = document.getElementById('endDate') as HTMLInputElement;
+		let endHour = document.getElementById('endHour') as HTMLInputElement;
+		let price = document.getElementById('price') as HTMLInputElement;
+		let bidding = document.getElementById('bidding') as HTMLInputElement;
+
+		let dateDebut, dateFin;
+		let currentDate = new Date();
+
+		let err: {
+			element: HTMLInputElement | HTMLTextAreaElement;
+			msg: string;
+		}[] = [];
+
+		/*--------------Error verifications---------------*/
+
+		// Value
+		if (!bidding.value) {
+			errorColor(bidding);
+			err.push({
+				element: bidding,
+				msg: 'Entrez un prix de surenchérissement minimum',
+			});
+		} else {
+			noErrorMessage(bidding);
+		}
+		// Price
+		if (!price.value) {
+			errorColor(price);
+			err.push({ element: price, msg: 'Entrez un prix' });
+		} else {
+			noErrorMessage(price);
+		}
+		// Start date
+		if (!startDate.value) {
+			errorColor(startDate);
+			err.push({ element: startDate, msg: 'Entrez une date de début' });
+		} else {
+			noErrorMessage(startDate);
+			dateDebut = new Date(startDate.value + 'T' + startHour.value);
+		}
+		// End Date
+		if (!endDate.value) {
+			errorColor(endDate);
+			err.push({ element: endDate, msg: 'Entrez une date de fin' });
+		} else {
+			noErrorMessage(endDate);
+			dateFin = new Date(endDate.value + 'T' + endHour.value);
+		}
+		// Start date must be smaller than end date
+		if (startDate && endDate && dateDebut > dateFin) {
+			errorColor(startDate);
+			errorColor(endDate);
+			err.push({
+				element: startDate,
+				msg: 'La date de début doit commencer avant la date de fin',
+			});
+		} else {
+			noErrorMessage(startDate);
+		}
+		// Start date must be greater than current date
+		if (startDate && dateDebut < currentDate) {
+			errorColor(startDate);
+			err.push({
+				element: startDate,
+				msg: "La date de début doit commencer après aujourd'hui",
+			});
+		} else {
+			noErrorMessage(startDate);
+		}
+		// Description
+		if (!description.value) {
+			errorColor(description);
+			err.push({ element: description, msg: 'Entrez une description' });
+		} else {
+			noErrorMessage(description);
+		}
+		// Movie
+		if (!movie.value || !movie.getAttribute('data-movieid')) {
+			errorColor(movie);
+			err.push({ element: movie, msg: 'Sélectionnez un film proposé' });
+		} else {
+			noErrorMessage(movie);
+		}
+		// Name
+		if (!name.value) {
+			errorColor(name);
+			err.push({ element: name, msg: 'Entrez un libellé' });
+		} else {
+			noErrorMessage(name);
+		}
+
+		// Submit
+		if (err.length > 0) {
+			err[err.length - 1].element.setCustomValidity(err[err.length - 1].msg);
+			err[err.length - 1].element.reportValidity();
+			err[err.length - 1].element.setCustomValidity('');
+		} else {
+			const formData = new FormData(form);
+			formData.set('movie_id', movie.dataset.movieid);
+			const response = await fetch('./create', {
+				method: 'POST',
+				body: formData,
+			});
+			if (response.status !== 200) {
+				Swal.fire({
+					icon: 'error',
+					title: "Erreur lors de la création de l'article :",
+					text: error_messages[await response.text()] || 'Erreur inconnue',
+				});
+			} else {
+				Swal.fire("L'article a été créé avec succes", '', 'success').then(
+					() => {
+						window.location.href = '/dashboard';
+					}
+				);
+			}
+		}
+
+		// Show border color of elem
+		function errorColor(elem) {
+			elem.style.border = 'solid';
+			elem.style.borderColor = 'red';
+		}
+
+		// Hide border of elem
+		function noErrorMessage(elem) {
+			elem.style.border = 'none';
+		}
+	});
+</script>

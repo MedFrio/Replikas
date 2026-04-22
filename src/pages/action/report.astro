@@ -1,0 +1,188 @@
+---
+import sgMail from '@sendgrid/mail';
+import Button from '../../components/Button.astro';
+import Layout from '../../layouts/Layout.astro';
+import Article from '../../model/Article';
+import Config from '../../model/Config';
+import Buyer from '../../model/users/Buyer';
+import Company from '../../model/users/Company';
+import { getBuyerBySession } from '../../model/Utilitaire';
+
+const report_reasons = [
+	'Pratique frauduleuse',
+	'Pratique discriminatoire',
+	'Autre',
+];
+
+const buyer: Buyer = await getBuyerBySession(Astro.request.headers).catch(
+	() => null
+);
+
+if (!buyer)
+	return new Response('Vous devez être connecté pour accéder à cette page', {
+		status: 401,
+	});
+
+const article_id = parseInt(Astro.url.searchParams.get('art_id'));
+
+if (isNaN(article_id))
+	return new Response('Paramètre invalide', { status: 400 });
+
+const article: Article = await Article.get(article_id).catch(() => null);
+
+if (article == null)
+	return new Response('Article introuvable', { status: 404 });
+
+if (
+	!(await buyer.getAquiredArticles()).map((a) => a.getId()).includes(article_id)
+)
+	return new Response(
+		'Vous ne pouvez signaler que les articles que vous avez acheté',
+		{ status: 403 }
+	);
+
+const company_id = article.getSellingCompanyId();
+const company = await Company.getById(company_id).catch(() => null);
+if (company == null)
+	return new Response('Vendeur introuvable', { status: 404 });
+const companyName = await company.getNom();
+const articleName = article.getName();
+
+//
+if (isNaN(article_id))
+	return new Response('Paramètre invalide', { status: 400 });
+if (Astro.request.method == 'POST') {
+	const formData = await Astro.request.formData();
+
+	const motif_id = parseInt(formData.get('motif') as string);
+	if (isNaN(motif_id)) {
+		return Astro.redirect(
+			`/action/report?article=${article_id}&error=motif_not_filled`
+		);
+	}
+
+	const comment = formData.get('comment');
+	if (comment == '') {
+		return Astro.redirect(
+			`/action/report?article=${article_id}&error=comment_not_filled`
+		);
+	}
+
+	sgMail.setApiKey(Config.get().sendgrid.apiKey);
+	const msg = {
+		to: 'contact.replikas@gmail.com',
+		from: 'contact.replikas@gmail.com',
+		subject: 'Signalement de ' + companyName + ' par ' + buyer.toString(),
+		html:
+			'Motif: ' +
+			report_reasons[motif_id] +
+			' <br />Commentaire: ' +
+			comment +
+			' <br />Article: ' +
+			articleName,
+	};
+	try {
+		await sgMail.send(msg);
+		console.info('Report email sent');
+		return Astro.redirect(`/action/report?art_id=${article_id}&success=true`);
+	} catch (error) {
+		console.error(error);
+		if (error.response) {
+			console.error(error.response.body);
+		}
+		return Astro.redirect(`/action/report?art_id=${article_id}&error=sendgrid`);
+	}
+}
+let error_msg = '';
+let success_msg = '';
+if (Astro.url.searchParams.get('error') == 'motif_not_filled') {
+	error_msg = 'Veuillez entrer un motif de signalement';
+} else if (Astro.url.searchParams.get('error') == 'comment_not_filled') {
+	error_msg = 'Veuillez entrer un commentaire';
+} else if (Astro.url.searchParams.get('error') == 'sendgrid') {
+	error_msg = "Une erreur est survenue lors de l'envoi du mail";
+} else if (Astro.url.searchParams.get('success') == 'true') {
+	success_msg = 'Votre signalement a bien été envoyé';
+} else if (Astro.url.searchParams.get('success') == 'true') {
+	success_msg = 'Votre signalement a bien été envoyé';
+}
+---
+
+<Layout title="Signalement" no_searchbar>
+	<main>
+		<h1>Vous vous apprêtez à signaler {companyName} à propos de l'article :</h1>
+		{error_msg && <p class="error_msg">{error_msg}</p>}
+		{success_msg && <p class="success_msg">{success_msg}</p>}
+		<p>
+			{articleName}
+		</p>
+		<form method="post">
+			<h2>Motif de signalement</h2>
+			<select name="motif">
+				<option selected disabled hidden>
+					Entrez un motif de signalement...
+				</option>
+				{
+					report_reasons.map((reason, index) => (
+						<option value={index}>{reason}</option>
+					))
+				}
+			</select>
+			<h2>Commentaire</h2>
+			<textarea placeholder="Entrez un commentaire..." name="comment"
+			></textarea>
+			<br />
+			<Button text="Envoyer" />
+		</form>
+	</main>
+</Layout>
+
+<style>
+	.error_msg {
+		color: red;
+		text-align: center;
+	}
+	.success_msg {
+		color: green;
+		text-align: center;
+	}
+	main {
+		background-color: var(--theme-secondary);
+		border-radius: 5px;
+		margin: 2rem;
+		padding-left: 3.5rem;
+		padding-right: 3.5rem;
+		padding-top: 0.1rem;
+	}
+	h1 {
+		font-size: 2.5rem;
+	}
+	h2 {
+		font-size: 1.5rem;
+	}
+	p {
+		font-size: 1.2rem;
+	}
+	select {
+		border: none;
+		background-color: whitesmoke;
+		border-radius: 5px;
+		margin: 1rem;
+		padding: 0.7rem;
+		font-size: 1rem;
+		width: 600px;
+	}
+	select:focus {
+		outline: none;
+	}
+	textarea {
+		border: none;
+		background-color: whitesmoke;
+		border-radius: 5px;
+		margin: 1rem;
+		padding: 0.7rem;
+		font-size: 1rem;
+		width: 600px;
+		height: 200px;
+	}
+</style>

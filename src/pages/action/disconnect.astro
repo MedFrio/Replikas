@@ -1,0 +1,35 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Account from '../../model/users/Account';
+import { addCookie } from '../../model/Utilitaire';
+
+const cookies = Astro.request.headers.get('cookie');
+if (cookies) {
+	const token = (cookies.endsWith(';') ? cookies : cookies + ';').match(
+		/token=([^;]*);/
+	); // Recuperer le token de session
+	if (token) {
+		try {
+			await Account.deleteSession(token[0]); // Supprimer la session
+		} catch (e) {
+			console.error(e);
+		}
+	}
+	// Supprimer le cookie
+	const headers = new Headers();
+	addCookie(headers, {
+		name: 'token',
+		value: 'deleted',
+		maxAge: 0,
+		path: '/',
+	});
+	headers.set('location', '/'); // Rediriger vers la page d'accueil
+	return new Response('', {
+		status: 302,
+		headers,
+	});
+}
+return Astro.redirect('/'); // Rediriger vers la page d'accueil
+---
+
+<Layout title="Deconnection" />

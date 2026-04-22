@@ -1,0 +1,112 @@
+---
+import Buyer from '../../model/users/Buyer';
+import Article from '../Article.astro';
+import SearchBar from '../SearchBar.astro';
+
+export interface Props {
+	buyer: Buyer;
+}
+
+const { buyer } = Astro.props;
+
+const articles = await buyer.getAquiredArticles(false);
+---
+
+<section class="content">
+	<form method="get" action="/basket">
+		<h1>Vos articles</h1>
+		<div class="pages">
+			<input type="submit" value="Possédés" name="pageName" />
+			<input id="current" type="submit" value="À payer" name="pageName" />
+			<input type="submit" value="Aimés" name="pageName" />
+		</div>
+	</form>
+	<section class="sectionSearchBar">
+		<SearchBar />
+	</section>
+	<p>
+		Si 3 jours après avoir gagné une enchère, vous n'avez pas payé l'article
+		celui-ci ne vous appartiendra plus.
+	</p>
+	<ul class="articles">
+		{
+			articles.map((article) => (
+				<Article article={article} link={`/pay?article=${article.getId()}`} />
+			))
+		}
+	</ul>
+</section>
+
+<style>
+	section {
+		display: flex;
+		flex-direction: column;
+
+		width: 80%;
+		margin: 2rem auto;
+
+		background-color: var(--theme-secondary);
+		border-radius: 2rem;
+
+		padding: 2rem 3rem;
+	}
+
+	/*---------------Nav-----------------*/
+
+	form {
+		display: grid;
+	}
+
+	h1 {
+		font-size: 3rem;
+
+		grid-column: 1;
+
+		width: 20rem;
+		margin: 0;
+	}
+
+	.pages {
+		grid-column: 2;
+
+		display: flex;
+		justify-content: center;
+	}
+
+	input {
+		background-color: var(--theme-secondary);
+		color: inherit;
+
+		padding: 0.5rem 1rem;
+		margin: 0 3rem;
+		font-size: 2rem;
+
+		border: none;
+
+		transition: 0.5s ease;
+
+		cursor: pointer;
+	}
+
+	input:hover {
+		color: var(--theme-button);
+		transition: 0.5s ease;
+	}
+
+	#current {
+		border-bottom: 3px solid;
+	}
+
+	/*------------Search bar--------------*/
+
+	.sectionSearchBar {
+		width: 60%;
+		margin: 2rem auto;
+	}
+
+	/*--------------Articles----------------*/
+	.articles {
+		display: flex;
+		flex-wrap: wrap;
+	}
+</style>

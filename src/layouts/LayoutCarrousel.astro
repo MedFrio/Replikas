@@ -1,0 +1,194 @@
+---
+import CarrouselComponent from '../components/CarrouselComponent.astro';
+import Article from '../model/Article';
+
+export interface Props {
+	articles: Article[];
+}
+
+const { articles } = Astro.props;
+---
+
+<div class="container">
+	<div class="carrousel">
+		<div class="slider">
+			{articles.map((article) => <CarrouselComponent article={article} />)}
+		</div>
+	</div>
+	<div class="arrow">
+		<div class="arrow-top"></div>
+		<div class="arrow-bottom"></div>
+	</div>
+	<div class="arrowprev">
+		<div class="arrow-top"></div>
+		<div class="arrow-bottom"></div>
+	</div>
+</div>
+
+<style>
+	/*------------Content---------------*/
+	.container {
+		position: relative;
+		z-index: 1;
+		width: 85%;
+		height: 40rem;
+		padding: 1rem 0;
+		overflow: hidden;
+	}
+
+	.carrousel {
+		width: 100%;
+		height: 100%;
+
+		border-radius: 3px;
+
+		display: flex;
+		justify-content: flex-start;
+
+		position: relative;
+	}
+
+	.slider {
+		display: flex;
+		height: 100%;
+		width: 500%;
+		flex-shrink: 0;
+		transition: all 0.5s;
+	}
+
+	/*--------------Arrows---------------*/
+	.arrow {
+		cursor: pointer;
+		height: 120px;
+		right: -10px;
+		position: absolute;
+		top: 50%;
+		transform: translateX(-50%) translateY(-50%);
+		transition: transform 0.2s;
+		width: 80px;
+	}
+
+	.arrowprev {
+		cursor: pointer;
+		height: 120px;
+		width: 80px;
+		left: 70px;
+		position: absolute;
+		top: 50%;
+		transform: translateX(-50%) translateY(-50%) scaleX(-1);
+		transition: transform 0.2s;
+	}
+
+	.arrow-top,
+	.arrow-bottom {
+		background-color: #666;
+		height: 4px;
+		left: -5px;
+		position: absolute;
+		top: 50%;
+		width: 100%;
+	}
+
+	.arrow .arrow-top:after,
+	.arrow .arrow-bottom:after {
+		background-color: red;
+		content: '';
+		height: 100%;
+		position: absolute;
+		top: 0;
+		transition: all 0.15s;
+	}
+
+	.arrowprev .arrow-top:after,
+	.arrowprev .arrow-bottom:after {
+		background-color: black;
+		content: '';
+		height: 100%;
+		position: absolute;
+		top: 0;
+		transition: all 0.15s;
+	}
+
+	.arrow-top {
+		transform: rotate(45deg);
+		transform-origin: bottom right;
+	}
+
+	.arrow-top:after {
+		left: 100%;
+		right: 0;
+		transition-delay: 0s;
+	}
+
+	.arrow-bottom {
+		transform: rotate(-45deg);
+		transform-origin: top right;
+	}
+
+	.arrow-bottom:after {
+		left: 0;
+		right: 100%;
+		transition-delay: 0.2s;
+	}
+
+	.arrow:hover .arrow-top:after,
+	.arrowprev:hover .arrow-top:after {
+		left: 0;
+		transition-delay: 0.2s;
+	}
+
+	.arrow:hover .arrow-bottom:after,
+	.arrowprev:hover .arrow-bottom:after {
+		right: 0;
+		transition-delay: 0s;
+	}
+
+	.arrow:active {
+		transform: translateX(-50%) translateY(-50%) scale(0.9) scaleX(-1);
+	}
+
+	.arrowprev:active {
+		transform: translateX(-50%) translateY(-50%) scale(0.9);
+	}
+</style>
+
+<script>
+	const slider: any = document.querySelector('.slider');
+	const carrousel: any = document.querySelector('.carrousel');
+	const prev: any = document.querySelector('.arrowprev');
+	const next: any = document.querySelector('.arrow');
+
+	var direction: number = -1;
+
+	prev.addEventListener('mousedown', function () {
+		if (direction === -1) {
+			slider.appendChild(slider.firstElementChild);
+			direction = 1;
+		}
+		carrousel.style.justifyContent = 'flex-end';
+		slider.style.transform = 'translate(20%)';
+	});
+
+	next.addEventListener('mousedown', function () {
+		if (direction === 1) {
+			slider.prepend(slider.lastElementChild);
+			carrousel.style.justifyContent = 'flex-start';
+			direction = -1;
+		}
+		slider.style.transform = 'translateX(-20%)';
+	});
+
+	slider.addEventListener('transitionend', function () {
+		if (direction === -1) {
+			slider.appendChild(slider.firstElementChild);
+		} else if (direction === 1) {
+			slider.prepend(slider.lastElementChild);
+		}
+
+		slider.style.transition = 'none';
+		slider.style.transform = 'translate(0)';
+		setTimeout(function () {
+			slider.style.transition = 'all 0.3s';
+		});
+	});
+</script>

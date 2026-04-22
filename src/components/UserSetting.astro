@@ -1,0 +1,35 @@
+---
+export interface Props {
+	parametre: string;
+	value?: string;
+	lien?: string;
+}
+
+const { parametre, value, lien } = Astro.props;
+console.log(parametre, value, lien);
+---
+
+<div class="user-settings">
+	<p>{parametre}{value ? ' : ' + value : ''}</p>
+	<a href={lien}>modifier</a>
+</div>
+
+<style>
+	div {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	a {
+		color: var(--theme-link);
+	}
+
+	p {
+		font-size: 1.2rem;
+	}
+
+	.user-settings {
+		text-align: left;
+	}
+</style>

@@ -1,0 +1,34 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+import LikedPage from '../components/basketPages/LikedPage.astro';
+import NotPayedPage from '../components/basketPages/NotPayedPage.astro';
+import PossessedPage from '../components/basketPages/PossessedPage.astro';
+import Buyer from '../model/users/Buyer';
+import { getBuyerBySession } from '../model/Utilitaire';
+
+const buyer: Buyer = await getBuyerBySession(Astro.request.headers).catch(
+	(err) => null
+);
+
+if (!buyer) {
+	return Astro.redirect('/login');
+}
+
+let page;
+if (!Astro.url.searchParams.get('pageName')) {
+	page = 'Possédés';
+} else {
+	page = Astro.url.searchParams.get('pageName');
+}
+---
+
+<Layout title="Panier" no_searchbar>
+	{
+		{
+			Possédés: <PossessedPage buyer={buyer} />,
+			'À payer': <NotPayedPage buyer={buyer} />,
+			Aimés: <LikedPage buyer={buyer} />,
+		}[page]
+	}
+</Layout>

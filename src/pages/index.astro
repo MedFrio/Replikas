@@ -1,0 +1,53 @@
+---
+import Article from '../components/Article.astro';
+import ArticleContainer from '../layouts/ArticleContainer.astro';
+import Layout from '../layouts/Layout.astro';
+import LayoutCarrousel from '../layouts/LayoutCarrousel.astro';
+import { default as ArticleModel } from '../model/Article';
+
+const mostBids = await ArticleModel.mostBids();
+const mostAwaited = await ArticleModel.mostAwaited();
+---
+
+<Layout title="Replikas">
+	<section>
+		<LayoutCarrousel articles={mostBids.slice(0, 5)} />
+		<ArticleContainer title="Les plus attendus">
+			{mostAwaited.map((article) => <Article article={article} />)}
+		</ArticleContainer>
+		<ArticleContainer title="Les mieux référencés">
+			{mostBids.map((article) => <Article article={article} />)}
+		</ArticleContainer>
+	</section>
+</Layout>
+<style>
+	section {
+		margin: 2rem 0;
+
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.others {
+		background-color: var(--theme-secondary);
+		width: 85%;
+		margin: 0;
+		padding: 20px;
+		border-radius: 20px;
+	}
+
+	h1 {
+		font-size: 3rem;
+		font-weight: 800;
+		margin: 50px;
+		text-align: center;
+	}
+
+	ul {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		padding: 0;
+	}
+</style>

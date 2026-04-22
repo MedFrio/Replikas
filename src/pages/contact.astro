@@ -1,0 +1,288 @@
+---
+import Button from '../components/Button.astro';
+import TextField from '../components/TextField.astro';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Contact">
+	<main>
+		<h1>Rejoignez-nous sur nos réseaux sociaux</h1>
+		<div class="socials">
+			<ul>
+				<li>
+					<a href="https://fr-fr.facebook.com/DonaldTrump" target="_blank"
+						><img
+							src="/img/icons/socials/facebook.svg"
+							width="80px"
+							height="80px"
+							alt="Facebook"
+						/>
+					</a>
+				</li>
+				<li>
+					<a href="https://twitter.com/elonmusk" target="_blank"
+						><img
+							src="/img/icons/socials/twitter.svg"
+							width="80px"
+							height="80px"
+							alt="Twitter"
+						/>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.instagram.com/hugodecrypte" target="_blank"
+						><img
+							src="/img/icons/socials/instagram.svg"
+							width="80px"
+							height="80px"
+							alt="Instagram"
+						/>
+					</a>
+				</li>
+				<li>
+					<a
+						href="https://fr.linkedin.com/in/herv%C3%A9-blanchon-4851b02"
+						target="_blank"
+						><img
+							src="/img/icons/socials/linkedin.svg"
+							width="80px"
+							height="80px"
+							alt="Linkedin"
+						/>
+					</a>
+				</li>
+				<li>
+					<a href="https://r.mtdv.me/replikas" target="_blank"
+						><img
+							src="/img/icons/socials/youtube.svg"
+							width="80px"
+							height="80px"
+							alt="Youtube"
+						/>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<h1>Contactez-nous</h1>
+		<form id="form">
+			<div>
+				<table>
+					<tr>
+						<th>E-mail :</th>
+						<td>
+							<TextField
+								placeholder="Entrez votre e-mail"
+								name="email"
+								type="email"
+								length="20rem"
+							/>
+						</td>
+					</tr>
+					<tr>
+						<th>Sujet :</th>
+						<td
+							><TextField
+								name="subject"
+								text=""
+								placeholder="Entrez le sujet"
+								length="20rem"
+							/></td
+						>
+					</tr>
+					<tr>
+						<th id="message">Message :</th>
+						<td>
+							<textarea
+								name="message"
+								id="textarea"
+								cols="80"
+								rows="15"
+								placeholder="Message"
+							>
+							</textarea>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div id="button">
+				<Button text="Envoyer" />
+			</div>
+			<p id="info" style="visibility:hidden"></p>
+		</form>
+	</main>
+</Layout>
+
+<style>
+	main {
+		width: 80%;
+		padding: 1.5rem 3rem;
+		margin: 1rem auto;
+
+		border-radius: 1rem;
+
+		background-color: #222222;
+	}
+	form {
+		background-color: black;
+		border-radius: 10px;
+	}
+
+	/*---------Réseaux sociaux------------*/
+	.socials ul {
+		display: flex;
+		list-style-type: none;
+	}
+	.socials ul li a {
+		display: flex;
+		position: relative;
+		width: 100px;
+		height: 100px;
+		border-radius: 23px;
+		margin-right: 50px;
+		font-size: 60px;
+		text-decoration: none;
+		justify-content: center;
+		align-items: center;
+		color: rgba(255, 255, 255, 0.7);
+		z-index: 5;
+		transition: 0.3s;
+	}
+	.socials ul li a:after {
+		content: '';
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100px;
+		height: 100px;
+		border-radius: 23px;
+		border: 2px solid rgba(255, 255, 255, 0.2);
+		background: rgba(255, 255, 255, 0.4);
+		backdrop-filter: blur(5px);
+		-webkit-backdrop-filter: blur(5px);
+		z-index: -1;
+		transition: 0.3s;
+	}
+	.socials ul li a:hover {
+		transform: rotate(-15deg);
+	}
+	.socials ul li a:hover:before {
+		transform: rotate(15deg);
+	}
+	.socials ul li a:before {
+		content: '';
+		position: absolute;
+		width: 100px;
+		height: 100px;
+		background: #dc2743;
+		right: -5px;
+		bottom: 0;
+		border-radius: 23px;
+		z-index: -1;
+		transform-origin: 100% 100%;
+		transform: rotate(10deg);
+		transition: 0.3s;
+	}
+	.socials ul li:nth-child(1) a:before {
+		background: #3b5998;
+	}
+	.socials ul li:nth-child(2) a:before {
+		background: #1da1f2;
+	}
+	.socials ul li:nth-child(3) a:before {
+		background: #e1306c;
+	}
+	.socials ul li:nth-child(4) a:before {
+		background: #0077b5;
+	}
+	.socials ul li:nth-child(5) a:before {
+		background: #ff0000;
+	}
+
+	/*----------Table-----------*/
+
+	table {
+		width: 80%;
+		margin: auto;
+
+		color: var(--theme-text);
+	}
+
+	th {
+		width: 20%;
+		text-align: end;
+	}
+
+	#message {
+		vertical-align: top;
+		padding-top: 1.5rem;
+	}
+
+	textarea {
+		resize: none;
+		border: none;
+		background-color: var(--theme-input);
+		border-radius: 5px;
+		margin: 1rem;
+		padding: 0.7rem;
+		text-align: left;
+	}
+
+	textarea:focus {
+		outline: none;
+	}
+
+	/*------------Bouton envoyer---------------*/
+	#button {
+		text-align: center;
+	}
+
+	/*--------Texts-----------*/
+
+	h1 {
+		font-size: 2rem;
+		color: inherit;
+	}
+	.info {
+		text-align: center;
+		color: inherit;
+	}
+</style>
+<script>
+	import emailjs from '@emailjs/browser';
+	(function () {
+		emailjs.init('v-bcD3jdGPmGLELPA');
+		console.log('emailjs init');
+	})();
+
+	const onSubmit = (e) => {
+		e.preventDefault();
+		const form = e.target;
+		const formData = new FormData(form);
+		const data = Object.fromEntries(formData);
+		sendFeedback('service_h6om8ln', 'template_zzu58yd', data);
+	};
+
+	const resetForm = () => {
+		(document.getElementById('form') as HTMLFormElement).reset();
+	};
+
+	const sendFeedback = (serviceId, templateId, variables) => {
+		emailjs
+			.send(serviceId, templateId, variables, 'v-bcD3jdGPmGLELPA')
+			.then((res) => {
+				console.log('Email successfully sent!');
+				resetForm();
+				const info = document.getElementById('info');
+				info.style.visibility = 'visible';
+				info.innerHTML = 'Email envoyé avec succès !';
+			})
+			.catch((err) =>
+				console.error(
+					'Oh well, you failed. Here some thoughts on the error that occured:',
+					err
+				)
+			);
+	};
+	const form = document.getElementById('form');
+	form.addEventListener('submit', onSubmit);
+</script>

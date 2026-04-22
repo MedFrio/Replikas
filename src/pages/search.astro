@@ -1,0 +1,268 @@
+---
+import Article from '../components/Article.astro';
+import Filter from '../components/Filter.astro';
+import SearchBar from '../components/SearchBar.astro';
+import Layout from '../layouts/Layout.astro';
+import { default as ArticleModel } from '../model/Article';
+
+const search = Astro.url.searchParams.get('search') || '';
+const minPrice = parseInt(Astro.url.searchParams.get('minPrice')) || 0;
+const maxPrice = parseInt(Astro.url.searchParams.get('maxPrice')) || 2147483647;
+let onGoingText = Astro.url.searchParams.get('enCours') || 'false';
+let onGoing = onGoingText === 'true';
+
+const page = Math.max(parseInt(Astro.url.searchParams.get('page')) || 1, 1);
+let articles = await ArticleModel.getBySearch(search, {
+	onGoing,
+	minPrice,
+	maxPrice,
+	limit: null,
+	offset: 0,
+});
+
+const PAGE_SIZE = 20;
+const length = articles.length;
+const hasMore = articles.length > page * PAGE_SIZE;
+articles = articles.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
+const pages = [...Array(Math.ceil(length / PAGE_SIZE)).values()];
+---
+
+<Layout title="Recherche" no_searchbar>
+	<main>
+		<div class="searchBar">
+			<div id="searchBar">
+				<SearchBar text={search} />
+			</div>
+			<div id="filter-icon">
+				<img src="/img/icons/filter.png" alt="" />
+			</div>
+		</div>
+		<div id="filter">
+			<Filter button_id="submit_button" />
+		</div>
+		<ul>
+			{
+				articles.length > 0 ? (
+					articles.map((article) => <Article article={article} />)
+				) : (
+					<p>Il n'y a aucun article correspondant à la recherche</p>
+				)
+			}
+		</ul>
+		<div class="pages">
+			<span>
+				{
+					page > 1 && (
+						<a href={`?article=${search}&page=${page - 1}`}>Précédent</a>
+					)
+				}
+				{
+					pages.map((_, i) => (
+						<a
+							href={`?article=${search}&page=${i + 1}`}
+							class={i + 1 === page ? 'active' : ''}
+						>
+							{i + 1}
+						</a>
+					))
+				}
+
+				{hasMore && <a href={`?article=${search}&page=${page + 1}`}>Suivant</a>}
+			</span>
+		</div>
+	</main>
+</Layout>
+
+<style>
+	main {
+		margin: 20px auto;
+		padding: 20px 2%;
+		width: 80%;
+
+		border-radius: 20px;
+
+		background-color: var(--theme-secondary);
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+
+	/*---------Search & Filter-----------*/
+	.searchBar {
+		margin: 10px 20% 20px 20%;
+		width: 80%;
+
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+	}
+
+	#searchBar {
+		width: 70%;
+	}
+
+	#filter-icon {
+		filter: invert(0.9);
+		scale: 0.9;
+		cursor: pointer;
+	}
+
+	#filter {
+		background-color: var(--theme-primary);
+
+		width: 80%;
+		height: 0;
+		padding: 1rem 2rem;
+
+		border-radius: 1rem;
+		overflow: hidden;
+
+		opacity: 0;
+		visibility: hidden;
+		z-index: 1;
+		-webkit-transition: all 1s ease;
+		-moz-transition: all 1s ease;
+		-ms-transition: all 1s ease;
+		-o-transition: all 1s ease;
+		transition: all 1s ease;
+	}
+
+	.show {
+		opacity: 1 !important;
+		visibility: visible !important;
+		height: auto !important;
+	}
+
+	/*-----------Articles-------------*/
+	ul {
+		margin-inline: auto;
+		width: 100%;
+		display: flex;
+		flex-wrap: wrap;
+		align-self: center;
+	}
+
+	/*------------Change page---------------*/
+	.pages {
+		text-align: center;
+		margin: 20px 0;
+	}
+
+	.pages > span {
+		display: inline-block;
+
+		border-radius: 10px;
+
+		background-color: var(--theme-button);
+	}
+
+	.pages > span > a {
+		background-color: var(--theme-button);
+		text-decoration: none;
+		color: inherit;
+
+		display: inline-block;
+
+		height: 46px;
+		line-height: 46px;
+		padding: 0 14px;
+	}
+
+	.pages > span > a.active {
+		filter: brightness(0.8);
+	}
+
+	.pages > span > a:hover {
+		filter: brightness(1.2);
+	}
+
+	.pages > span > a:active {
+		filter: brightness(0.8);
+	}
+
+	.pages > span > a:last-child {
+		border-top-right-radius: 10px;
+		border-bottom-right-radius: 10px;
+	}
+
+	.pages > span > a:first-child {
+		border-top-left-radius: 10px;
+		border-bottom-left-radius: 10px;
+	}
+</style>
+<script>
+	// Affichage du filtre
+	const filterIcon = document.getElementById('filter-icon');
+	const filter = document.getElementById('filter');
+
+	filterIcon.addEventListener('click', (e) => {
+		if (filter.classList.contains('show')) {
+			filter.classList.remove('show');
+		} else {
+			filter.classList.toggle('show');
+		}
+	});
+
+	// Gestion de la recherche
+	const filterButton = document.getElementById('submit_button');
+	const searchForm = document.getElementById('search_form');
+
+	filterButton.addEventListener('click', (e) => {
+		e.preventDefault();
+		updateSearch();
+	});
+
+	searchForm.addEventListener('submit', (e) => {
+		e.preventDefault();
+		updateSearch();
+	});
+
+	function updateSearch() {
+		const search_elem = document.getElementById('search') as HTMLInputElement;
+		const minPrice_elem = document.getElementById(
+			'minPrice'
+		) as HTMLInputElement;
+		const maxPrice_elem = document.getElementById(
+			'maxPrice'
+		) as HTMLInputElement;
+		const enCours_elem = document.getElementById('enCours') as HTMLInputElement;
+
+		if (!search_elem.value) {
+			search_elem.value = '';
+		}
+
+		const params = {
+			search: search_elem.value.trim(),
+			minPrice: minPrice_elem.value || 0,
+			maxPrice: maxPrice_elem.value || Number.MAX_SAFE_INTEGER,
+			enCours: enCours_elem.checked,
+		};
+
+		let error_msg;
+
+		if (params.minPrice > params.maxPrice) {
+			let error_msg = 'Le prix min doit être plus petit que le prix max';
+		}
+
+		if (!params.search) {
+			search_elem.setCustomValidity('Veuillez compléter ce champ');
+			search_elem.reportValidity();
+			search_elem.setCustomValidity('');
+		} else if (error_msg) {
+			document.location.href =
+				'/search?search=' + params.search + '&error_msg=' + error_msg;
+		} else {
+			document.location.href =
+				'/search?search=' +
+				params.search +
+				'&minPrice=' +
+				params.minPrice +
+				'&maxPrice=' +
+				params.maxPrice +
+				'&enCours=' +
+				params.enCours;
+		}
+	}
+</script>
